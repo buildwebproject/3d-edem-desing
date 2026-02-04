@@ -67,7 +67,7 @@
 
 .site-header__link:hover,
 .site-header__link:focus-visible {
-  color: #0b0b0b;
+  color: #0db4f2;
 }
 
 .site-header__search {
@@ -93,7 +93,7 @@
     max-width: 525px;
     height: 33px;
     padding: 0 36px 0 12px;
-    border: 1px solid #cfd8d6;
+    border: 1px solid #669999;
     border-radius: 4px;
     outline: none;
     background-image: url(../images/icons/search.png);
@@ -105,6 +105,7 @@
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
     margin-left: 5px;
+
 }
 
 .site-header__search-input:focus {
@@ -121,7 +122,7 @@
 }
 
 .site-header__icon-btn {
- 
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -131,12 +132,38 @@
   padding: 0;
 }
 
-.site-header__icon-btn[aria-label="Cart"] .site-header__icon-img {
+.site-header__count {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(50%, -50%);
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: #0db4f2;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 18px;
+  text-align: center;
+  font-family: var(--font-cta);
+}
+
+.site-header__icon-btn--cart .site-header__count {
+  background: #ff0000;
+}
+
+.site-header__icon-btn--favorites .site-header__count {
+  background: #ff0000;
+}
+
+.site-header__icon-btn--cart .site-header__icon-img {
   width: 30px;
   height: 24px;
 }
 
-.site-header__icon-btn[aria-label="Favorites"] .site-header__icon-img {
+.site-header__icon-btn--favorites .site-header__icon-img {
   width: 24px;
   height: 24px;
 }
