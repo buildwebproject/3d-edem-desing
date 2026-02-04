@@ -8,6 +8,14 @@
       <span class="site-header__search-toggle-icon" aria-hidden="true"></span>
     </button>
 
+    <div class="site-header__lang site-header__lang--mobile" aria-label="Language">
+      <select class="site-header__lang-select site-header__lang-select--flags" name="lang" autocomplete="off" aria-label="Language">
+        <option value="en">🇺🇸</option>
+        <option value="uk">🇺🇦</option>
+        <option value="ru">🇷🇺</option>
+      </select>
+    </div>
+
     <button class="site-header__menu-toggle" type="button" aria-label="Menu" aria-controls="site-header-menu" aria-expanded="false">
       <span class="site-header__menu-toggle-lines" aria-hidden="true"><span></span></span>
     </button>
@@ -33,6 +41,7 @@
         <a class="site-header__drawer-logo" href="#" aria-label="3D-Edem home">
           <img class="site-header__logo-img" src="assets/images/logo/logo.png" alt="3D-Edem" />
         </a>
+
         <button class="site-header__drawer-close" type="button" aria-label="Close menu">
           <span aria-hidden="true">×</span>
         </button>
@@ -63,6 +72,14 @@
             <span class="site-header__count" aria-hidden="true">1</span>
           </button>
         </div>
+      </div>
+
+      <div class="site-header__lang site-header__lang--desktop" aria-label="Language">
+        <select class="site-header__lang-select" name="lang" autocomplete="off">
+          <option value="en">🇺🇸 EN</option>
+          <option value="uk">🇺🇦 UA</option>
+          <option value="ru">🇷🇺 RU</option>
+        </select>
       </div>
 
       <div class="site-header__auth">

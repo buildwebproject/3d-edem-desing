@@ -31,7 +31,23 @@ function initHeader(container) {
   const searchModal = container.querySelector(".site-header__search-modal");
   const searchClose = container.querySelector(".site-header__search-modal-close");
   const searchInput = container.querySelector("#site-search-modal-input");
+  const langSelects = Array.from(
+    container.querySelectorAll(".site-header__lang-select")
+  );
   if (!toggle || !menu) return;
+
+  const applyLang = (value) => {
+    if (!value) return;
+    document.documentElement.lang = value;
+    try {
+      window.localStorage.setItem("lang", value);
+    } catch {
+      // ignore
+    }
+    for (const select of langSelects) {
+      if (select.value !== value) select.value = value;
+    }
+  };
 
   const lockScroll = () => {
     if (document.body.dataset.prevOverflow === undefined) {
@@ -129,6 +145,20 @@ function initHeader(container) {
       closeSearch();
     }
   });
+
+  for (const select of langSelects) {
+    select.addEventListener("change", (e) => {
+      const target = e.target;
+      if (target instanceof HTMLSelectElement) applyLang(target.value);
+    });
+  }
+
+  try {
+    const saved = window.localStorage.getItem("lang");
+    if (saved) applyLang(saved);
+  } catch {
+    // ignore
+  }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
