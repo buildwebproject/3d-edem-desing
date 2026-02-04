@@ -1,0 +1,154 @@
+/*
+  Fonts + Main layout (from Figma frame)
+  - Width: 1920
+  - Height: 4354 (Hug content)
+  - Padding: left 112, right 0, top 112, bottom 35
+*/
+
+/* Fonts (add .woff2 files in assets/fonts) */
+@font-face {
+  font-family: "Mulish";
+  src: local("Mulish"), url("../fonts/Mulish-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Mulish";
+  src: local("Mulish SemiBold"),
+    url("../fonts/Mulish-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: local("Inter"), url("../fonts/Inter-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: local("Inter SemiBold"),
+    url("../fonts/Inter-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: local("Poppins"), url("../fonts/Poppins-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: local("Poppins SemiBold"),
+    url("../fonts/Poppins-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Ubuntu";
+  src: local("Ubuntu"), url("../fonts/Ubuntu-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Ubuntu";
+  src: local("Ubuntu Bold"), url("../fonts/Ubuntu-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --layout-max-width: 1920px;
+  --layout-min-height: 4354px;
+  --layout-pad-top: 112px;
+  --layout-pad-right: 0px;
+  --layout-pad-bottom: 35px;
+  --layout-pad-left: 112px;
+
+  --font-base: "Mulish", system-ui, -apple-system, Segoe UI, Roboto, Helvetica,
+    Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  --font-alt-1: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Helvetica,
+    Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  --font-alt-2: "Poppins", system-ui, -apple-system, Segoe UI, Roboto,
+    Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  --font-ubuntu: "Ubuntu", system-ui, -apple-system, Segoe UI, Roboto,
+    Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+
+  --font-cta: var(--font-ubuntu);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: #fff;
+  color: #0b0b0b;
+  font-family: var(--font-base);
+}
+
+.font-mulish {
+  font-family: "Mulish", var(--font-base);
+}
+
+.font-inter {
+  font-family: "Inter", var(--font-alt-1);
+}
+
+.font-poppins {
+  font-family: "Poppins", var(--font-alt-2);
+}
+
+.font-ubuntu {
+  font-family: "Ubuntu", var(--font-ubuntu);
+}
+
+.main-layout {
+  width: 100%;
+  max-width: var(--layout-max-width);
+  margin: 0 auto;
+  min-height: var(--layout-min-height);
+  padding: 0;
+}
+
+.page-surface {
+  width: var(--layout-max-width);
+  max-width: 100%;
+  margin: 0 auto;
+  background: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .main-layout {
+    min-height: auto;
+    padding: 0;
+  }
+
+  .page-surface {
+    margin: 0 auto;
+  }
+}
