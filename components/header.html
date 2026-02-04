@@ -4,31 +4,71 @@
       <img class="site-header__logo-img" src="assets/images/logo/logo.png" alt="3D-Edem" />
     </a>
 
-    <nav class="site-header__nav" aria-label="Primary">
-      <a class="site-header__link" href="#">Catalog</a>
-      <a class="site-header__link" href="#">Gallery</a>
-    </nav>
-
-    <button class="site-header__upload-btn" type="button" aria-label="Upload">
-      <img class="site-header__icon-img" src="assets/images/icons/upload.svg" alt="" aria-hidden="true" />
+    <button class="site-header__search-toggle" type="button" aria-label="Search" aria-controls="site-search-modal" aria-expanded="false">
+      <span class="site-header__search-toggle-icon" aria-hidden="true"></span>
     </button>
 
-    <form class="site-header__search" role="search">
-      <label class="site-header__search-label" for="site-search">Search</label>
-      <input id="site-search" class="site-header__search-input" type="search" placeholder="Search" />
-    </form>
+    <button class="site-header__menu-toggle" type="button" aria-label="Menu" aria-controls="site-header-menu" aria-expanded="false">
+      <span class="site-header__menu-toggle-lines" aria-hidden="true"><span></span></span>
+    </button>
 
-    <div class="site-header__actions">
-      <button class="site-header__icon-btn site-header__icon-btn--cart" type="button" aria-label="Cart (1)">
-        <img class="site-header__icon-img" src="assets/images/icons/cart.svg" alt="" aria-hidden="true" />
-        <span class="site-header__count" aria-hidden="true">1</span>
-      </button>
-      <button class="site-header__icon-btn site-header__icon-btn--favorites" type="button" aria-label="Favorites (1)">
-        <img class="site-header__icon-img" src="assets/images/icons/liked.svg" alt="" aria-hidden="true" />
-        <span class="site-header__count" aria-hidden="true">1</span>
-      </button>
-      <a class="site-header__btn site-header__btn--login" href="#">Login</a>
-      <a class="site-header__btn site-header__btn--signup" href="#">Sign Up</a>
+    <div class="site-header__backdrop" aria-hidden="true"></div>
+
+    <div class="site-header__search-modal-backdrop" aria-hidden="true"></div>
+    <div id="site-search-modal" class="site-header__search-modal" role="dialog" aria-modal="true" aria-label="Search">
+      <div class="site-header__search-modal-header">
+        <span class="site-header__search-modal-title">Search</span>
+        <button class="site-header__search-modal-close" type="button" aria-label="Close search">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <form class="site-header__search-modal-form" role="search">
+        <label class="site-header__search-label" for="site-search-modal-input">Search</label>
+        <input id="site-search-modal-input" class="site-header__search-input site-header__search-input--modal" type="search" placeholder="Search products" />
+      </form>
+    </div>
+
+    <div id="site-header-menu" class="site-header__menu">
+      <div class="site-header__drawer-header">
+        <a class="site-header__drawer-logo" href="#" aria-label="3D-Edem home">
+          <img class="site-header__logo-img" src="assets/images/logo/logo.png" alt="3D-Edem" />
+        </a>
+        <button class="site-header__drawer-close" type="button" aria-label="Close menu">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+
+      <nav class="site-header__nav" aria-label="Primary">
+        <a class="site-header__link" href="#">Catalog</a>
+        <a class="site-header__link" href="#">Gallery</a>
+      </nav>
+
+      <form class="site-header__search" role="search">
+        <label class="site-header__search-label" for="site-search">Search</label>
+        <input id="site-search" class="site-header__search-input" type="search" placeholder="Search" />
+      </form>
+
+      <div class="site-header__icon-row" aria-label="Quick actions">
+        <button class="site-header__upload-btn" type="button" aria-label="Upload">
+          <img class="site-header__icon-img" src="assets/images/icons/upload.svg" alt="" aria-hidden="true" />
+        </button>
+
+        <div class="site-header__actions">
+          <button class="site-header__icon-btn site-header__icon-btn--cart" type="button" aria-label="Cart (1)">
+            <img class="site-header__icon-img" src="assets/images/icons/cart.svg" alt="" aria-hidden="true" />
+            <span class="site-header__count" aria-hidden="true">1</span>
+          </button>
+          <button class="site-header__icon-btn site-header__icon-btn--favorites" type="button" aria-label="Favorites (1)">
+            <img class="site-header__icon-img" src="assets/images/icons/liked.svg" alt="" aria-hidden="true" />
+            <span class="site-header__count" aria-hidden="true">1</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="site-header__auth">
+        <a class="site-header__btn site-header__btn--login" href="#">Login</a>
+        <a class="site-header__btn site-header__btn--signup" href="#">Sign Up</a>
+      </div>
     </div>
   </div>
 </div>
