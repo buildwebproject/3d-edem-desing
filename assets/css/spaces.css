@@ -1,0 +1,255 @@
+/*
+  Spaces (horizontal category cards)
+*/
+
+.spaces {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  width: 1696px;
+  min-height: 180px;
+  margin-top: 40px;
+ 
+}
+
+.spaces__inner {
+  width: min(1648px, 100%);
+
+}
+
+.spaces__carousel {
+  position: relative;
+}
+
+.spaces__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 34px;
+  height: 64px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(217, 228, 220, 1);
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  user-select: none;
+  transition: transform 140ms ease, opacity 140ms ease, box-shadow 140ms ease;
+}
+
+.spaces__nav:hover {
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+}
+
+.spaces__nav:focus {
+  outline: none;
+}
+
+.spaces__nav:focus-visible {
+  box-shadow: 0 0 0 4px rgba(102, 153, 153, 0.18), 0 10px 22px rgba(0, 0, 0, 0.12);
+}
+
+.spaces__nav[disabled] {
+  opacity: 0.35;
+  cursor: default;
+  box-shadow: none;
+}
+
+.spaces__nav--prev {
+  left: -8px;
+  border-top-left-radius: 18px;
+  border-bottom-left-radius: 18px;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+.spaces__nav--next {
+  right: -8px;
+  border-top-right-radius: 18px;
+  border-bottom-right-radius: 18px;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
+.spaces__nav-icon {
+  width: 16px;
+  height: 16px;
+  display: block;
+}
+
+.spaces__scroller {
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 8px;
+  scroll-behavior: smooth;
+}
+
+.spaces__scroller:focus {
+  outline: none;
+}
+
+.spaces__scroller:focus-visible {
+  outline: 2px solid rgba(102, 153, 153, 0.8);
+  outline-offset: 6px;
+  border-radius: 12px;
+}
+
+.spaces__scroller::-webkit-scrollbar {
+  height: 10px;
+}
+
+.spaces__scroller::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.spaces__scroller::-webkit-scrollbar-thumb {
+  background: rgba(102, 153, 153, 0.25);
+  border-radius: 999px;
+}
+
+.spaces__carousel:not([data-overflow="true"]) .spaces__nav {
+  display: none;
+}
+
+.spaces__list {
+  display: flex;
+  align-items: stretch;
+  gap: 16px;
+  list-style: none;
+  margin: 0;
+  padding: 0 4px;
+  min-width: max-content;
+}
+
+
+.spaces-card__link {
+   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  width: 154px;
+  height: 180px;
+  padding: 3px;
+
+  background: #ffffff;
+  border-radius: 6px;
+  box-shadow: 1px 1px 5px 1px rgba(0, 90, 141, 0.5);
+
+  
+ 
+
+  opacity: 1;
+  transition: opacity 100ms linear;
+  text-decoration: unset;
+ 
+
+  font-family: 'Saira', sans-serif;
+  font-weight: 700;
+  font-style: italic;
+  font-size: 15px;
+  line-height: 1;           /* 100% */
+  letter-spacing: 0;
+
+  color: #ffffff;
+
+}
+
+.spaces-card__link:hover {
+text-decoration: unset;
+  /* Blue glow shadow */
+  box-shadow: 1px 1px 5px 1px rgba(0, 178, 255, 0.5);
+}
+
+
+
+.spaces-card__label {
+  width: 146px;
+  height: 23px;
+  padding: 4px;
+  background: #5F7874;
+
+  /* Border radius only bottom corners */
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+
+  text-align: center;
+  text-decoration: none;
+}
+
+.spaces-card__thumb {
+ 
+}
+
+.spaces-card__thumb img {
+  
+}
+
+.spaces-card__thumb::after {
+ 
+}
+
+.spaces-card__thumb--bedroom {
+  background: linear-gradient(135deg, #efe8ff, #f7fbff);
+}
+
+.spaces-card__thumb--kitchen {
+  background: linear-gradient(135deg, #e7fff4, #f7fff9);
+}
+
+.spaces-card__thumb--living-room {
+  background: linear-gradient(135deg, #fff2e1, #fffaf3);
+}
+
+.spaces-card__thumb--childroom {
+  background: linear-gradient(135deg, #ffe8f3, #fff7fb);
+}
+
+.spaces-card__thumb--bathroom {
+  background: linear-gradient(135deg, #e6f3ff, #f5fbff);
+}
+
+.spaces-card__thumb--office {
+  background: linear-gradient(135deg, #e9f0ff, #f7f9ff);
+}
+
+.spaces-card__thumb--hallway {
+  background: linear-gradient(135deg, #f0f1f3, #fbfbfc);
+}
+
+.spaces-card__thumb--establishments {
+  background: linear-gradient(135deg, #e7f7ff, #f6fcff);
+}
+
+.spaces-card__thumb--recreation {
+  background: linear-gradient(135deg, #e7fff0, #f8fffb);
+}
+
+.spaces-card__thumb--exterior {
+  background: linear-gradient(135deg, #eaf6ea, #f8fff8);
+}
+
+@media (max-width: 768px) {
+  .spaces__inner {
+    padding: 12px 12px 8px;
+  }
+
+  .spaces__nav--prev {
+    left: -4px;
+  }
+
+  .spaces__nav--next {
+    right: -4px;
+  }
+
+  .spaces-card {
+    width: 138px;
+  }
+
+  .spaces-card__thumb {
+    height: 78px;
+  }
+}
