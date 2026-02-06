@@ -31,6 +31,7 @@ function initHeader(container) {
   const searchModal = container.querySelector(".site-header__search-modal");
   const searchClose = container.querySelector(".site-header__search-modal-close");
   const searchInput = container.querySelector("#site-search-modal-input");
+  const accountMenu = container.querySelector(".site-header__account");
   const langSelects = Array.from(
     container.querySelectorAll(".site-header__lang-select")
   );
@@ -72,6 +73,7 @@ function initHeader(container) {
   const closeMenu = () => {
     container.classList.remove("is-menu-open");
     toggle.setAttribute("aria-expanded", "false");
+    if (accountMenu) accountMenu.removeAttribute("open");
     syncScrollLock();
   };
 
@@ -85,6 +87,7 @@ function initHeader(container) {
   function closeSearch() {
     container.classList.remove("is-search-open");
     if (searchToggle) searchToggle.setAttribute("aria-expanded", "false");
+    if (accountMenu) accountMenu.removeAttribute("open");
     syncScrollLock();
   }
 
@@ -108,6 +111,7 @@ function initHeader(container) {
     if (e.key === "Escape") {
       closeMenu();
       closeSearch();
+      if (accountMenu) accountMenu.removeAttribute("open");
     }
   });
 
@@ -138,6 +142,27 @@ function initHeader(container) {
     const target = e.target;
     if (target instanceof Element && target.closest("a")) closeMenu();
   });
+
+  if (accountMenu) {
+    accountMenu.addEventListener("click", (e) => {
+      const target = e.target;
+      if (target instanceof Element && target.closest("a")) {
+        accountMenu.removeAttribute("open");
+      }
+    });
+
+    document.addEventListener(
+      "click",
+      (e) => {
+        if (!accountMenu.hasAttribute("open")) return;
+        const target = e.target;
+        if (target instanceof Node && !accountMenu.contains(target)) {
+          accountMenu.removeAttribute("open");
+        }
+      },
+      { capture: true }
+    );
+  }
 
   window.addEventListener("resize", () => {
     if (window.innerWidth > 1024) {

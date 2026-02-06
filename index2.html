@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D-Edem</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/header.css">
+    <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+    <main class="main-layout">
+        <section class="page-surface">
+	            <header id="site-header" data-component-url="components/header.html">
+	                <div class="site-header">
+	                    <div class="site-header__inner">
+	                        <a class="site-header__logo" href="#" aria-label="3D-Edem home">
+	                            <img class="site-header__logo-img" src="assets/images/logo/logo.png" alt="3D-Edem" />
+	                        </a>
+
+                          <button class="site-header__search-toggle" type="button" aria-label="Search" aria-controls="site-search-modal" aria-expanded="false">
+                            <span class="site-header__search-toggle-icon" aria-hidden="true"></span>
+                          </button>
+
+                          <div class="site-header__lang site-header__lang--mobile" aria-label="Language">
+                            <select class="site-header__lang-select site-header__lang-select--flags" name="lang" autocomplete="off" aria-label="Language">
+                              <option value="en">🇺🇸</option>
+                              <option value="uk">🇺🇦</option>
+                              <option value="ru">🇷🇺</option>
+                            </select>
+                          </div>
+
+	                        <button class="site-header__menu-toggle" type="button" aria-label="Menu" aria-controls="site-header-menu" aria-expanded="false">
+	                          <span class="site-header__menu-toggle-lines" aria-hidden="true"><span></span></span>
+	                        </button>
+
+                          <div class="site-header__backdrop" aria-hidden="true"></div>
+
+                          <div class="site-header__search-modal-backdrop" aria-hidden="true"></div>
+                          <div id="site-search-modal" class="site-header__search-modal" role="dialog" aria-modal="true" aria-label="Search">
+                            <div class="site-header__search-modal-header">
+                              <span class="site-header__search-modal-title">Search</span>
+                              <button class="site-header__search-modal-close" type="button" aria-label="Close search">
+                                <span aria-hidden="true">×</span>
+                              </button>
+                            </div>
+                            <form class="site-header__search-modal-form" role="search">
+                              <label class="site-header__search-label" for="site-search-modal-input">Search</label>
+                              <input id="site-search-modal-input" class="site-header__search-input site-header__search-input--modal" type="search" placeholder="Search products" />
+                            </form>
+                          </div>
+
+	                        <div id="site-header-menu" class="site-header__menu">
+                            <div class="site-header__drawer-header">
+                              <a class="site-header__drawer-logo" href="#" aria-label="3D-Edem home">
+                                <img class="site-header__logo-img" src="assets/images/logo/logo.png" alt="3D-Edem" />
+                              </a>
+
+                              <button class="site-header__drawer-close" type="button" aria-label="Close menu">
+                                <span aria-hidden="true">×</span>
+                              </button>
+                            </div>
+
+	                          <nav class="site-header__nav" aria-label="Primary">
+	                              <a class="site-header__link" href="#">Catalog</a>
+	                              <a class="site-header__link" href="#">Gallery</a>
+	                          </nav>
+
+	                          <form class="site-header__search" role="search">
+	                              <label class="site-header__search-label" for="site-search">Search</label>
+	                              <input id="site-search" class="site-header__search-input" type="search" placeholder="Search" />
+	                          </form>
+
+	                          <div class="site-header__icon-row" aria-label="Quick actions">
+	                            <button class="site-header__upload-btn" type="button" aria-label="Upload">
+	                                <img class="site-header__icon-img" src="assets/images/icons/upload.svg" alt="" aria-hidden="true" />
+	                            </button>
+
+	                            <div class="site-header__actions">
+	                                <button class="site-header__icon-btn site-header__icon-btn--cart" type="button" aria-label="Cart (1)">
+	                                    <img class="site-header__icon-img" src="assets/images/icons/cart.svg" alt="" aria-hidden="true" />
+	                                    <span class="site-header__count" aria-hidden="true">1</span>
+	                                </button>
+	                                <button class="site-header__icon-btn site-header__icon-btn--favorites" type="button" aria-label="Favorites (1)">
+	                                    <img class="site-header__icon-img" src="assets/images/icons/liked.svg" alt="" aria-hidden="true" />
+	                                    <span class="site-header__count" aria-hidden="true">1</span>
+	                                </button>
+	                            </div>
+	                          </div>
+
+                            <div class="site-header__lang site-header__lang--desktop" aria-label="Language">
+                              <select class="site-header__lang-select" name="lang" autocomplete="off">
+                                <option value="en">🇺🇸 EN</option>
+                                <option value="uk">🇺🇦 UA</option>
+                                <option value="ru">🇷🇺 RU</option>
+                              </select>
+                            </div>
+
+                            <div class="site-header__auth">
+                              <details class="site-header__account">
+                                <summary class="site-header__account-summary" aria-label="Account menu">
+                                  <span class="site-header__account-avatar" aria-hidden="true">A</span>
+                                  <span class="site-header__account-name">admin</span>
+                                  <span class="site-header__account-caret" aria-hidden="true"></span>
+                                </summary>
+                                <div class="site-header__account-menu" role="menu" aria-label="Account">
+                                  <div class="site-header__account-header">
+                                    <span class="site-header__account-header-avatar" aria-hidden="true">A</span>
+                                    <div class="site-header__account-header-text">
+                                      <div class="site-header__account-header-name">admin</div>
+                                      <div class="site-header__account-header-email">admin@gmail.com</div>
+                                    </div>
+                                  </div>
+
+                                  <a class="site-header__account-item" href="#" role="menuitem">
+                                    <span class="site-header__account-item-icon" aria-hidden="true">
+                                      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M20 21a8 8 0 0 0-16 0"></path>
+                                        <circle cx="12" cy="7" r="4"></circle>
+                                      </svg>
+                                    </span>
+                                    Profile
+                                  </a>
+
+                                  <a class="site-header__account-item" href="#" role="menuitem">
+                                    <span class="site-header__account-item-icon" aria-hidden="true">
+                                      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M4 19V5"></path>
+                                        <path d="M4 19h16"></path>
+                                        <path d="M7 14l3-3 4 4 6-7"></path>
+                                      </svg>
+                                    </span>
+                                    Profit
+                                  </a>
+
+                                  <a class="site-header__account-item" href="#" role="menuitem">
+                                    <span class="site-header__account-item-icon" aria-hidden="true">
+                                      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M12 17.3l-6.2 3.4 1.2-7.1L1 8.7l7.2-1L12 1l3.8 6.7 7.2 1-6 4.9 1.2 7.1z"></path>
+                                      </svg>
+                                    </span>
+                                    Favorites
+                                  </a>
+
+                                  <a class="site-header__account-item" href="#" role="menuitem">
+                                    <span class="site-header__account-item-icon" aria-hidden="true">
+                                      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M12 3v10"></path>
+                                        <path d="M7 10l5 6 5-6"></path>
+                                        <path d="M5 21h14"></path>
+                                      </svg>
+                                    </span>
+                                    Download &amp; Purchase
+                                  </a>
+
+                                  <div class="site-header__account-divider" role="separator" aria-hidden="true"></div>
+
+                                  <a class="site-header__account-item site-header__account-item--danger" href="#" role="menuitem">
+                                    <span class="site-header__account-item-icon" aria-hidden="true">
+                                      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M10 17l5-5-5-5"></path>
+                                        <path d="M15 12H3"></path>
+                                        <path d="M21 19V5a2 2 0 0 0-2-2h-6"></path>
+                                      </svg>
+                                    </span>
+                                    Log out
+                                  </a>
+                                </div>
+                              </details>
+                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+	            </header>
+        </section>
+    </main>
+</body>
+</html>
