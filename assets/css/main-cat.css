@@ -1,0 +1,237 @@
+/*
+  Main categories (horizontal cards)
+  - Uses the same layout rules as Spaces, with renamed class names
+*/
+
+.main-cat {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  width: 100%;
+  min-height: 180px;
+  margin-top: 40px;
+}
+
+.main-cat__inner {
+  width: min(1648px, 100%);
+  margin: 0 auto;
+}
+
+.main-cat__carousel {
+  position: relative;
+  overflow: visible;
+}
+
+.main-cat__nav {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+  cursor: pointer;
+}
+
+.main-cat__nav:hover {
+}
+
+.main-cat__nav:focus {
+  outline: none;
+}
+
+.main-cat__nav:focus-visible {
+  box-shadow: 0 0 0 3px rgba(0, 178, 255, 0.35),
+    0 10px 24px rgba(0, 0, 0, 0.14);
+}
+
+.main-cat__nav[disabled] {
+  opacity: 0.35;
+  cursor: not-allowed;
+  
+}
+
+.main-cat__nav--prev {
+  left: 0;
+  transform: translate(-75%, -50%);
+}
+
+.main-cat__nav--next {
+  right: 0;
+  transform: translate(75%, -50%);
+}
+
+.main-cat__nav-icon {
+}
+
+.main-cat__scroller {
+  overflow-x: auto;
+  overflow-y: visible;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+
+  padding: 12px 0; /* room for top/bottom shadow (overflow clips when scrolling) */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge legacy */
+  width: 100%;
+  min-height: 185px;
+}
+
+.main-cat__scroller:focus {
+}
+
+.main-cat__scroller:focus-visible {
+}
+
+.main-cat__scroller::-webkit-scrollbar {
+  display: none;
+}
+
+.main-cat__scroller::-webkit-scrollbar-track {
+}
+
+.main-cat__scroller::-webkit-scrollbar-thumb {
+}
+
+.main-cat__carousel:not([data-overflow="true"]) .main-cat__nav {
+  display: none;
+}
+
+.main-cat__list {
+  display: flex;
+  align-items: stretch;
+  gap: 11px;
+  list-style: none;
+  margin: 0;
+  padding: 0 4px;
+  width: max-content;
+}
+
+.main-cat__carousel:not([data-overflow="true"]) .main-cat__list {
+  width: 100%;
+  justify-content: center;
+}
+
+.main-cat-card__link {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 154px;
+  height: 180px;
+  padding: 4px;
+  background: #ffffff;
+  border-radius: 6px;
+  box-shadow: 1px 1px 5px 0px rgba(0, 90, 141, 0.5);
+  opacity: 1;
+  transition: opacity 100ms linear;
+  text-decoration: unset;
+  font-family: "Saira", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+  font-size: 15px;
+  line-height: 1;
+  letter-spacing: 0;
+  color: #ffffff;
+}
+
+.main-cat-card__link:hover {
+  text-decoration: unset;
+  box-shadow: 1px 1px 02px 1px rgba(0, 178, 255, 0.5);
+}
+
+.main-cat-card__label {
+  width: 146px;
+  height: 23px;
+  padding: 4px;
+  background: #786F6C;
+
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+
+  text-align: center;
+  text-decoration: none;
+}
+
+.main-cat-card__thumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.main-cat-card__thumb img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.main-cat-card__thumb::after {
+}
+
+@media (max-width: 1024px) {
+  .main-cat {
+    margin-top: 24px;
+  }
+
+  .main-cat__inner {
+    padding: 16px 24px 8px;
+  }
+
+  .main-cat__nav--prev {
+    transform: translate(-45%, -50%);
+  }
+
+  .main-cat__nav--next {
+    transform: translate(45%, -50%);
+  }
+}
+
+@media (max-width: 768px) {
+  .main-cat__inner {
+    padding: 12px 12px 8px;
+  }
+
+  .main-cat__nav--prev {
+    left: 0;
+    transform: translate(-35%, -50%);
+  }
+
+  .main-cat__nav--next {
+    right: 0;
+    transform: translate(35%, -50%);
+  }
+
+  .main-cat-card__link {
+    width: 138px;
+    height: 168px;
+    font-size: 14px;
+  }
+
+  .main-cat-card__label {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .main-cat-card__thumb {
+    min-height: 78px;
+  }
+
+  .main-cat-card__thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
