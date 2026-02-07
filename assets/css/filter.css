@@ -19,11 +19,12 @@
 .filter__panel {
   border-radius: 13px;
   background: #eaf2f1;
-  padding: 12px 62px;
-  width: 100%;
-  min-height: 72px;
+  
+
+  height: 65px;
   display: flex;
   align-items: center;
+      padding: 0 10px;
 }
 
 .filter__scroller {
@@ -44,8 +45,7 @@
   align-items: center;
   gap: 22px;
   width: max-content;
-  margin: 0 auto;
-  padding: 4px 0;
+
 }
 
 .filter-chip {
