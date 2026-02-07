@@ -139,7 +139,7 @@ body {
   width: var(--layout-max-width);
   max-width: 100%;
   margin: 0 auto;
-  background: #ffffff;
+  background: #FCFDFD;
 }
 
 @media (max-width: 768px) {

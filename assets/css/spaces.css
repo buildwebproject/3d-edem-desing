@@ -118,7 +118,7 @@
 .spaces__list {
   display: flex;
   align-items: stretch;
-  gap: 16px;
+  gap: 11px;
   list-style: none;
   margin: 0;
   padding: 0 4px;
@@ -133,41 +133,35 @@
 
 .spaces-card__link {
    box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-
-  width: 154px;
-  height: 180px;
-  padding: 4px;
-
-  background: #ffffff;
-  border-radius: 6px;
-  box-shadow: 0 0 5px 1px rgba(0, 90, 141, 0.5);
-
-  
- 
-
-  opacity: 1;
-  transition: opacity 100ms linear;
-  text-decoration: unset;
- 
-
-  font-family: 'Saira', sans-serif;
-  font-weight: 700;
-  font-style: italic;
-  font-size: 15px;
-  line-height: 1;           /* 100% */
-  letter-spacing: 0;
-
-  color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    width: 154px;
+    height: 180px;
+    padding: 4px;
+    background: #ffffff;
+    border-radius: 6px;
+    box-shadow: 0 0 5px 0px rgba(0, 90, 141, 0.5);
+    opacity: 1;
+    transition: opacity 100ms 
+linear;
+    text-decoration: unset;
+    font-family: 'Saira', sans-serif;
+    font-weight: 700;
+    font-style: italic;
+    font-size: 15px;
+    line-height: 1;
+    letter-spacing: 0;
+    color: #ffffff;
 
 }
 
 .spaces-card__link:hover {
 text-decoration: unset;
   /* Blue glow shadow */
-  box-shadow: 0 0 5px 1px rgba(0, 178, 255, 0.5);
+  /* box-shadow: 0 0 5px 1px rgba(0, 178, 255, 0.5); */
+ box-shadow: 0px 1px 02px 1px rgba(0, 178, 255, 0.5);
+
 }
 
 
