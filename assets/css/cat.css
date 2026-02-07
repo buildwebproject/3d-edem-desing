@@ -25,7 +25,7 @@
   position: relative;
     border-radius: 13px;
     background: #CDDEE1;
-    padding: 9px 54px;
+    padding: 5px 54px;
     width: 1500px;
     height: 93px;
 }
@@ -75,8 +75,7 @@
 }
 
 .cat-strip__nav-icon {
- 
-  filter: invert(1);
+  filter: brightness(0) invert(1);
 }
 
 .cat-strip__carousel:not([data-overflow="true"]) .cat-strip__nav {
@@ -88,7 +87,7 @@
     overflow-y: hidden;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
-    padding: 0;
+    padding: 4px 0;
     scrollbar-width: none;
     width: 1224px;
     margin: 0 auto;
