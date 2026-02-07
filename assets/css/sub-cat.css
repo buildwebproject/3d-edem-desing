@@ -5,7 +5,8 @@
 
 .sub-cat {
   margin: 10px auto 0;
-  width: 1499px;
+  width: 100%;
+  max-width: 1499px;
   height: auto;
   border-radius: 13px;
 }
@@ -21,7 +22,7 @@
   border-radius: 13px;
   background: #eaf2f1;
   padding: 0px 62px;
-  width: 1500px;
+  width: 100%;
   min-height: 259px;
 }
 

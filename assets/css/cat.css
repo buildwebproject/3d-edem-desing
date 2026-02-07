@@ -6,7 +6,8 @@
 .cat-strip {
    
        margin-top: 28px;
-    width: 1499px;
+    width: 100%;
+    max-width: 1499px;
     height: auto;
     gap: 121px;
     opacity: 1;
@@ -27,8 +28,8 @@
     border-radius: 13px;
     background: #CDDEE1;
     padding: 5px 54px;
-    width: 1500px;
-    height: 93px;
+    width: 100%;
+    min-height: 93px;
 }
 
 .cat-strip__nav {
@@ -90,7 +91,8 @@
     -webkit-overflow-scrolling: touch;
     padding: 4px 0;
     scrollbar-width: none;
-    width: 1224px;
+    width: 100%;
+    max-width: 1224px;
     margin: 0 auto;
     -ms-overflow-style: none;
 }
