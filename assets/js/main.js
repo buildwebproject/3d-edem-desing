@@ -300,3 +300,57 @@ function initMainCatCarousels() {
 document.addEventListener("DOMContentLoaded", () => {
   initMainCatCarousels();
 });
+
+function initCatStrips() {
+  const carousels = Array.from(document.querySelectorAll("[data-cat-carousel]"));
+  if (carousels.length === 0) return;
+
+  for (const carousel of carousels) {
+    const scroller = carousel.querySelector(".cat-strip__scroller");
+    const prev = carousel.querySelector('[data-cat-nav="prev"]');
+    const next = carousel.querySelector('[data-cat-nav="next"]');
+    if (
+      !(scroller instanceof HTMLElement) ||
+      !(prev instanceof HTMLButtonElement) ||
+      !(next instanceof HTMLButtonElement)
+    ) {
+      continue;
+    }
+
+    const getStep = () => Math.max(200, Math.round(scroller.clientWidth * 0.75));
+
+    const update = () => {
+      const maxScrollLeft = scroller.scrollWidth - scroller.clientWidth;
+      const hasOverflow = maxScrollLeft > 2;
+      carousel.dataset.overflow = hasOverflow ? "true" : "false";
+      prev.disabled = !hasOverflow || scroller.scrollLeft <= 1;
+      next.disabled = !hasOverflow || scroller.scrollLeft >= maxScrollLeft - 1;
+    };
+
+    let raf = 0;
+    const scheduleUpdate = () => {
+      if (raf) return;
+      raf = window.requestAnimationFrame(() => {
+        raf = 0;
+        update();
+      });
+    };
+
+    prev.addEventListener("click", () => {
+      scroller.scrollBy({ left: -getStep(), behavior: "smooth" });
+    });
+
+    next.addEventListener("click", () => {
+      scroller.scrollBy({ left: getStep(), behavior: "smooth" });
+    });
+
+    scroller.addEventListener("scroll", scheduleUpdate, { passive: true });
+    window.addEventListener("resize", scheduleUpdate);
+
+    update();
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  initCatStrips();
+});

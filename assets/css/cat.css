@@ -1,0 +1,212 @@
+/*
+  Category strip (compact horizontal tiles)
+  Matches the small category carousel design.
+*/
+
+.cat-strip {
+   
+       margin-top: 28px;
+    width: 1499px;
+    height: auto;
+    gap: 121px;
+    opacity: 1;
+   
+    border-radius: 13px;
+    margin: 27px auto;
+}
+
+.cat-strip__inner {
+  width: min(1648px, 100%);
+  margin: 0 auto;
+  padding: 0 4px;
+}
+
+.cat-strip__carousel {
+  position: relative;
+  border-radius: 13px;
+  background: #CDDEE1;
+  padding: 9px 54px;
+}
+
+.cat-strip__nav {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+
+  transform: translateY(-50%);
+}
+
+.cat-strip__nav:hover {
+}
+
+.cat-strip__nav:focus {
+  outline: none;
+}
+
+.cat-strip__nav:focus-visible {
+  box-shadow: 0 0 0 3px rgba(0, 178, 255, 0.35),
+    0 10px 24px rgba(0, 0, 0, 0.12);
+}
+
+.cat-strip__nav[disabled] {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.cat-strip__nav--prev {
+  left: 8px;
+}
+
+.cat-strip__nav--next {
+  right: 8px;
+}
+
+.cat-strip__nav-icon {
+  width: 18px;
+  height: 18px;
+  filter: invert(1);
+}
+
+.cat-strip__carousel:not([data-overflow="true"]) .cat-strip__nav {
+  display: none;
+}
+
+.cat-strip__scroller {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    padding: 0;
+    scrollbar-width: none;
+    width: 1224px;
+    margin: 0 auto;
+    -ms-overflow-style: none;
+}
+
+.cat-strip__scroller::-webkit-scrollbar {
+  display: none;
+}
+
+.cat-strip__list {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: max-content;
+}
+
+.cat-strip__carousel:not([data-overflow="true"]) .cat-strip__list {
+  width: 100%;
+  justify-content: center;
+}
+
+.cat-tile__link {
+  box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 120px;
+    height: 95px;
+    padding: 2px;
+    background: #ffffff;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    text-decoration: none;
+}
+
+.cat-tile__link:hover {
+  box-shadow: 0 2px 10px rgba(0, 178, 255, 0.25);
+}
+
+.cat-tile__label {
+  display: block;
+  padding: 3px 6px;
+  border-radius: 5px 5px 0px 0px;
+  background: #F8F1ED;
+  text-align: center;
+  color: #323232;
+
+  font-family: 'Saira', sans-serif;
+  font-weight: 600;        /* SemiBold */
+  font-size: 14px;
+  line-height: 1;           /* 100% */
+  letter-spacing: 0;
+}
+
+.cat-tile__thumb {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.cat-tile__thumb img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+@media (max-width: 1024px) {
+  .cat-strip {
+    margin-top: 20px;
+  }
+
+  .cat-strip__carousel {
+    padding: 10px 46px;
+  }
+
+  .cat-tile__link {
+    width: 140px;
+    height: 90px;
+  }
+}
+
+@media (max-width: 768px) {
+  .cat-strip__inner {
+    padding: 0 12px;
+  }
+
+  .cat-strip__carousel {
+    padding: 10px 44px;
+  }
+
+  .cat-strip__nav {
+    width: 42px;
+    height: 42px;
+  }
+
+  .cat-strip__nav--prev {
+    left: 8px;
+  }
+
+  .cat-strip__nav--next {
+    right: 8px;
+  }
+
+  .cat-tile__link {
+    width: 132px;
+    height: 86px;
+  }
+
+  .cat-tile__label {
+    font-size: 11px;
+  }
+}
