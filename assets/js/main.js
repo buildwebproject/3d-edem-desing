@@ -411,6 +411,84 @@ document.addEventListener("DOMContentLoaded", () => {
   initSubCatStrips();
 });
 
+function initModelsGrids() {
+  const grids = Array.from(document.querySelectorAll("[data-models-grid]"));
+  if (grids.length === 0) return;
+
+  const createCard = ({ src, name, price, index }) => {
+    const li = document.createElement("li");
+    li.className = "model-card";
+
+    const link = document.createElement("a");
+    link.className = "model-card__link";
+    link.href = "#";
+    link.setAttribute("aria-label", `${name} model ${index} - ${price}`);
+
+    const swatches = document.createElement("span");
+    swatches.className = "model-card__swatches";
+    swatches.setAttribute("aria-hidden", "true");
+
+    const swatchColors = ["#6b4f2a", "#9ca3af", "#111827"];
+    for (const color of swatchColors) {
+      const swatch = document.createElement("span");
+      swatch.className = "model-card__swatch";
+      swatch.style.setProperty("--swatch", color);
+      swatches.appendChild(swatch);
+    }
+
+    const media = document.createElement("span");
+    media.className = "model-card__media";
+
+    const img = document.createElement("img");
+    img.src = src;
+    img.alt = `${name} model ${index}`;
+    img.loading = "lazy";
+    img.decoding = "async";
+    img.addEventListener("error", () => li.remove());
+    media.appendChild(img);
+
+    const meta = document.createElement("span");
+    meta.className = "model-card__meta";
+
+    const nameEl = document.createElement("span");
+    nameEl.className = "model-card__name";
+    nameEl.textContent = name;
+
+    const priceEl = document.createElement("span");
+    priceEl.className = "model-card__price";
+    priceEl.textContent = price;
+
+    meta.appendChild(nameEl);
+    meta.appendChild(priceEl);
+
+    link.appendChild(swatches);
+    link.appendChild(media);
+    link.appendChild(meta);
+    li.appendChild(link);
+    return li;
+  };
+
+  for (const grid of grids) {
+    const start = Number.parseInt(grid.dataset.modelsStart || "7", 10);
+    const end = Number.parseInt(grid.dataset.modelsEnd || "42", 10);
+    const safeStart = Number.isFinite(start) ? start : 7;
+    const safeEnd = Number.isFinite(end) ? end : safeStart;
+
+    const name = "Table wood";
+    const price = "7 $";
+
+    for (let i = safeStart; i <= safeEnd; i += 1) {
+      const filename = `Image (${i}).png`;
+      const src = `assets/images/models/${encodeURIComponent(filename)}`;
+      grid.appendChild(createCard({ src, name, price, index: i }));
+    }
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  initModelsGrids();
+});
+
 function initFilterDropdowns() {
   const dropdowns = Array.from(
     document.querySelectorAll("[data-filter-dropdown]")
