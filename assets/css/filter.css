@@ -49,20 +49,22 @@
 }
 
 .filter-chip {
-  box-sizing: border-box;
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  height: 52px;
-  padding: 0 18px;
+  height: 47px;
 
-  background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: 12px;
-  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.08);
-  cursor: pointer;
-  user-select: none;
-  white-space: nowrap;
+  /* Border radius */
+  border-top-left-radius: 8px;
+  border-top-right-radius: 31px;
+  border-bottom-right-radius: 31px;
+  border-bottom-left-radius: 8px;
+
+  /* Padding */
+  padding: 8px 10px 8px 15px;
+
+  /* Background color */
+  background-color: #FFFFFF;
+
+  /* Shadow */
+  box-shadow: -0.2px 0.5px 1px 0 rgba(255, 102, 8, 1);
 }
 
 .filter-chip:hover {

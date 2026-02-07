@@ -6,7 +6,8 @@
       margin: 85px auto 0;
   
   border-radius: 13px;
-  width: 1648px;
+  max-width: 1648px;
+  width: 100%;
 
   opacity: 1;
   gap: 39px;
@@ -25,8 +26,12 @@
   padding: 0;
 
   display: grid;
-  gap: 22px;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 37px;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.models__grid > *:nth-child(n + 6) {
+  display: none;
 }
 
 .model-card__link {
@@ -36,16 +41,17 @@
   text-decoration: none;
   color: inherit;
 
-  border-radius: 18px;
+  border-radius: 7px;
   background: #ffffff;
-  box-shadow: 0 10px 26px rgba(16, 24, 40, 0.08);
+  /* Drop shadow from Figma */
+
+box-shadow: 2px 2px 8px 0 rgba(250, 250, 250, 0.5);
   overflow: hidden;
-      width: 300px;
-    height: 349px;
+  height: 349px;
 }
 
 .model-card__link:hover {
-  box-shadow: 0 12px 34px rgba(16, 24, 40, 0.12);
+box-shadow: 2px 2px 8px 0 rgba(250, 250, 250, 0.5);
 }
 
 .model-card__swatches {
@@ -72,7 +78,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 18px 18px 10px;
+
   min-height: 240px;
 }
 
