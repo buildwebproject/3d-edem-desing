@@ -93,11 +93,6 @@
   --font-cta: var(--font-ubuntu);
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
 
 html,
 body {
