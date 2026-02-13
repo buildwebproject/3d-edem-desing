@@ -9,7 +9,7 @@
   gap: 12px;
   width: 100%;
   min-height: 180px;
-  margin-top: 40px;
+  margin-top: 50px;
 }
 
 .main-cat__inner {
@@ -77,7 +77,7 @@
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
 
-  padding: 12px 0; /* room for top/bottom shadow (overflow clips when scrolling) */
+  
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE/Edge legacy */
   width: 100%;

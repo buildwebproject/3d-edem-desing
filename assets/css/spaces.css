@@ -79,7 +79,7 @@
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
 
-  padding: 12px 0; /* room for top/bottom shadow (overflow clips when scrolling) */
+ 
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE/Edge legacy */
   width: 100%;
