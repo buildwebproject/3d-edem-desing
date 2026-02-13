@@ -126,15 +126,17 @@ display: flex;
     height: 75px;
     padding: 2px;
     background: #ffffff;
-    border-radius: 10px;
+    border-radius: 7px;
     border: 1px solid rgba(0, 0, 0, 0.06);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    /* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08); */
+    box-shadow: 0.8px 0.8px 2px -1px rgba(0, 35, 55, 0.5);
     text-decoration: none;
 }
 
 .cat-tile__link:hover {
   text-decoration: unset;
     box-shadow: 1px 1px 02px 1px rgba(0, 178, 255, 0.5);
+
 
 
 }
