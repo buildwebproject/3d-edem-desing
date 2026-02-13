@@ -148,14 +148,18 @@
 }
 
 .main-cat-card__label {
+  box-sizing: border-box;
   width: 146px;
   height: 23px;
-  padding: 4px;
+  padding: 0 4px;
   background: #786F6C;
 
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   text-decoration: none;
 }
