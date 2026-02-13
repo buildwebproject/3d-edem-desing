@@ -119,18 +119,17 @@ display: flex;
 
 .cat-tile__link {
   box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    width: 120px;
-    height: 75px;
-    padding: 2px;
-    background: #ffffff;
-    border-radius: 7px;
-    border: 1px solid rgba(0, 0, 0, 0.06);
-    /* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08); */
-    box-shadow: 0.8px 0.8px 2px -1px rgba(0, 35, 55, 0.5);
-    text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 120px;
+  height: 75px;
+  padding: 2px;
+  background: #ffffff;
+  border-radius: 7px;
+  border: 2px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  text-decoration: none;
 }
 
 .cat-tile__link:hover {
