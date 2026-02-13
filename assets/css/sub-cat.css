@@ -12,18 +12,17 @@
 }
 
 .sub-cat__inner {
-  width: min(1648px, 100%);
+  width: min(1500px, 100%);
   margin: 0 auto;
-  padding: 0 4px;
+  
 }
 
 .sub-cat__carousel {
   position: relative;
   border-radius: 13px;
   background: #eaf2f1;
-  padding: 0px 62px;
-  width: 100%;
-  min-height: 259px;
+  
+  
 }
 
 .sub-cat__nav {
@@ -118,7 +117,8 @@
     /* gap: 20px; */
     width: 264px;
     height: 55px;
-    padding-right: 30px;
+    padding: 4px 30px 4px 4px;
+    /* padding-right: 30px; */
     background: #ffffff;
     border: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: 8px;
@@ -158,7 +158,7 @@
   line-height: 1;            /* 100% */
   letter-spacing: 0;
   color: #33649C;
-
+padding: 0 0 0 20px;
   /* Layout (optional — agar exact size chahiye) */
  
 }
