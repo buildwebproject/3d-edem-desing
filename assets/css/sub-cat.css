@@ -69,7 +69,7 @@
 .sub-cat__nav-icon {
  
   object-fit: contain;
-  opacity: 0.55;
+  opacity: 1;
 }
 
 .sub-cat__carousel:not([data-overflow="true"]) .sub-cat__nav {
