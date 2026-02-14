@@ -57,6 +57,12 @@
   /* Stroke */
      border: unset;
 
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  line-height: 1;
+
   /* Drop shadow */
  box-shadow:  -0.2px 0.5px 1px 0 rgba(0, 35, 55, 0.25);
 
@@ -106,10 +112,10 @@
   width: 14px;
   height: 14px;
   display: inline-block;
-  vertical-align: middle;
   margin-left: 6px;
   opacity: 0.8;
-  background: url("../images/filter/icons/down.png") center / contain no-repeat;
+  background: url("../images/filter/icons/white-down.png") center / contain no-repeat;
+  flex: 0 0 auto;
 }
 
 .filter-chip--icon {
@@ -124,6 +130,17 @@
 .filter-dropdown {
   position: relative;
   display: inline-flex;
+}
+
+.filter-chip--dropdown:not([aria-expanded="true"]):hover .filter-chip__caret,
+.filter-chip--dropdown:not([aria-expanded="true"]):focus-visible .filter-chip__caret {
+  background-image: url("../images/filter/icons/down.png");
+  opacity: 1;
+}
+
+.filter-chip--dropdown:not([aria-expanded="true"]):hover .filter-chip__label,
+.filter-chip--dropdown:not([aria-expanded="true"]):focus-visible .filter-chip__label {
+  color: #AF3200;
 }
 
 .filter-chip--dropdown[aria-expanded="true"] .filter-chip__caret {
