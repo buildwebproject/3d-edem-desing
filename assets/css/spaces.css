@@ -186,45 +186,7 @@ text-decoration: unset;
  
 }
 
-.spaces-card__thumb--bedroom {
-  background: linear-gradient(135deg, #efe8ff, #f7fbff);
-}
 
-.spaces-card__thumb--kitchen {
-  background: linear-gradient(135deg, #e7fff4, #f7fff9);
-}
-
-.spaces-card__thumb--living-room {
-  background: linear-gradient(135deg, #fff2e1, #fffaf3);
-}
-
-.spaces-card__thumb--childroom {
-  background: linear-gradient(135deg, #ffe8f3, #fff7fb);
-}
-
-.spaces-card__thumb--bathroom {
-  background: linear-gradient(135deg, #e6f3ff, #f5fbff);
-}
-
-.spaces-card__thumb--office {
-  background: linear-gradient(135deg, #e9f0ff, #f7f9ff);
-}
-
-.spaces-card__thumb--hallway {
-  background: linear-gradient(135deg, #f0f1f3, #fbfbfc);
-}
-
-.spaces-card__thumb--establishments {
-  background: linear-gradient(135deg, #e7f7ff, #f6fcff);
-}
-
-.spaces-card__thumb--recreation {
-  background: linear-gradient(135deg, #e7fff0, #f8fffb);
-}
-
-.spaces-card__thumb--exterior {
-  background: linear-gradient(135deg, #eaf6ea, #f8fff8);
-}
 
 @media (max-width: 1024px) {
   .spaces {
