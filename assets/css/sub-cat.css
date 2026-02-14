@@ -106,16 +106,19 @@
     margin: 0;
     padding: 0;
     width: max-content;
-    min-width: 100%;
     height: 179px;
+}
+
+.sub-cat__carousel:not([data-overflow="true"]) .sub-cat__grid {
+  width: 100%;
+  justify-content: center;
 }
 
 .sub-cat-item__link {
     box-sizing: border-box;
-    display: inline-flex;
+    display: flex;
     align-items: center;
     /* gap: 20px; */
-    width: 264px;
     height: 55px;
     padding: 4px 30px 4px 4px;
     /* padding-right: 30px; */
@@ -159,6 +162,7 @@
   letter-spacing: 0;
   color: #33649C;
 padding: 0 0 0 20px;
+  white-space: nowrap;
   /* Layout (optional — agar exact size chahiye) */
  
 }
@@ -181,6 +185,6 @@ padding: 0 0 0 20px;
   }
 
   .sub-cat-item__link {
-    min-width: 200px;
+    min-width: 0;
   }
 }
