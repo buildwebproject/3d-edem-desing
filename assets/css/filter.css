@@ -91,7 +91,7 @@
   letter-spacing: 0.04em;
   color: #7a5b50; */
 
-  font-family: Saira;
+  font-family: "Saira", sans-serif;
 font-weight: 600;
 font-style: SemiBold;
 font-size: 15px;
@@ -167,7 +167,15 @@ letter-spacing: 0%;
 
 .filter-chip--dropdown:not([aria-expanded="true"]):hover .filter-chip__label,
 .filter-chip--dropdown:not([aria-expanded="true"]):focus-visible .filter-chip__label {
-  color: #AF3200;
+  color: #843300;
+  font-family: Ubuntu;
+font-weight: 600;
+font-style: Medium;
+font-size: 17px;
+
+line-height: 100%;
+letter-spacing: 0%;
+
 }
 
 .filter-chip--dropdown[aria-expanded="true"] .filter-chip__caret {
@@ -181,6 +189,7 @@ letter-spacing: 0%;
 
 .filter-chip--dropdown[aria-expanded="true"] .filter-chip__label {
   color: #AF3200;
+  font-family: "Ubuntu", var(--font-ubuntu);
 }
 
 .filter-chip--dropdown {
@@ -201,8 +210,14 @@ letter-spacing: 0%;
 }
 
 .filter-chip--dropdown.is-selected .filter-chip__label {
-  color: #FA5F00;
-  font-weight: 800;
+  font-family: Ubuntu;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 17px;
+
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #843300;
 }
 
 .filter-chip--dropdown.is-selected.has-icon:not([aria-expanded="true"]):not(:hover):not(:focus-visible) {
