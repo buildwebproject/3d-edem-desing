@@ -85,12 +85,23 @@
 }
 
 .filter-chip__label {
-  font-family: "Saira", sans-serif;
+  /* font-family: "Saira", sans-serif;
   font-weight: 600;
   font-size: 13px;
   letter-spacing: 0.04em;
-  color: #7a5b50;
+  color: #7a5b50; */
+
+  font-family: Saira;
+font-weight: 600;
+font-style: SemiBold;
+font-size: 15px;
+color: #795344;
+line-height: 100%;
+letter-spacing: 0%;
+
 }
+
+
 
 .filter-chip__icon {
   width: 34px;
@@ -102,6 +113,10 @@
   justify-content: center;
   flex: 0 0 auto;
   overflow: hidden;
+}
+
+.filter-chip__icon[hidden] {
+  display: none !important;
 }
 
 .filter-chip__icon--img {
@@ -204,14 +219,8 @@
 }
 
 .filter-chip--dropdown.is-selected.has-icon:not([aria-expanded="true"]):not(:hover):not(:focus-visible) .filter-chip__caret {
-  background-image: url("../images/filter/icons/down.png");
+  background-image: url("../images/filter/icons/white-down.png");
   opacity: 0.45;
-}
-
-.filter-chip--dropdown.is-selected.has-icon:not([aria-expanded="true"]):hover .filter-chip__caret,
-.filter-chip--dropdown.is-selected.has-icon:not([aria-expanded="true"]):focus-visible .filter-chip__caret {
-  background-image: url("../images/filter/icons/up.png");
-  opacity: 1;
 }
 
 .filter-chip--dropdown[aria-expanded="true"] .filter-chip__caret {
@@ -227,7 +236,7 @@
   top: 0;
   left: 0;
   width: 252px;
-  height: 924px;
+  height: auto;
   overflow: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;

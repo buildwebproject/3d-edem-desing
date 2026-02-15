@@ -533,10 +533,17 @@ function initFilterDropdowns() {
     const parts = getParts(root);
     if (!parts) return;
 
-    const selected =
-      parts.items.find((item) => item.getAttribute("aria-checked") === "true") ||
-      parts.items[0];
-    if (!selected) return;
+    const selected = parts.items.find(
+      (item) => item.getAttribute("aria-checked") === "true"
+    );
+    if (!selected) {
+      parts.buttonLabel.textContent = "FORMAT";
+      parts.button.classList.remove("is-selected");
+      parts.buttonIcon.hidden = true;
+      parts.buttonIconImg.removeAttribute("src");
+      parts.button.classList.remove("has-icon");
+      return;
+    }
 
     const label = getItemLabel(selected) || "FORMAT";
     const iconSrc = getItemIconSrc(selected);
@@ -611,6 +618,16 @@ function initFilterDropdowns() {
     syncButtonFromSelected(root);
   };
 
+  const clearSelected = (root) => {
+    const parts = getParts(root);
+    if (!parts) return;
+    for (const item of parts.items) {
+      item.setAttribute("aria-checked", "false");
+    }
+    syncRovingTabIndex(parts.items);
+    syncButtonFromSelected(root);
+  };
+
   for (const root of dropdowns) {
     const parts = getParts(root);
     if (!parts) continue;
@@ -620,7 +637,7 @@ function initFilterDropdowns() {
 
     parts.button.addEventListener("click", () => {
       if (isOpen(root)) closeDropdown(root);
-      else openDropdown(root);
+      else openDropdown(root, { focusSelected: true });
     });
 
     parts.button.addEventListener("keydown", (e) => {
@@ -674,6 +691,12 @@ function initFilterDropdowns() {
 
     for (const item of parts.items) {
       item.addEventListener("click", () => {
+        if (item.getAttribute("aria-checked") === "true") {
+          clearSelected(root);
+          item.focus();
+          positionMenu(root);
+          return;
+        }
         setSelected(root, item);
         closeDropdown(root);
       });
