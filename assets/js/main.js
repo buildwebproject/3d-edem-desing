@@ -499,10 +499,60 @@ function initFilterDropdowns() {
     const button = root.querySelector("[data-filter-dropdown-button]");
     const menu = root.querySelector("[data-filter-dropdown-menu]");
     const items = Array.from(root.querySelectorAll("[data-filter-dropdown-item]"));
-    if (!(button instanceof HTMLButtonElement) || !(menu instanceof HTMLElement) || items.length === 0) {
+    const buttonLabel = root.querySelector("[data-filter-dropdown-button-label]");
+    const buttonIcon = root.querySelector("[data-filter-dropdown-button-icon]");
+    const buttonIconImg =
+      buttonIcon instanceof HTMLElement ? buttonIcon.querySelector("img") : null;
+    if (
+      !(button instanceof HTMLButtonElement) ||
+      !(menu instanceof HTMLElement) ||
+      !(buttonLabel instanceof HTMLElement) ||
+      !(buttonIcon instanceof HTMLElement) ||
+      !(buttonIconImg instanceof HTMLImageElement) ||
+      items.length === 0
+    ) {
       return null;
     }
-    return { button, menu, items };
+    return { button, buttonLabel, buttonIcon, buttonIconImg, menu, items };
+  };
+
+  const getItemLabel = (item) => {
+    const el = item.querySelector(".filter-dropdown__item-label");
+    if (!(el instanceof HTMLElement)) return "";
+    return (el.textContent || "").trim();
+  };
+
+  const getItemIconSrc = (item) => {
+    const img = item.querySelector(".filter-dropdown__item-icon-img");
+    if (!(img instanceof HTMLImageElement)) return null;
+    const src = img.getAttribute("src");
+    return src && src.trim() ? src : null;
+  };
+
+  const syncButtonFromSelected = (root) => {
+    const parts = getParts(root);
+    if (!parts) return;
+
+    const selected =
+      parts.items.find((item) => item.getAttribute("aria-checked") === "true") ||
+      parts.items[0];
+    if (!selected) return;
+
+    const label = getItemLabel(selected) || "FORMAT";
+    const iconSrc = getItemIconSrc(selected);
+
+    parts.buttonLabel.textContent = label;
+    parts.button.classList.toggle("is-selected", label !== "FORMAT");
+
+    if (iconSrc) {
+      parts.buttonIcon.hidden = false;
+      parts.buttonIconImg.setAttribute("src", iconSrc);
+      parts.button.classList.add("has-icon");
+    } else {
+      parts.buttonIcon.hidden = true;
+      parts.buttonIconImg.removeAttribute("src");
+      parts.button.classList.remove("has-icon");
+    }
   };
 
   const isOpen = (root) => {
@@ -558,6 +608,7 @@ function initFilterDropdowns() {
       item.setAttribute("aria-checked", item === next ? "true" : "false");
     }
     syncRovingTabIndex(parts.items);
+    syncButtonFromSelected(root);
   };
 
   for (const root of dropdowns) {
@@ -565,6 +616,7 @@ function initFilterDropdowns() {
     if (!parts) continue;
 
     syncRovingTabIndex(parts.items);
+    syncButtonFromSelected(root);
 
     parts.button.addEventListener("click", () => {
       if (isOpen(root)) closeDropdown(root);

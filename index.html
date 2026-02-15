@@ -824,17 +824,20 @@
                         <div class="filter__scroller" role="region" aria-label="Filter options" tabindex="0">
                           <div class="filter__row">
                             <div class="filter-dropdown" data-filter-dropdown>
-                              <button
-                                class="filter-chip filter-chip--dropdown"
-                                type="button"
-                                aria-haspopup="menu"
-                                aria-expanded="false"
-                                aria-controls="format-filter-menu"
-                                data-filter-dropdown-button
-                              >
-                                <span class="filter-chip__label">FORMAT</span>
-                                <span class="filter-chip__caret" aria-hidden="true"></span>
-                              </button>
+	                              <button
+	                                class="filter-chip filter-chip--dropdown"
+	                                type="button"
+	                                aria-haspopup="menu"
+	                                aria-expanded="false"
+	                                aria-controls="format-filter-menu"
+	                                data-filter-dropdown-button
+	                              >
+	                                <span class="filter-chip__icon filter-chip__icon--img" aria-hidden="true" hidden data-filter-dropdown-button-icon>
+	                                  <img class="filter-chip__icon-img" src="" alt="" aria-hidden="true" />
+	                                </span>
+	                                <span class="filter-chip__label" data-filter-dropdown-button-label>FORMAT</span>
+	                                <span class="filter-chip__caret" aria-hidden="true"></span>
+	                              </button>
 
                               <div
                                 id="format-filter-menu"
@@ -845,43 +848,63 @@
                                 data-filter-dropdown-menu
                               >
                                 <button class="filter-dropdown__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="unreal-engine">
-                                  <span class="filter-dropdown__item-icon" aria-hidden="true" data-icon="ue">UE</span>
+                                  <span class="filter-dropdown__item-icon filter-dropdown__item-icon--img" aria-hidden="true">
+                                    <img class="filter-dropdown__item-icon-img" src="assets/images/filter/formate/ue%202.png" alt="" aria-hidden="true" />
+                                  </span>
                                   <span class="filter-dropdown__item-label">Unreal Engine</span>
                                 </button>
                                 <button class="filter-dropdown__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="blender">
-                                  <span class="filter-dropdown__item-icon" aria-hidden="true" data-icon="bl">B</span>
+                                  <span class="filter-dropdown__item-icon filter-dropdown__item-icon--img" aria-hidden="true">
+                                    <img class="filter-dropdown__item-icon-img" src="assets/images/filter/formate/Blender.png" alt="" aria-hidden="true" />
+                                  </span>
                                   <span class="filter-dropdown__item-label">Blender</span>
                                 </button>
                                 <button class="filter-dropdown__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="3ds-max">
-                                  <span class="filter-dropdown__item-icon" aria-hidden="true" data-icon="3ds">3D</span>
+                                  <span class="filter-dropdown__item-icon filter-dropdown__item-icon--img" aria-hidden="true">
+                                    <img class="filter-dropdown__item-icon-img" src="assets/images/filter/formate/Frame%2016.png" alt="" aria-hidden="true" />
+                                  </span>
                                   <span class="filter-dropdown__item-label">3ds Max</span>
                                 </button>
                                 <button class="filter-dropdown__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="3d-scanned">
-                                  <span class="filter-dropdown__item-icon" aria-hidden="true" data-icon="scan">3S</span>
+                                  <span class="filter-dropdown__item-icon filter-dropdown__item-icon--img" aria-hidden="true">
+                                    <img class="filter-dropdown__item-icon-img" src="assets/images/filter/formate/scanner-vector-illustration_1237743-62221%201.png" alt="" aria-hidden="true" />
+                                  </span>
                                   <span class="filter-dropdown__item-label">3D Scanned</span>
                                 </button>
                                 <button class="filter-dropdown__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="ai-generated">
-                                  <span class="filter-dropdown__item-icon" aria-hidden="true" data-icon="ai">AI</span>
+                                  <span class="filter-dropdown__item-icon filter-dropdown__item-icon--img" aria-hidden="true">
+                                    <img class="filter-dropdown__item-icon-img" src="assets/images/filter/formate/ai%201.png" alt="" aria-hidden="true" />
+                                  </span>
                                   <span class="filter-dropdown__item-label">AI Generated</span>
                                 </button>
                                 <button class="filter-dropdown__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="maya">
-                                  <span class="filter-dropdown__item-icon" aria-hidden="true" data-icon="maya">M</span>
+                                  <span class="filter-dropdown__item-icon filter-dropdown__item-icon--img" aria-hidden="true">
+                                    <img class="filter-dropdown__item-icon-img" src="assets/images/filter/formate/maya%201.png" alt="" aria-hidden="true" />
+                                  </span>
                                   <span class="filter-dropdown__item-label">Maya</span>
                                 </button>
                                 <button class="filter-dropdown__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="cinema-4d">
-                                  <span class="filter-dropdown__item-icon" aria-hidden="true" data-icon="c4d">C4</span>
+                                  <span class="filter-dropdown__item-icon filter-dropdown__item-icon--img" aria-hidden="true">
+                                    <img class="filter-dropdown__item-icon-img" src="assets/images/filter/formate/Cinema_4D%201.png" alt="" aria-hidden="true" />
+                                  </span>
                                   <span class="filter-dropdown__item-label">Cinema 4D</span>
                                 </button>
                                 <button class="filter-dropdown__item" type="button" role="menuitemradio" aria-checked="true" data-filter-dropdown-item data-value="sketchup">
-                                  <span class="filter-dropdown__item-icon" aria-hidden="true" data-icon="su">SU</span>
+                                  <span class="filter-dropdown__item-icon filter-dropdown__item-icon--img" aria-hidden="true">
+                                    <img class="filter-dropdown__item-icon-img" src="assets/images/filter/formate/sketchup%201.png" alt="" aria-hidden="true" />
+                                  </span>
                                   <span class="filter-dropdown__item-label">SketchUp</span>
                                 </button>
                                 <button class="filter-dropdown__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="pbr">
-                                  <span class="filter-dropdown__item-icon" aria-hidden="true" data-icon="pbr">P</span>
+                                  <span class="filter-dropdown__item-icon filter-dropdown__item-icon--img" aria-hidden="true">
+                                    <img class="filter-dropdown__item-icon-img" src="assets/images/filter/formate/PBR.png" alt="" aria-hidden="true" />
+                                  </span>
                                   <span class="filter-dropdown__item-label">PBR</span>
                                 </button>
                                 <button class="filter-dropdown__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="zbrush">
-                                  <span class="filter-dropdown__item-icon" aria-hidden="true" data-icon="zb">ZB</span>
+                                  <span class="filter-dropdown__item-icon filter-dropdown__item-icon--img" aria-hidden="true">
+                                    <img class="filter-dropdown__item-icon-img" src="assets/images/filter/formate/zbrush%201.png" alt="" aria-hidden="true" />
+                                  </span>
                                   <span class="filter-dropdown__item-label">Zbrush</span>
                                 </button>
                                 <button class="filter-dropdown__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="autocad">
