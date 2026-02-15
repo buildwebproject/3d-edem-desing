@@ -635,7 +635,7 @@ function initFilterDropdowns() {
 
     const rect = parts.button.getBoundingClientRect();
     const viewportPadding = 12;
-    const gap = 10;
+    const gap = 16;
 
     const menuWidth = parts.menu.offsetWidth || 320;
     const desiredHeight = parts.menu.scrollHeight || 0;
