@@ -857,16 +857,38 @@ function initFilterDropdowns() {
       Math.min(left, window.innerWidth - menuWidth - viewportPadding)
     );
 
-    // Always open below the chip (no "flip to top").
-    let top = rect.bottom + gap;
-    const availableBelow = window.innerHeight - top - viewportPadding;
+    const topBelow = rect.bottom + gap;
+    const availableBelow = window.innerHeight - topBelow - viewportPadding;
+    const maxViewportHeight = window.innerHeight - viewportPadding * 2;
     const minMenuHeight = Number.parseInt(parts.menu.dataset.minHeight || "56", 10);
     const safeMinMenuHeight = Number.isFinite(minMenuHeight) ? minMenuHeight : 56;
-    const fitHeight = Math.max(safeMinMenuHeight, Math.min(desiredHeight, availableBelow));
-    parts.menu.style.maxHeight = `${Math.round(fitHeight)}px`;
-    if (availableBelow < 40) {
-      top = Math.max(viewportPadding, window.innerHeight - viewportPadding - fitHeight);
+
+    let top = topBelow;
+    let fitHeight = desiredHeight;
+
+    if (desiredHeight <= availableBelow) {
+      // Content fits below trigger: keep natural height.
+      fitHeight = desiredHeight;
+    } else if (desiredHeight <= maxViewportHeight) {
+      // Content can fit on screen: shift upward to preserve natural height.
+      fitHeight = desiredHeight;
+      const maxTop = window.innerHeight - viewportPadding - fitHeight;
+      top = Math.max(viewportPadding, maxTop);
+    } else {
+      // Very tall content (e.g. FORMAT): keep menu anchored below and scroll.
+      fitHeight = Math.max(
+        safeMinMenuHeight,
+        Math.min(availableBelow, maxViewportHeight)
+      );
+      if (availableBelow < safeMinMenuHeight) {
+        top = Math.max(
+          viewportPadding,
+          window.innerHeight - viewportPadding - fitHeight
+        );
+      }
     }
+
+    parts.menu.style.maxHeight = `${Math.round(fitHeight)}px`;
 
     parts.menu.style.left = `${Math.round(left)}px`;
     parts.menu.style.top = `${Math.round(top)}px`;
