@@ -18,6 +18,7 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Saira:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lemonada:wght@300..700&display=swap" rel="stylesheet">
 
     <script src="assets/js/main.js" defer></script>
 </head>
@@ -823,7 +824,12 @@
                   <section class="filter" aria-label="Filters">
                     <div class="filter__inner">
                       <div class="filter__panel">
-                        <div class="filter__scroller" role="region" aria-label="Filter options" tabindex="0">
+                        <div class="filter__carousel" data-filter-carousel>
+                          <button class="filter__nav filter__nav--prev" type="button" aria-label="Scroll filters left" aria-controls="filter-scroller" data-filter-nav="prev">
+                            <img class="filter__nav-icon" src="assets/images/icons/left.png" alt="" aria-hidden="true" />
+                          </button>
+
+                        <div id="filter-scroller" class="filter__scroller" role="region" aria-label="Filter options" tabindex="0">
                           <div class="filter__row">
                             <div class="filter-dropdown" data-filter-dropdown>
 	                              <button
@@ -1069,7 +1075,7 @@
                               </div>
                             </div>
 
-                            <div class="filter-dropdown filter-dropdown--material" data-filter-dropdown>
+                            <div class="filter-dropdown filter-dropdown--material" data-filter-dropdown data-filter-dropdown-multi="true">
                               <button
                                 class="filter-chip filter-chip--dropdown filter-chip--dropdown-material"
                                 type="button"
@@ -1081,11 +1087,14 @@
                                 data-filter-dropdown-keep-label="true"
                                 data-filter-dropdown-dynamic-icon="false"
                               >
-                                <span class="filter-chip__icon" aria-hidden="true" data-filter-dropdown-button-icon>
-                                  <svg class="filter-chip__svg" viewBox="0 0 24 24" width="20" height="20">
-                                    <circle cx="12" cy="12" r="10" fill="#ef8431"/>
-                                    <path d="M4 12h16M5.5 8h13M5.5 16h13M12 2.5c3.1 2.4 3.1 16.6 0 19M12 2.5c-3.1 2.4-3.1 16.6 0 19" stroke="#fff8ed" stroke-width="1.4" stroke-linecap="round"/>
-                                  </svg>
+                                <span class="filter-chip__icon filter-chip__icon--material-wheel" aria-hidden="true" data-filter-dropdown-button-icon>
+                                  <img
+                                    class="filter-chip__icon-img"
+                                    src="assets/images/material/material%20-%20icon-color.svg"
+                                    alt=""
+                                    aria-hidden="true"
+                                  />
+                                  <span class="filter-chip__material-preview" aria-hidden="true"></span>
                                 </span>
                                 <span class="filter-chip__label" data-filter-dropdown-button-label>MATERIAL</span>
                                 <span class="filter-chip__caret" aria-hidden="true"></span>
@@ -1100,39 +1109,57 @@
                                 data-filter-dropdown-menu
                               >
                                 <button class="filter-dropdown__item filter-material__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="brick">
-                                  <span class="filter-material__swatch filter-material__swatch--brick" aria-hidden="true"></span>
+                                  <span class="filter-dropdown__item-icon filter-dropdown__item-icon--img" aria-hidden="true">
+                                    <img class="filter-dropdown__item-icon-img" src="assets/images/material/Frame%2016.svg" alt="" aria-hidden="true" />
+                                  </span>
                                   <span class="filter-dropdown__item-label">Brick</span>
                                 </button>
                                 <button class="filter-dropdown__item filter-material__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="fabric">
-                                  <span class="filter-material__swatch filter-material__swatch--fabric" aria-hidden="true"></span>
+                                  <span class="filter-dropdown__item-icon filter-dropdown__item-icon--img" aria-hidden="true">
+                                    <img class="filter-dropdown__item-icon-img" src="assets/images/material/fabric%203.svg" alt="" aria-hidden="true" />
+                                  </span>
                                   <span class="filter-dropdown__item-label">Fabric</span>
                                 </button>
                                 <button class="filter-dropdown__item filter-material__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="fur">
-                                  <span class="filter-material__swatch filter-material__swatch--fur" aria-hidden="true"></span>
+                                  <span class="filter-dropdown__item-icon filter-dropdown__item-icon--img" aria-hidden="true">
+                                    <img class="filter-dropdown__item-icon-img" src="assets/images/material/fur%201.svg" alt="" aria-hidden="true" />
+                                  </span>
                                   <span class="filter-dropdown__item-label">Fur</span>
                                 </button>
                                 <button class="filter-dropdown__item filter-material__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="velvet">
-                                  <span class="filter-material__swatch filter-material__swatch--velvet" aria-hidden="true"></span>
+                                  <span class="filter-dropdown__item-icon filter-dropdown__item-icon--img" aria-hidden="true">
+                                    <img class="filter-dropdown__item-icon-img" src="assets/images/material/velvet%202.svg" alt="" aria-hidden="true" />
+                                  </span>
                                   <span class="filter-dropdown__item-label">Velvet</span>
                                 </button>
                                 <button class="filter-dropdown__item filter-material__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="glass">
-                                  <span class="filter-material__swatch filter-material__swatch--glass" aria-hidden="true"></span>
+                                  <span class="filter-dropdown__item-icon filter-dropdown__item-icon--img" aria-hidden="true">
+                                    <img class="filter-dropdown__item-icon-img" src="assets/images/material/material%20-%20icon-color.svg" alt="" aria-hidden="true" />
+                                  </span>
                                   <span class="filter-dropdown__item-label">Glass</span>
                                 </button>
                                 <button class="filter-dropdown__item filter-material__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="marble">
-                                  <span class="filter-material__swatch filter-material__swatch--marble" aria-hidden="true"></span>
+                                  <span class="filter-dropdown__item-icon filter-dropdown__item-icon--img" aria-hidden="true">
+                                    <img class="filter-dropdown__item-icon-img" src="assets/images/material/marble%202.svg" alt="" aria-hidden="true" />
+                                  </span>
                                   <span class="filter-dropdown__item-label">Marble</span>
                                 </button>
                                 <button class="filter-dropdown__item filter-material__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="plastic">
-                                  <span class="filter-material__swatch filter-material__swatch--plastic" aria-hidden="true"></span>
+                                  <span class="filter-dropdown__item-icon filter-dropdown__item-icon--img" aria-hidden="true">
+                                    <img class="filter-dropdown__item-icon-img" src="assets/images/material/Frame%2016.png" alt="" aria-hidden="true" />
+                                  </span>
                                   <span class="filter-dropdown__item-label">Plastic</span>
                                 </button>
                                 <button class="filter-dropdown__item filter-material__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="stone">
-                                  <span class="filter-material__swatch filter-material__swatch--stone" aria-hidden="true"></span>
+                                  <span class="filter-dropdown__item-icon filter-dropdown__item-icon--img" aria-hidden="true">
+                                    <img class="filter-dropdown__item-icon-img" src="assets/images/material/material%20-%20icon-color.svg" alt="" aria-hidden="true" />
+                                  </span>
                                   <span class="filter-dropdown__item-label">Stone</span>
                                 </button>
                                 <button class="filter-dropdown__item filter-material__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="tufted">
-                                  <span class="filter-material__swatch filter-material__swatch--tufted" aria-hidden="true"></span>
+                                  <span class="filter-dropdown__item-icon filter-dropdown__item-icon--img" aria-hidden="true">
+                                    <img class="filter-dropdown__item-icon-img" src="assets/images/material/material%20-%20icon-color.svg" alt="" aria-hidden="true" />
+                                  </span>
                                   <span class="filter-dropdown__item-label">Tufted</span>
                                 </button>
                               </div>
@@ -1517,6 +1544,10 @@
                               </div>
                             </div>
                           </div>
+                        </div>
+                          <button class="filter__nav filter__nav--next" type="button" aria-label="Scroll filters right" aria-controls="filter-scroller" data-filter-nav="next">
+                            <img class="filter__nav-icon" src="assets/images/icons/right.png" alt="" aria-hidden="true" />
+                          </button>
                         </div>
                       </div>
                     </div>

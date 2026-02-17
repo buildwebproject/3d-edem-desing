@@ -244,6 +244,68 @@ document.addEventListener("DOMContentLoaded", () => {
   initSpacesCarousels();
 });
 
+function initFilterCarousel() {
+  const carousels = Array.from(
+    document.querySelectorAll("[data-filter-carousel]")
+  );
+  if (carousels.length === 0) return;
+
+  for (const carousel of carousels) {
+    const scroller = carousel.querySelector(".filter__scroller");
+    const prev = carousel.querySelector('[data-filter-nav="prev"]');
+    const next = carousel.querySelector('[data-filter-nav="next"]');
+    if (
+      !(scroller instanceof HTMLElement) ||
+      !(prev instanceof HTMLButtonElement) ||
+      !(next instanceof HTMLButtonElement)
+    ) {
+      continue;
+    }
+
+    const getStep = () => Math.max(160, Math.round(scroller.clientWidth * 0.75));
+
+    const update = () => {
+      const maxScrollLeft = scroller.scrollWidth - scroller.clientWidth;
+      const hasOverflow = maxScrollLeft > 2;
+      carousel.dataset.overflow = hasOverflow ? "true" : "false";
+      prev.disabled = !hasOverflow || scroller.scrollLeft <= 1;
+      next.disabled = !hasOverflow || scroller.scrollLeft >= maxScrollLeft - 1;
+    };
+
+    let raf = 0;
+    const scheduleUpdate = () => {
+      if (raf) return;
+      raf = window.requestAnimationFrame(() => {
+        raf = 0;
+        update();
+      });
+    };
+
+    prev.addEventListener("click", () => {
+      scroller.scrollBy({ left: -getStep(), behavior: "smooth" });
+    });
+
+    next.addEventListener("click", () => {
+      scroller.scrollBy({ left: getStep(), behavior: "smooth" });
+    });
+
+    scroller.addEventListener("scroll", scheduleUpdate, { passive: true });
+    window.addEventListener("resize", scheduleUpdate);
+    if ("ResizeObserver" in window) {
+      const observer = new ResizeObserver(scheduleUpdate);
+      observer.observe(scroller);
+      const row = scroller.querySelector(".filter__row");
+      if (row instanceof HTMLElement) observer.observe(row);
+    }
+
+    update();
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  initFilterCarousel();
+});
+
 function initMainCatCarousels() {
   const carousels = Array.from(
     document.querySelectorAll("[data-main-cat-carousel]")
@@ -569,6 +631,13 @@ function initFilterDropdowns() {
     return computed && computed !== "rgba(0, 0, 0, 0)" ? computed : null;
   };
 
+  const normalizeBrandValue = (value) => value.trim().replace(/\s+/g, " ");
+
+  const getBrandInput = (root) => {
+    const input = root.querySelector(".filter-brand__input");
+    return input instanceof HTMLInputElement ? input : null;
+  };
+
   const syncColorPreview = (root, selectedItems = []) => {
     if (!root.classList.contains("filter-dropdown--color")) return;
     const preview = root.querySelector(".filter-chip__color-preview");
@@ -596,9 +665,63 @@ function initFilterDropdowns() {
     }
   };
 
+  const syncMaterialPreview = (root, selectedItems = []) => {
+    if (!root.classList.contains("filter-dropdown--material")) return;
+    const preview = root.querySelector(".filter-chip__material-preview");
+    const button = root.querySelector("[data-filter-dropdown-button]");
+    if (!(preview instanceof HTMLElement)) return;
+
+    const iconSources = selectedItems
+      .map((item) => getItemIconSrc(item))
+      .filter((src) => typeof src === "string" && src.trim().length > 0);
+
+    preview.textContent = "";
+    for (const src of iconSources) {
+      const dot = document.createElement("span");
+      dot.className = "filter-chip__material-dot";
+      const img = document.createElement("img");
+      img.src = src;
+      img.alt = "";
+      img.setAttribute("aria-hidden", "true");
+      img.decoding = "async";
+      dot.appendChild(img);
+      preview.appendChild(dot);
+    }
+
+    if (button instanceof HTMLElement) {
+      if (iconSources.length > 0) {
+        button.dataset.materialCount = String(iconSources.length);
+      } else {
+        button.removeAttribute("data-material-count");
+      }
+    }
+  };
+
   const syncButtonFromSelected = (root) => {
     const parts = getParts(root);
     if (!parts) return;
+
+    if (root.classList.contains("filter-dropdown--brand")) {
+      const brandInput = getBrandInput(root);
+      const candidate = root.dataset.brandValue || brandInput?.value || "";
+      const brandValue = normalizeBrandValue(candidate);
+
+      if (brandInput && brandInput.value !== brandValue) {
+        brandInput.value = brandValue;
+      }
+
+      if (brandValue) {
+        root.dataset.brandValue = brandValue;
+        parts.buttonLabel.textContent = brandValue.toUpperCase();
+        parts.button.classList.add("is-selected");
+      } else {
+        root.removeAttribute("data-brand-value");
+        parts.buttonLabel.textContent = parts.defaultLabel;
+        parts.button.classList.remove("is-selected");
+      }
+      return;
+    }
+
     const selectedItems = parts.items.filter(
       (item) => item.getAttribute("aria-checked") === "true"
     );
@@ -617,6 +740,7 @@ function initFilterDropdowns() {
         parts.button.classList.remove("has-icon");
       }
       syncColorPreview(root);
+      syncMaterialPreview(root);
       return;
     }
 
@@ -633,6 +757,7 @@ function initFilterDropdowns() {
         parts.button.classList.remove("has-icon");
       }
       syncColorPreview(root);
+      syncMaterialPreview(root);
       return;
     }
 
@@ -645,6 +770,7 @@ function initFilterDropdowns() {
     parts.buttonLabel.textContent = label;
     parts.button.classList.add("is-selected");
     syncColorPreview(root, selectedItems);
+    syncMaterialPreview(root, selectedItems);
 
     if (
       parts.dynamicIcon &&
@@ -758,6 +884,27 @@ function initFilterDropdowns() {
     syncRovingTabIndex(parts.items);
     syncButtonFromSelected(root);
 
+    if (root.classList.contains("filter-dropdown--brand")) {
+      const brandInput = getBrandInput(root);
+      if (brandInput) {
+        brandInput.addEventListener("keydown", (e) => {
+          if (e.key !== "Enter") return;
+          e.preventDefault();
+          e.stopPropagation();
+
+          const value = normalizeBrandValue(brandInput.value);
+          if (value) {
+            root.dataset.brandValue = value;
+          } else {
+            root.removeAttribute("data-brand-value");
+          }
+
+          syncButtonFromSelected(root);
+          closeDropdown(root, { focusButton: true });
+        });
+      }
+    }
+
     parts.button.addEventListener("click", () => {
       if (isOpen(root)) closeDropdown(root);
       else openDropdown(root, { focusSelected: true });
@@ -862,6 +1009,7 @@ function initFilterDropdowns() {
     const maxViewportHeight = window.innerHeight - viewportPadding * 2;
     const minMenuHeight = Number.parseInt(parts.menu.dataset.minHeight || "56", 10);
     const safeMinMenuHeight = Number.isFinite(minMenuHeight) ? minMenuHeight : 56;
+    const keepAnchoredBelow = root.classList.contains("filter-dropdown--material");
 
     let top = topBelow;
     let fitHeight = desiredHeight;
@@ -869,7 +1017,7 @@ function initFilterDropdowns() {
     if (desiredHeight <= availableBelow) {
       // Content fits below trigger: keep natural height.
       fitHeight = desiredHeight;
-    } else if (desiredHeight <= maxViewportHeight) {
+    } else if (!keepAnchoredBelow && desiredHeight <= maxViewportHeight) {
       // Content can fit on screen: shift upward to preserve natural height.
       fitHeight = desiredHeight;
       const maxTop = window.innerHeight - viewportPadding - fitHeight;
