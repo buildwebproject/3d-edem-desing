@@ -1178,11 +1178,14 @@
                                 data-filter-dropdown-dynamic-icon="false"
                               >
                                 <span class="filter-chip__icon" aria-hidden="true" data-filter-dropdown-button-icon>
-                                  <svg class="filter-chip__svg" viewBox="0 0 24 24" width="20" height="20">
-                                    <path d="M12 3 20 7.6v8.8L12 21l-8-4.6V7.6L12 3Z" fill="#ffffff" opacity="0.86"/>
-                                    <path d="M12 3 20 7.6v8.8L12 21l-8-4.6V7.6L12 3Z" fill="none" stroke="#cc5532" stroke-width="1.2"/>
-                                    <path d="M12 3v8.4m0 0L4 7.6m8 3.8L20 7.6" stroke="#cc5532" stroke-width="1.2"/>
-                                  </svg>
+                                  <img
+                                    class="filter-chip__icon-img"
+                                    src="assets/images/shape/shape_ico%201.svg"
+                                    alt=""
+                                    aria-hidden="true"
+                                    decoding="async"
+                                  />
+                                  <span class="filter-chip__shape-preview" aria-hidden="true"></span>
                                 </span>
                                 <span class="filter-chip__label" data-filter-dropdown-button-label>SHAPE</span>
                                 <span class="filter-chip__caret" aria-hidden="true"></span>
@@ -1199,44 +1202,64 @@
                               >
                                 <div class="filter-shape__row">
                                   <button class="filter-dropdown__item filter-shape__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="square">
-                                    <span class="filter-shape__glyph filter-shape__glyph--square" aria-hidden="true"></span>
+                                    <span class="filter-dropdown__item-icon filter-dropdown__item-icon--img" aria-hidden="true">
+                                      <img class="filter-dropdown__item-icon-img filter-shape__img" src="assets/images/shape/7)%20SHAPE_%20Square.png" alt="" aria-hidden="true" decoding="async" />
+                                    </span>
                                     <span class="filter-dropdown__item-label">Square</span>
                                   </button>
                                   <button class="filter-dropdown__item filter-shape__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="triangle">
-                                    <span class="filter-shape__glyph filter-shape__glyph--triangle" aria-hidden="true"></span>
+                                    <span class="filter-dropdown__item-icon filter-dropdown__item-icon--img" aria-hidden="true">
+                                      <img class="filter-dropdown__item-icon-img filter-shape__img" src="assets/images/shape/2)%20SHAPE_%20Triangle.png" alt="" aria-hidden="true" decoding="async" />
+                                    </span>
                                     <span class="filter-dropdown__item-label">Triangle</span>
                                   </button>
                                   <button class="filter-dropdown__item filter-shape__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="oval">
-                                    <span class="filter-shape__glyph filter-shape__glyph--oval" aria-hidden="true"></span>
+                                    <span class="filter-dropdown__item-icon filter-dropdown__item-icon--img" aria-hidden="true">
+                                      <img class="filter-dropdown__item-icon-img filter-shape__img" src="assets/images/shape/3)%20SHAPE_%20Oval.png" alt="" aria-hidden="true" decoding="async" />
+                                    </span>
                                     <span class="filter-dropdown__item-label">Oval</span>
                                   </button>
                                   <button class="filter-dropdown__item filter-shape__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="rectangle">
-                                    <span class="filter-shape__glyph filter-shape__glyph--rectangle" aria-hidden="true"></span>
+                                    <span class="filter-dropdown__item-icon filter-dropdown__item-icon--img" aria-hidden="true">
+                                      <img class="filter-dropdown__item-icon-img filter-shape__img" src="assets/images/shape/4)%20SHAPE_%20Rectangle.png" alt="" aria-hidden="true" decoding="async" />
+                                    </span>
                                     <span class="filter-dropdown__item-label">Rectangle</span>
                                   </button>
                                   <button class="filter-dropdown__item filter-shape__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="right-triangle">
-                                    <span class="filter-shape__glyph filter-shape__glyph--right-triangle" aria-hidden="true"></span>
+                                    <span class="filter-dropdown__item-icon filter-dropdown__item-icon--img" aria-hidden="true">
+                                      <img class="filter-dropdown__item-icon-img filter-shape__img" src="assets/images/shape/5)%20SHAPE_%20Corner.png" alt="" aria-hidden="true" decoding="async" />
+                                    </span>
                                     <span class="filter-dropdown__item-label">Right Triangle</span>
                                   </button>
                                   <button class="filter-dropdown__item filter-shape__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="circle">
-                                    <span class="filter-shape__glyph filter-shape__glyph--circle" aria-hidden="true"></span>
+                                    <span class="filter-dropdown__item-icon filter-dropdown__item-icon--img" aria-hidden="true">
+                                      <img class="filter-dropdown__item-icon-img filter-shape__img" src="assets/images/shape/6)%20SHAPE_%20Circle.png" alt="" aria-hidden="true" decoding="async" />
+                                    </span>
                                     <span class="filter-dropdown__item-label">Circle</span>
                                   </button>
                                   <button class="filter-dropdown__item filter-shape__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="hexagon">
-                                    <span class="filter-shape__glyph filter-shape__glyph--hexagon" aria-hidden="true"></span>
+                                    <span class="filter-dropdown__item-icon filter-dropdown__item-icon--img" aria-hidden="true">
+                                      <img class="filter-dropdown__item-icon-img filter-shape__img" src="assets/images/shape/Vector.png" alt="" aria-hidden="true" decoding="async" />
+                                    </span>
                                     <span class="filter-dropdown__item-label">Hexagon</span>
                                   </button>
                                   <button class="filter-dropdown__item filter-shape__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="pill">
-                                    <span class="filter-shape__glyph filter-shape__glyph--pill" aria-hidden="true"></span>
+                                    <span class="filter-dropdown__item-icon filter-dropdown__item-icon--img" aria-hidden="true">
+                                      <img class="filter-dropdown__item-icon-img filter-shape__img" src="assets/images/shape/8)%20SHAPE_%20Capsule.png" alt="" aria-hidden="true" decoding="async" />
+                                    </span>
                                     <span class="filter-dropdown__item-label">Pill</span>
                                   </button>
                                   <button class="filter-dropdown__item filter-shape__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="semi-circle">
-                                    <span class="filter-shape__glyph filter-shape__glyph--semi-circle" aria-hidden="true"></span>
+                                    <span class="filter-dropdown__item-icon filter-dropdown__item-icon--img" aria-hidden="true">
+                                      <img class="filter-dropdown__item-icon-img filter-shape__img" src="assets/images/shape/9)%20SHAPE_%20Half-circle%201.png" alt="" aria-hidden="true" decoding="async" />
+                                    </span>
                                     <span class="filter-dropdown__item-label">Semi Circle</span>
                                   </button>
-                                  <button class="filter-dropdown__item filter-shape__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="flower">
-                                    <span class="filter-shape__glyph filter-shape__glyph--flower" aria-hidden="true"></span>
-                                    <span class="filter-dropdown__item-label">Flower</span>
+                                  <button class="filter-dropdown__item filter-shape__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="freeform">
+                                    <span class="filter-dropdown__item-icon filter-dropdown__item-icon--img" aria-hidden="true">
+                                      <img class="filter-dropdown__item-icon-img filter-shape__img" src="assets/images/shape/10)%20SHAPE_%20Freeform.png" alt="" aria-hidden="true" decoding="async" />
+                                    </span>
+                                    <span class="filter-dropdown__item-label">Freeform</span>
                                   </button>
                                 </div>
                               </div>

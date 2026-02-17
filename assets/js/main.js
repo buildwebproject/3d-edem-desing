@@ -558,6 +558,8 @@ function initFilterDropdowns() {
   if (dropdowns.length === 0) return;
   const isMultiSelect = (root) =>
     root.dataset.filterDropdownMulti === "true";
+  const isStrictSingle = (root) =>
+    root.dataset.filterDropdownStrictSingle === "true";
 
   const getParts = (root) => {
     const button = root.querySelector("[data-filter-dropdown-button]");
@@ -606,6 +608,7 @@ function initFilterDropdowns() {
       keepLabel,
       dynamicIcon,
       multiSelect: isMultiSelect(root),
+      strictSingle: isStrictSingle(root),
     };
   };
 
@@ -697,6 +700,30 @@ function initFilterDropdowns() {
     }
   };
 
+  const syncShapePreview = (root, selectedItem = null) => {
+    if (!root.classList.contains("filter-dropdown--shape")) return;
+    const preview = root.querySelector(".filter-chip__shape-preview");
+    if (!(preview instanceof HTMLElement)) return;
+
+    const shapeSrc =
+      selectedItem instanceof HTMLElement
+        ? getItemIconSrc(selectedItem)
+        : null;
+
+    preview.textContent = "";
+
+    if (shapeSrc) {
+      const img = document.createElement("img");
+      img.className = "filter-chip__shape-preview-img";
+      img.src = shapeSrc;
+      img.alt = "";
+      img.setAttribute("aria-hidden", "true");
+      img.decoding = "async";
+      preview.appendChild(img);
+      return;
+    }
+  };
+
   const syncButtonFromSelected = (root) => {
     const parts = getParts(root);
     if (!parts) return;
@@ -741,6 +768,7 @@ function initFilterDropdowns() {
       }
       syncColorPreview(root);
       syncMaterialPreview(root);
+      syncShapePreview(root);
       return;
     }
 
@@ -758,6 +786,7 @@ function initFilterDropdowns() {
       }
       syncColorPreview(root);
       syncMaterialPreview(root);
+      syncShapePreview(root);
       return;
     }
 
@@ -771,6 +800,7 @@ function initFilterDropdowns() {
     parts.button.classList.add("is-selected");
     syncColorPreview(root, selectedItems);
     syncMaterialPreview(root, selectedItems);
+    syncShapePreview(root, selected);
 
     if (
       parts.dynamicIcon &&
@@ -874,6 +904,7 @@ function initFilterDropdowns() {
     const parts = getParts(root);
     if (!parts) continue;
     const multiSelect = parts.multiSelect;
+    const strictSingle = parts.strictSingle;
 
     if (multiSelect) {
       for (const item of parts.items) {
@@ -975,6 +1006,11 @@ function initFilterDropdowns() {
         }
 
         if (item.getAttribute("aria-checked") === "true") {
+          if (strictSingle) {
+            setSelected(root, item);
+            closeDropdown(root);
+            return;
+          }
           clearSelected(root);
           item.focus();
           positionMenu(root);
