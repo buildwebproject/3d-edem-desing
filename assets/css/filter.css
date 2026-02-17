@@ -5,7 +5,7 @@
 .filter {
   margin: 10px auto 0;
   width: 100%;
-  max-width: 1499px;
+  max-width: 1500px;
 }
 
 .filter__inner {
@@ -15,7 +15,7 @@
 
 .filter__panel {
   border-radius: 10px;
-  background: #dfe6e6;
+  background: #ECF3F3;
   display: flex;
   align-items: center;
   padding: 8px 10px;
@@ -196,7 +196,7 @@ box-shadow: -0.2px 0.5px 1px 0px #FF6608;
 }
 
 .filter-chip--dropdown[aria-controls="format-filter-menu"].is-selected .filter-chip__label {
- 
+  
   font-weight: 500;
   font-style: normal;
   font-size: 17px;
@@ -205,12 +205,56 @@ box-shadow: -0.2px 0.5px 1px 0px #FF6608;
   color: #843300;
 }
 
+.filter-chip--dropdown[aria-controls="format-filter-menu"] {
+  transition: min-width 180ms ease, padding 180ms ease, gap 180ms ease;
+}
+
+.filter-chip--dropdown[aria-controls="format-filter-menu"] [data-filter-dropdown-button-label] {
+  transition: max-width 180ms ease, opacity 120ms ease, transform 180ms ease;
+}
+
+.filter-chip--dropdown[aria-controls="format-filter-menu"].is-selected {
+  min-width: 0;
+  padding-left: 9px;
+  padding-right: 11px;
+  gap: 6px;
+}
+
+.filter-chip--dropdown[aria-controls="format-filter-menu"].is-selected
+  [data-filter-dropdown-button-label] {
+  max-width: 0;
+  opacity: 0;
+  transform: translateX(-2px);
+  pointer-events: none;
+}
+
+.filter-chip--dropdown[aria-controls="format-filter-menu"].is-selected:hover,
+.filter-chip--dropdown[aria-controls="format-filter-menu"].is-selected:focus-visible,
+.filter-chip--dropdown[aria-controls="format-filter-menu"].is-selected[aria-expanded="true"] {
+  min-width: 118px;
+  padding-left: 12px;
+  padding-right: 10px;
+  gap: 10px;
+}
+
+.filter-chip--dropdown[aria-controls="format-filter-menu"].is-selected:hover
+  [data-filter-dropdown-button-label],
+.filter-chip--dropdown[aria-controls="format-filter-menu"].is-selected:focus-visible
+  [data-filter-dropdown-button-label],
+.filter-chip--dropdown[aria-controls="format-filter-menu"].is-selected[aria-expanded="true"]
+  [data-filter-dropdown-button-label] {
+  max-width: 164px;
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
 .filter-chip--dropdown-color {
   min-width: 78px;
   padding-left: 8px;
   padding-right: 9px;
   gap: 4px;
-  border-color: #b9c9cc;
+  border-color: transparent;
   transition:
     min-width 180ms ease,
     padding 180ms ease,
@@ -222,11 +266,11 @@ box-shadow: -0.2px 0.5px 1px 0px #FF6608;
 .filter-chip--dropdown-color:hover,
 .filter-chip--dropdown-color:focus-visible,
 .filter-chip--dropdown-color[aria-expanded="true"] {
-  min-width: 132px;
-  padding-left: 11px;
-  padding-right: 12px;
-  gap: 8px;
-  border-color: #ed9868;
+
+    min-width: 118px;
+    padding-left: 12px;
+    padding-right: 10px;
+    gap: 10px;
 }
 
 .filter-chip--dropdown-color.is-selected {
@@ -557,17 +601,19 @@ box-shadow: -0.2px 0.5px 1px 0px #FF6608;
   position: fixed;
   top: 0;
   left: 0;
-  width: 186px;
-  height: auto;
-  overflow: auto;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  z-index: 50;
-  padding: 9px 11px;
-  background: #efefef;
-  border: 1px solid #e7dcf0;
-  border-radius: 14px;
-  box-shadow: 0 4px 10px rgba(32, 35, 41, 0.08);
+  width: 252px;
+  box-sizing: border-box;
+  height: 924px;
+  
+  opacity: 1;
+  top: 62px;
+  border-radius: 15px;
+  border-width: 4px;
+  padding-right: 18px;
+  padding-left: 18px;
+  background: #FFFFFF;
+border: 4px solid #F2F2F2;
+    z-index: 11;
 }
 
 .filter-dropdown__menu::-webkit-scrollbar {
@@ -576,21 +622,33 @@ box-shadow: -0.2px 0.5px 1px 0px #FF6608;
 
 .filter-dropdown__item {
   width: 100%;
+  box-sizing: border-box;
   display: flex;
   align-items: center;
-  gap: 11px;
   background: transparent;
   border: 0;
   border-radius: 7px;
   cursor: pointer;
   text-align: left;
-  color: #3d3d3d;
-  font-family: "Mulish", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 1;
-  height: 45px;
-  padding: 0 4px;
+  height: 66px;
+  opacity: 1;
+  padding-top: 19px;
+  padding-right: 15px;
+  padding-bottom: 19px;
+  padding-left: 15px;
+  gap: 28px;
+  border-bottom-width: 1px;
+  background: #FFFFFF;
+  border-bottom: 1px solid #F3F3F3;
+   font-family: "League Spartan", sans-serif;
+  
+font-weight: 600;
+font-style: SemiBold;
+font-size: 17px;
+
+line-height: 100%;
+letter-spacing: 0%;
+
 }
 
 .filter-dropdown__item + .filter-dropdown__item {
@@ -601,6 +659,16 @@ box-shadow: -0.2px 0.5px 1px 0px #FF6608;
 .filter-dropdown__item:focus-visible {
   background: rgba(255, 255, 255, 0.56);
   outline: none;
+}
+
+#format-filter-menu .filter-dropdown__item:hover,
+#format-filter-menu .filter-dropdown__item:focus-visible {
+  box-shadow: -0.2px 0.5px 1px 0px #FF6608;
+}
+
+#format-filter-menu .filter-dropdown__item[aria-checked="true"]:hover,
+#format-filter-menu .filter-dropdown__item[aria-checked="true"]:focus-visible {
+  box-shadow: inset 0 -1px 0 #fc640f, -0.2px 0.5px 1px 0px #FF6608;
 }
 
 .filter-dropdown__item[aria-checked="true"] {
