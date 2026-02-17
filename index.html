@@ -893,7 +893,7 @@
                                   <span class="filter-dropdown__item-icon filter-dropdown__item-icon--img" aria-hidden="true">
                                     <img class="filter-dropdown__item-icon-img" src="assets/images/filter/formate/sketchup%201.png" alt="" aria-hidden="true" />
                                   </span>
-                                  <span class="filter-dropdown__item-label">SketchUp</span>
+                                  <span class="filter-dropdown__item-label">ScetchUp</span>
                                 </button>
                                 <button class="filter-dropdown__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="pbr">
                                   <span class="filter-dropdown__item-icon filter-dropdown__item-icon--img" aria-hidden="true">
@@ -911,95 +911,620 @@
                                   <span class="filter-dropdown__item-icon" aria-hidden="true" data-icon="acad">A</span>
                                   <span class="filter-dropdown__item-label">AutoCAD</span>
                                 </button>
+                                <button class="filter-dropdown__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="solidworks">
+                                  <span class="filter-dropdown__item-icon filter-dropdown__item-icon--img" aria-hidden="true">
+                                    <img class="filter-dropdown__item-icon-img" src="assets/images/filter/formate/solidworks%201.png" alt="" aria-hidden="true" />
+                                  </span>
+                                  <span class="filter-dropdown__item-label">SolidWorks</span>
+                                </button>
+                                <button class="filter-dropdown__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="fbx">
+                                  <span class="filter-dropdown__item-icon filter-dropdown__item-icon--img" aria-hidden="true">
+                                    <img class="filter-dropdown__item-icon-img" src="assets/images/filter/formate/FBX.png" alt="" aria-hidden="true" />
+                                  </span>
+                                  <span class="filter-dropdown__item-label">FBX</span>
+                                </button>
+                                <button class="filter-dropdown__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="obj">
+                                  <span class="filter-dropdown__item-icon filter-dropdown__item-icon--img" aria-hidden="true">
+                                    <img class="filter-dropdown__item-icon-img" src="assets/images/filter/formate/OBJ.png" alt="" aria-hidden="true" />
+                                  </span>
+                                  <span class="filter-dropdown__item-label">OBJ</span>
+                                </button>
                               </div>
                             </div>
 
-                            <!-- <button class="filter-chip filter-chip--icon" type="button" aria-label="Color filter">
-                              <span class="filter-chip__icon" aria-hidden="true">
-                                <svg class="filter-chip__svg" viewBox="0 0 24 24" width="20" height="20">
-                                  <path fill="#FF5A5F" d="M12 2a10 10 0 1 0 10 10A10.01 10.01 0 0 0 12 2Z"/>
-                                  <path fill="#FFD166" d="M12 2a10 10 0 0 1 10 10H12Z"/>
-                                  <path fill="#06D6A0" d="M12 12h10a10 10 0 0 1-10 10Z"/>
-                                  <path fill="#118AB2" d="M12 22A10 10 0 0 1 2 12h10Z"/>
-                                  <circle cx="12" cy="12" r="3.2" fill="#fff"/>
-                                </svg>
-                              </span>
-                              <span class="filter-chip__caret" aria-hidden="true"></span>
-                            </button>
+                            <div class="filter-dropdown filter-dropdown--color" data-filter-dropdown data-filter-dropdown-multi="true">
+                              <button
+                                class="filter-chip filter-chip--dropdown filter-chip--dropdown-color"
+                                type="button"
+                                aria-haspopup="menu"
+                                aria-expanded="false"
+                                aria-controls="color-filter-menu"
+                                data-filter-dropdown-button
+                                data-filter-dropdown-default-label="COLOR"
+                                data-filter-dropdown-keep-label="true"
+                                data-filter-dropdown-dynamic-icon="false"
+                              >
+                                <span class="filter-chip__icon filter-chip__icon--color-wheel" aria-hidden="true" data-filter-dropdown-button-icon>
+                                  <svg class="filter-chip__svg" viewBox="0 0 24 24" width="20" height="20">
+                                    <circle cx="12" cy="12" r="9.8" fill="#ffffff"/>
+                                    <path d="M12 12 12 2.2a9.8 9.8 0 0 1 8.48 4.9Z" fill="#ff3c33"/>
+                                    <path d="M12 12 20.48 7.1A9.8 9.8 0 0 1 21.8 12Z" fill="#ffc82f"/>
+                                    <path d="M12 12h9.8a9.8 9.8 0 0 1-4.9 8.48Z" fill="#55c43b"/>
+                                    <path d="M12 12 16.9 20.48A9.8 9.8 0 0 1 12 21.8Z" fill="#03b6ff"/>
+                                    <path d="M12 12v9.8A9.8 9.8 0 0 1 3.52 16.9Z" fill="#3b66f1"/>
+                                    <path d="M12 12 3.52 16.9A9.8 9.8 0 0 1 2.2 12Z" fill="#8f44d6"/>
+                                    <path d="M12 12H2.2a9.8 9.8 0 0 1 4.9-8.48Z" fill="#ff6f54"/>
+                                    <path d="M12 12 7.1 3.52A9.8 9.8 0 0 1 12 2.2Z" fill="#ff9d1b"/>
+                                    <circle cx="12" cy="12" r="3.4" fill="#ffffff"/>
+                                  </svg>
+                                  <span class="filter-chip__color-preview" aria-hidden="true"></span>
+                                  <img class="filter-chip__icon-img" alt="" aria-hidden="true" hidden />
+                                </span>
+                                <span class="filter-chip__label" data-filter-dropdown-button-label>COLOR</span>
+                                <span class="filter-chip__caret" aria-hidden="true"></span>
+                              </button>
 
-                            <button class="filter-chip" type="button">
-                              <span class="filter-chip__label">BRAND</span>
-                              <span class="filter-chip__caret" aria-hidden="true"></span>
-                            </button>
+                              <div
+                                id="color-filter-menu"
+                                class="filter-dropdown__menu filter-dropdown__menu--color"
+                                role="menu"
+                                aria-label="Color options"
+                                hidden
+                                data-filter-dropdown-menu
+                              >
+                                <div class="filter-color__grid">
+                                  <button class="filter-dropdown__item filter-color__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="red">
+                                    <span class="filter-color__swatch" style="--swatch: #f30909"></span>
+                                    <span class="filter-dropdown__item-label">Red</span>
+                                  </button>
+                                  <button class="filter-dropdown__item filter-color__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="orange">
+                                    <span class="filter-color__swatch" style="--swatch: #ff8500"></span>
+                                    <span class="filter-dropdown__item-label">Orange</span>
+                                  </button>
+                                  <button class="filter-dropdown__item filter-color__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="yellow">
+                                    <span class="filter-color__swatch" style="--swatch: #f4e600"></span>
+                                    <span class="filter-dropdown__item-label">Yellow</span>
+                                  </button>
+                                  <button class="filter-dropdown__item filter-color__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="green">
+                                    <span class="filter-color__swatch" style="--swatch: #11bf00"></span>
+                                    <span class="filter-dropdown__item-label">Green</span>
+                                  </button>
+                                  <button class="filter-dropdown__item filter-color__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="beige">
+                                    <span class="filter-color__swatch" style="--swatch: #dbd9bc"></span>
+                                    <span class="filter-dropdown__item-label">Beige</span>
+                                  </button>
 
-                            <button class="filter-chip filter-chip--icon" type="button" aria-label="Material filter">
-                              <span class="filter-chip__icon" aria-hidden="true">
-                                <svg class="filter-chip__svg" viewBox="0 0 24 24" width="20" height="20">
-                                  <rect x="3" y="11" width="18" height="10" rx="2" fill="#E4572E"/>
-                                  <path d="M5 13h4M11 13h4M17 13h2M5 16h6M13 16h6" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/>
-                                </svg>
-                              </span>
-                              <span class="filter-chip__caret" aria-hidden="true"></span>
-                            </button>
+                                  <button class="filter-dropdown__item filter-color__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="purple">
+                                    <span class="filter-color__swatch" style="--swatch: #7f35d8"></span>
+                                    <span class="filter-dropdown__item-label">Purple</span>
+                                  </button>
+                                  <button class="filter-dropdown__item filter-color__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="magenta">
+                                    <span class="filter-color__swatch" style="--swatch: #df19df"></span>
+                                    <span class="filter-dropdown__item-label">Magenta</span>
+                                  </button>
+                                  <button class="filter-dropdown__item filter-color__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="brown">
+                                    <span class="filter-color__swatch" style="--swatch: #99430b"></span>
+                                    <span class="filter-dropdown__item-label">Brown</span>
+                                  </button>
+                                  <button class="filter-dropdown__item filter-color__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="tan">
+                                    <span class="filter-color__swatch" style="--swatch: #b9a783"></span>
+                                    <span class="filter-dropdown__item-label">Tan</span>
+                                  </button>
+                                  <button class="filter-dropdown__item filter-color__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="gray">
+                                    <span class="filter-color__swatch" style="--swatch: #858585"></span>
+                                    <span class="filter-dropdown__item-label">Gray</span>
+                                  </button>
 
-                            <button class="filter-chip filter-chip--icon" type="button" aria-label="Type filter">
-                              <span class="filter-chip__icon" aria-hidden="true">
-                                <svg class="filter-chip__svg" viewBox="0 0 24 24" width="20" height="20">
-                                  <path d="M12 2 21 7v10l-9 5-9-5V7l9-5Z" fill="#B565FF"/>
-                                  <path d="M12 2v20" stroke="#fff" stroke-width="1.6" opacity="0.75"/>
-                                  <path d="M3 7l9 5 9-5" stroke="#fff" stroke-width="1.6" opacity="0.75"/>
-                                </svg>
-                              </span>
-                              <span class="filter-chip__caret" aria-hidden="true"></span>
-                            </button>
+                                  <button class="filter-dropdown__item filter-color__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="black">
+                                    <span class="filter-color__swatch" style="--swatch: #000000"></span>
+                                    <span class="filter-dropdown__item-label">Black</span>
+                                  </button>
+                                  <button class="filter-dropdown__item filter-color__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="cyan">
+                                    <span class="filter-color__swatch" style="--swatch: #20cfd7"></span>
+                                    <span class="filter-dropdown__item-label">Cyan</span>
+                                  </button>
+                                  <button class="filter-dropdown__item filter-color__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="blue">
+                                    <span class="filter-color__swatch" style="--swatch: #1c7fe6"></span>
+                                    <span class="filter-dropdown__item-label">Blue</span>
+                                  </button>
+                                  <button class="filter-dropdown__item filter-color__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="sky">
+                                    <span class="filter-color__swatch" style="--swatch: #59bae6"></span>
+                                    <span class="filter-dropdown__item-label">Sky</span>
+                                  </button>
+                                  <button class="filter-dropdown__item filter-color__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="white">
+                                    <span class="filter-color__swatch filter-color__swatch--light" style="--swatch: #f2f2f2"></span>
+                                    <span class="filter-dropdown__item-label">White</span>
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
 
-                            <button class="filter-chip filter-chip--icon" type="button" aria-label="Price filter">
-                              <span class="filter-chip__icon" aria-hidden="true">
-                                <svg class="filter-chip__svg" viewBox="0 0 24 24" width="20" height="20">
-                                  <circle cx="12" cy="12" r="10" fill="#07C152"/>
-                                  <path d="M13.4 8.4c-.3-.8-1.1-1.3-2.2-1.3-1.2 0-2.2.7-2.2 1.8 0 2.6 5 1.3 5 4.2 0 1.2-1 2.1-2.6 2.1-1.2 0-2.2-.5-2.6-1.6" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>
-                                  <path d="M11.2 6.3v11.4" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>
-                                </svg>
-                              </span>
-                              <span class="filter-chip__caret" aria-hidden="true"></span>
-                            </button>
+                            <div class="filter-dropdown filter-dropdown--brand" data-filter-dropdown>
+                              <button
+                                class="filter-chip filter-chip--dropdown filter-chip--dropdown-brand"
+                                type="button"
+                                aria-haspopup="menu"
+                                aria-expanded="false"
+                                aria-controls="brand-filter-menu"
+                                data-filter-dropdown-button
+                                data-filter-dropdown-default-label="BRAND"
+                                data-filter-dropdown-keep-label="true"
+                                data-filter-dropdown-dynamic-icon="false"
+                              >
+                                <span class="filter-chip__label" data-filter-dropdown-button-label>BRAND</span>
+                                <span class="filter-chip__caret" aria-hidden="true"></span>
+                              </button>
 
-                            <button class="filter-chip filter-chip--icon" type="button" aria-label="Discount filter">
-                              <span class="filter-chip__icon" aria-hidden="true">
-                                <svg class="filter-chip__svg" viewBox="0 0 24 24" width="20" height="20">
-                                  <circle cx="12" cy="12" r="10" fill="#FF8C2A"/>
-                                  <path d="M15 9c-.5-1-1.5-1.6-2.8-1.6-1.5 0-2.7.8-2.7 2.1 0 3 6 1.4 6 4.7 0 1.5-1.2 2.6-3.2 2.6-1.5 0-2.7-.6-3.2-2" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>
-                                  <path d="M12 6.2v11.6" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>
-                                </svg>
-                              </span>
-                              <span class="filter-chip__caret" aria-hidden="true"></span>
-                            </button>
+                              <div
+                                id="brand-filter-menu"
+                                class="filter-dropdown__menu filter-dropdown__menu--brand"
+                                role="menu"
+                                aria-label="Brand filter"
+                                hidden
+                                data-filter-dropdown-menu
+                                data-min-height="68"
+                              >
+                                <div class="filter-brand__field">
+                                  <input
+                                    class="filter-brand__input"
+                                    type="text"
+                                    name="brand"
+                                    placeholder="brand name"
+                                    aria-label="Brand name"
+                                    autocomplete="off"
+                                    data-filter-dropdown-focus-target
+                                  />
+                                </div>
+                              </div>
+                            </div>
 
-                            <button class="filter-chip" type="button">
-                              <span class="filter-chip__label">STYLE</span>
-                              <span class="filter-chip__caret" aria-hidden="true"></span>
-                            </button>
+                            <div class="filter-dropdown filter-dropdown--material" data-filter-dropdown>
+                              <button
+                                class="filter-chip filter-chip--dropdown filter-chip--dropdown-material"
+                                type="button"
+                                aria-haspopup="menu"
+                                aria-expanded="false"
+                                aria-controls="material-filter-menu"
+                                data-filter-dropdown-button
+                                data-filter-dropdown-default-label="MATERIAL"
+                                data-filter-dropdown-keep-label="true"
+                                data-filter-dropdown-dynamic-icon="false"
+                              >
+                                <span class="filter-chip__icon" aria-hidden="true" data-filter-dropdown-button-icon>
+                                  <svg class="filter-chip__svg" viewBox="0 0 24 24" width="20" height="20">
+                                    <circle cx="12" cy="12" r="10" fill="#ef8431"/>
+                                    <path d="M4 12h16M5.5 8h13M5.5 16h13M12 2.5c3.1 2.4 3.1 16.6 0 19M12 2.5c-3.1 2.4-3.1 16.6 0 19" stroke="#fff8ed" stroke-width="1.4" stroke-linecap="round"/>
+                                  </svg>
+                                </span>
+                                <span class="filter-chip__label" data-filter-dropdown-button-label>MATERIAL</span>
+                                <span class="filter-chip__caret" aria-hidden="true"></span>
+                              </button>
 
-                            <button class="filter-chip filter-chip--icon" type="button" aria-label="Collection filter">
-                              <span class="filter-chip__icon" aria-hidden="true">
-                                <svg class="filter-chip__svg" viewBox="0 0 24 24" width="20" height="20">
-                                  <path d="M4 7.5 12 3l8 4.5v9L12 21l-8-4.5v-9Z" fill="#2F7FEA"/>
-                                  <path d="M12 3v18" stroke="#fff" stroke-width="1.6" opacity="0.75"/>
-                                  <path d="M4 7.5l8 4.5 8-4.5" stroke="#fff" stroke-width="1.6" opacity="0.75"/>
-                                </svg>
-                              </span>
-                              <span class="filter-chip__caret" aria-hidden="true"></span>
-                            </button>
+                              <div
+                                id="material-filter-menu"
+                                class="filter-dropdown__menu filter-dropdown__menu--material"
+                                role="menu"
+                                aria-label="Material options"
+                                hidden
+                                data-filter-dropdown-menu
+                              >
+                                <button class="filter-dropdown__item filter-material__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="brick">
+                                  <span class="filter-material__swatch filter-material__swatch--brick" aria-hidden="true"></span>
+                                  <span class="filter-dropdown__item-label">Brick</span>
+                                </button>
+                                <button class="filter-dropdown__item filter-material__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="fabric">
+                                  <span class="filter-material__swatch filter-material__swatch--fabric" aria-hidden="true"></span>
+                                  <span class="filter-dropdown__item-label">Fabric</span>
+                                </button>
+                                <button class="filter-dropdown__item filter-material__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="fur">
+                                  <span class="filter-material__swatch filter-material__swatch--fur" aria-hidden="true"></span>
+                                  <span class="filter-dropdown__item-label">Fur</span>
+                                </button>
+                                <button class="filter-dropdown__item filter-material__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="velvet">
+                                  <span class="filter-material__swatch filter-material__swatch--velvet" aria-hidden="true"></span>
+                                  <span class="filter-dropdown__item-label">Velvet</span>
+                                </button>
+                                <button class="filter-dropdown__item filter-material__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="glass">
+                                  <span class="filter-material__swatch filter-material__swatch--glass" aria-hidden="true"></span>
+                                  <span class="filter-dropdown__item-label">Glass</span>
+                                </button>
+                                <button class="filter-dropdown__item filter-material__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="marble">
+                                  <span class="filter-material__swatch filter-material__swatch--marble" aria-hidden="true"></span>
+                                  <span class="filter-dropdown__item-label">Marble</span>
+                                </button>
+                                <button class="filter-dropdown__item filter-material__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="plastic">
+                                  <span class="filter-material__swatch filter-material__swatch--plastic" aria-hidden="true"></span>
+                                  <span class="filter-dropdown__item-label">Plastic</span>
+                                </button>
+                                <button class="filter-dropdown__item filter-material__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="stone">
+                                  <span class="filter-material__swatch filter-material__swatch--stone" aria-hidden="true"></span>
+                                  <span class="filter-dropdown__item-label">Stone</span>
+                                </button>
+                                <button class="filter-dropdown__item filter-material__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="tufted">
+                                  <span class="filter-material__swatch filter-material__swatch--tufted" aria-hidden="true"></span>
+                                  <span class="filter-dropdown__item-label">Tufted</span>
+                                </button>
+                              </div>
+                            </div>
 
-                            <button class="filter-chip filter-chip--icon" type="button" aria-label="Tag filter">
-                              <span class="filter-chip__icon" aria-hidden="true">
-                                <svg class="filter-chip__svg" viewBox="0 0 24 24" width="20" height="20">
-                                  <circle cx="12" cy="12" r="10" fill="#118AB2"/>
-                                  <path d="M9 10h6M9 14h6M10.5 8.5v7M13.5 8.5v7" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>
-                                </svg>
-                              </span>
-                              <span class="filter-chip__caret" aria-hidden="true"></span>
-                            </button> -->
+                            <div class="filter-dropdown filter-dropdown--shape" data-filter-dropdown>
+                              <button
+                                class="filter-chip filter-chip--dropdown filter-chip--dropdown-shape"
+                                type="button"
+                                aria-haspopup="menu"
+                                aria-expanded="false"
+                                aria-controls="shape-filter-menu"
+                                data-filter-dropdown-button
+                                data-filter-dropdown-default-label="SHAPE"
+                                data-filter-dropdown-keep-label="true"
+                                data-filter-dropdown-dynamic-icon="false"
+                              >
+                                <span class="filter-chip__icon" aria-hidden="true" data-filter-dropdown-button-icon>
+                                  <svg class="filter-chip__svg" viewBox="0 0 24 24" width="20" height="20">
+                                    <path d="M12 3 20 7.6v8.8L12 21l-8-4.6V7.6L12 3Z" fill="#ffffff" opacity="0.86"/>
+                                    <path d="M12 3 20 7.6v8.8L12 21l-8-4.6V7.6L12 3Z" fill="none" stroke="#cc5532" stroke-width="1.2"/>
+                                    <path d="M12 3v8.4m0 0L4 7.6m8 3.8L20 7.6" stroke="#cc5532" stroke-width="1.2"/>
+                                  </svg>
+                                </span>
+                                <span class="filter-chip__label" data-filter-dropdown-button-label>SHAPE</span>
+                                <span class="filter-chip__caret" aria-hidden="true"></span>
+                              </button>
+
+                              <div
+                                id="shape-filter-menu"
+                                class="filter-dropdown__menu filter-dropdown__menu--shape"
+                                role="menu"
+                                aria-label="Shape options"
+                                hidden
+                                data-filter-dropdown-menu
+                                data-min-height="70"
+                              >
+                                <div class="filter-shape__row">
+                                  <button class="filter-dropdown__item filter-shape__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="square">
+                                    <span class="filter-shape__glyph filter-shape__glyph--square" aria-hidden="true"></span>
+                                    <span class="filter-dropdown__item-label">Square</span>
+                                  </button>
+                                  <button class="filter-dropdown__item filter-shape__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="triangle">
+                                    <span class="filter-shape__glyph filter-shape__glyph--triangle" aria-hidden="true"></span>
+                                    <span class="filter-dropdown__item-label">Triangle</span>
+                                  </button>
+                                  <button class="filter-dropdown__item filter-shape__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="oval">
+                                    <span class="filter-shape__glyph filter-shape__glyph--oval" aria-hidden="true"></span>
+                                    <span class="filter-dropdown__item-label">Oval</span>
+                                  </button>
+                                  <button class="filter-dropdown__item filter-shape__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="rectangle">
+                                    <span class="filter-shape__glyph filter-shape__glyph--rectangle" aria-hidden="true"></span>
+                                    <span class="filter-dropdown__item-label">Rectangle</span>
+                                  </button>
+                                  <button class="filter-dropdown__item filter-shape__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="right-triangle">
+                                    <span class="filter-shape__glyph filter-shape__glyph--right-triangle" aria-hidden="true"></span>
+                                    <span class="filter-dropdown__item-label">Right Triangle</span>
+                                  </button>
+                                  <button class="filter-dropdown__item filter-shape__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="circle">
+                                    <span class="filter-shape__glyph filter-shape__glyph--circle" aria-hidden="true"></span>
+                                    <span class="filter-dropdown__item-label">Circle</span>
+                                  </button>
+                                  <button class="filter-dropdown__item filter-shape__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="hexagon">
+                                    <span class="filter-shape__glyph filter-shape__glyph--hexagon" aria-hidden="true"></span>
+                                    <span class="filter-dropdown__item-label">Hexagon</span>
+                                  </button>
+                                  <button class="filter-dropdown__item filter-shape__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="pill">
+                                    <span class="filter-shape__glyph filter-shape__glyph--pill" aria-hidden="true"></span>
+                                    <span class="filter-dropdown__item-label">Pill</span>
+                                  </button>
+                                  <button class="filter-dropdown__item filter-shape__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="semi-circle">
+                                    <span class="filter-shape__glyph filter-shape__glyph--semi-circle" aria-hidden="true"></span>
+                                    <span class="filter-dropdown__item-label">Semi Circle</span>
+                                  </button>
+                                  <button class="filter-dropdown__item filter-shape__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="flower">
+                                    <span class="filter-shape__glyph filter-shape__glyph--flower" aria-hidden="true"></span>
+                                    <span class="filter-dropdown__item-label">Flower</span>
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="filter-dropdown filter-dropdown--price filter-dropdown--price-model" data-filter-dropdown>
+                              <button
+                                class="filter-chip filter-chip--dropdown filter-chip--dropdown-price-model"
+                                type="button"
+                                aria-haspopup="menu"
+                                aria-expanded="false"
+                                aria-controls="model-price-filter-menu"
+                                data-filter-dropdown-button
+                                data-filter-dropdown-default-label="3D model price"
+                                data-filter-dropdown-keep-label="true"
+                                data-filter-dropdown-dynamic-icon="false"
+                              >
+                                <span class="filter-chip__icon" aria-hidden="true" data-filter-dropdown-button-icon>
+                                  <svg class="filter-chip__svg" viewBox="0 0 24 24" width="20" height="20">
+                                    <circle cx="12" cy="12" r="10" fill="#18b04a"/>
+                                    <text x="12" y="16" text-anchor="middle" font-family="Saira, sans-serif" font-size="13" font-weight="800" fill="#ffffff">$</text>
+                                  </svg>
+                                </span>
+                                <span class="filter-chip__label filter-chip__label--visually-hidden" data-filter-dropdown-button-label>3D model price</span>
+                                <span class="filter-chip__caret" aria-hidden="true"></span>
+                              </button>
+
+                              <div
+                                id="model-price-filter-menu"
+                                class="filter-dropdown__menu filter-dropdown__menu--price"
+                                role="menu"
+                                aria-label="3D model price options"
+                                hidden
+                                data-filter-dropdown-menu
+                                data-min-height="152"
+                              >
+                                <div class="filter-price__fields">
+                                  <input
+                                    class="filter-price__input"
+                                    type="text"
+                                    name="model_price_min"
+                                    placeholder="Min"
+                                    inputmode="decimal"
+                                    autocomplete="off"
+                                    aria-label="Minimum 3D model price"
+                                    data-filter-dropdown-focus-target
+                                  />
+                                  <input
+                                    class="filter-price__input"
+                                    type="text"
+                                    name="model_price_max"
+                                    placeholder="Max"
+                                    inputmode="decimal"
+                                    autocomplete="off"
+                                    aria-label="Maximum 3D model price"
+                                  />
+                                </div>
+                                <div class="filter-price__slider" aria-hidden="true">
+                                  <span class="filter-price__track"></span>
+                                  <span class="filter-price__thumb filter-price__thumb--min"></span>
+                                  <span class="filter-price__thumb filter-price__thumb--max"></span>
+                                </div>
+                                <div class="filter-price__caption">3D model price ($)</div>
+                              </div>
+                            </div>
+
+                            <div class="filter-dropdown filter-dropdown--price" data-filter-dropdown>
+                              <button
+                                class="filter-chip filter-chip--dropdown filter-chip--dropdown-price"
+                                type="button"
+                                aria-haspopup="menu"
+                                aria-expanded="false"
+                                aria-controls="price-filter-menu"
+                                data-filter-dropdown-button
+                                data-filter-dropdown-default-label="PRICE"
+                                data-filter-dropdown-keep-label="true"
+                                data-filter-dropdown-dynamic-icon="false"
+                              >
+                                <span class="filter-chip__icon" aria-hidden="true" data-filter-dropdown-button-icon>
+                                  <svg class="filter-chip__svg" viewBox="0 0 24 24" width="20" height="20">
+                                    <circle cx="12" cy="12" r="10" fill="#d68537"/>
+                                    <text x="12" y="16" text-anchor="middle" font-family="Saira, sans-serif" font-size="13" font-weight="800" fill="#ffffff">$</text>
+                                  </svg>
+                                </span>
+                                <span class="filter-chip__label" data-filter-dropdown-button-label>PRICE</span>
+                                <span class="filter-chip__caret" aria-hidden="true"></span>
+                              </button>
+
+                              <div
+                                id="price-filter-menu"
+                                class="filter-dropdown__menu filter-dropdown__menu--price"
+                                role="menu"
+                                aria-label="Price options"
+                                hidden
+                                data-filter-dropdown-menu
+                                data-min-height="152"
+                              >
+                                <div class="filter-price__fields">
+                                  <input
+                                    class="filter-price__input"
+                                    type="text"
+                                    name="price_min"
+                                    placeholder="Min"
+                                    inputmode="decimal"
+                                    autocomplete="off"
+                                    aria-label="Minimum price"
+                                    data-filter-dropdown-focus-target
+                                  />
+                                  <input
+                                    class="filter-price__input"
+                                    type="text"
+                                    name="price_max"
+                                    placeholder="Max"
+                                    inputmode="decimal"
+                                    autocomplete="off"
+                                    aria-label="Maximum price"
+                                  />
+                                </div>
+                                <div class="filter-price__slider" aria-hidden="true">
+                                  <span class="filter-price__track"></span>
+                                  <span class="filter-price__thumb filter-price__thumb--min"></span>
+                                  <span class="filter-price__thumb filter-price__thumb--max"></span>
+                                </div>
+                                <div class="filter-price__caption">Real product price ($)</div>
+                              </div>
+                            </div>
+
+                            <div class="filter-dropdown filter-dropdown--style" data-filter-dropdown>
+                              <button
+                                class="filter-chip filter-chip--dropdown filter-chip--dropdown-style"
+                                type="button"
+                                aria-haspopup="menu"
+                                aria-expanded="false"
+                                aria-controls="style-filter-menu"
+                                data-filter-dropdown-button
+                                data-filter-dropdown-default-label="STYLE"
+                                data-filter-dropdown-keep-label="true"
+                                data-filter-dropdown-dynamic-icon="false"
+                              >
+                                <span class="filter-chip__label" data-filter-dropdown-button-label>STYLE</span>
+                                <span class="filter-chip__caret" aria-hidden="true"></span>
+                              </button>
+
+                              <div
+                                id="style-filter-menu"
+                                class="filter-dropdown__menu filter-dropdown__menu--style"
+                                role="menu"
+                                aria-label="Style options"
+                                hidden
+                                data-filter-dropdown-menu
+                              >
+                                <button class="filter-dropdown__item filter-style__item" type="button" role="menuitemradio" aria-checked="true" data-filter-dropdown-item data-value="contemporary">
+                                  <span class="filter-dropdown__item-label">Contemporary</span>
+                                </button>
+                                <button class="filter-dropdown__item filter-style__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="scandinavian">
+                                  <span class="filter-dropdown__item-label">Scandinavian</span>
+                                </button>
+                                <button class="filter-dropdown__item filter-style__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="industrial">
+                                  <span class="filter-dropdown__item-label">Industrial</span>
+                                </button>
+                                <button class="filter-dropdown__item filter-style__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="vintage">
+                                  <span class="filter-dropdown__item-label">Vintage</span>
+                                </button>
+                                <button class="filter-dropdown__item filter-style__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="classical">
+                                  <span class="filter-dropdown__item-label">Classical</span>
+                                </button>
+                                <button class="filter-dropdown__item filter-style__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="rustic">
+                                  <span class="filter-dropdown__item-label">Rustic</span>
+                                </button>
+                                <button class="filter-dropdown__item filter-style__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="ethnic">
+                                  <span class="filter-dropdown__item-label">Ethnic</span>
+                                </button>
+                                <button class="filter-dropdown__item filter-style__item" type="button" role="menuitemradio" aria-checked="false" data-filter-dropdown-item data-value="futuristic">
+                                  <span class="filter-dropdown__item-label">Futuristic</span>
+                                </button>
+                              </div>
+                            </div>
+
+                            <div class="filter-dropdown filter-dropdown--size" data-filter-dropdown>
+                              <button
+                                class="filter-chip filter-chip--dropdown filter-chip--dropdown-size"
+                                type="button"
+                                aria-haspopup="menu"
+                                aria-expanded="false"
+                                aria-controls="size-filter-menu"
+                                data-filter-dropdown-button
+                                data-filter-dropdown-default-label="SIZE"
+                                data-filter-dropdown-keep-label="true"
+                                data-filter-dropdown-dynamic-icon="false"
+                              >
+                                <span class="filter-chip__icon" aria-hidden="true" data-filter-dropdown-button-icon>
+                                  <svg class="filter-chip__svg" viewBox="0 0 24 24" width="20" height="20">
+                                    <rect x="2.2" y="2.2" width="19.6" height="19.6" rx="4" fill="#f2f2f2"/>
+                                    <rect x="3.2" y="3.2" width="6.4" height="17.6" rx="2" fill="#f8b321"/>
+                                    <path d="M5.2 6.5h2.4M5.2 9.3h2.4M5.2 12.1h2.4M5.2 14.9h2.4M5.2 17.7h2.4" stroke="#8d6312" stroke-width="0.8" stroke-linecap="round"/>
+                                    <path d="M14 8 18.5 10.6v5L14 18.2l-4.5-2.6v-5L14 8Z" fill="#2e3f4c"/>
+                                    <path d="M14 8v5m0 0-4.5-2.4m4.5 2.4 4.5-2.4" stroke="#cfdbe4" stroke-width="0.9"/>
+                                  </svg>
+                                </span>
+                                <span class="filter-chip__label" data-filter-dropdown-button-label>SIZE</span>
+                                <span class="filter-chip__caret" aria-hidden="true"></span>
+                              </button>
+
+                              <div
+                                id="size-filter-menu"
+                                class="filter-dropdown__menu filter-dropdown__menu--size"
+                                role="menu"
+                                aria-label="Size options"
+                                hidden
+                                data-filter-dropdown-menu
+                                data-min-height="176"
+                              >
+                                <div class="filter-size__grid">
+                                  <div class="filter-size__row">
+                                    <label class="filter-size__label" for="size-height-input">Height:</label>
+                                    <input
+                                      id="size-height-input"
+                                      class="filter-size__input"
+                                      type="text"
+                                      name="size_height"
+                                      placeholder="Z (cm)"
+                                      inputmode="decimal"
+                                      autocomplete="off"
+                                      aria-label="Height"
+                                      data-filter-dropdown-focus-target
+                                    />
+                                  </div>
+                                  <div class="filter-size__row">
+                                    <label class="filter-size__label" for="size-length-input">Length:</label>
+                                    <input
+                                      id="size-length-input"
+                                      class="filter-size__input"
+                                      type="text"
+                                      name="size_length"
+                                      placeholder="Y (cm)"
+                                      inputmode="decimal"
+                                      autocomplete="off"
+                                      aria-label="Length"
+                                    />
+                                  </div>
+                                  <div class="filter-size__row">
+                                    <label class="filter-size__label" for="size-width-input">Width:</label>
+                                    <input
+                                      id="size-width-input"
+                                      class="filter-size__input"
+                                      type="text"
+                                      name="size_width"
+                                      placeholder="X (cm)"
+                                      inputmode="decimal"
+                                      autocomplete="off"
+                                      aria-label="Width"
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="filter-dropdown filter-dropdown--tag" data-filter-dropdown>
+                              <button
+                                class="filter-chip filter-chip--dropdown filter-chip--dropdown-tag"
+                                type="button"
+                                aria-haspopup="menu"
+                                aria-expanded="false"
+                                aria-controls="tag-filter-menu"
+                                data-filter-dropdown-button
+                                data-filter-dropdown-default-label="TAG"
+                                data-filter-dropdown-keep-label="true"
+                                data-filter-dropdown-dynamic-icon="false"
+                              >
+                                <span class="filter-chip__icon" aria-hidden="true" data-filter-dropdown-button-icon>
+                                  <svg class="filter-chip__svg" viewBox="0 0 24 24" width="20" height="20">
+                                    <circle cx="12" cy="12" r="10" fill="#1086d5"/>
+                                    <path d="M8.4 7.8v8.4M15.6 7.8v8.4M6.8 10.1h10.4M6.8 13.9h10.4" stroke="#ffffff" stroke-width="1.9" stroke-linecap="round"/>
+                                  </svg>
+                                </span>
+                                <span class="filter-chip__label" data-filter-dropdown-button-label>TAG</span>
+                                <span class="filter-chip__caret" aria-hidden="true"></span>
+                              </button>
+
+                              <div
+                                id="tag-filter-menu"
+                                class="filter-dropdown__menu filter-dropdown__menu--tag"
+                                role="menu"
+                                aria-label="Tag options"
+                                hidden
+                                data-filter-dropdown-menu
+                                data-min-height="258"
+                              >
+                                <div class="filter-tag__list">
+                                  <button class="filter-tag__pill" type="button">rounded</button>
+                                  <button class="filter-tag__pill" type="button">ready</button>
+                                  <button class="filter-tag__pill" type="button">corner</button>
+                                  <button class="filter-tag__pill" type="button">moving</button>
+                                  <button class="filter-tag__pill" type="button">light</button>
+                                  <button class="filter-tag__pill" type="button">plaster</button>
+                                  <button class="filter-tag__pill" type="button">bed</button>
+                                  <button class="filter-tag__pill" type="button">loft</button>
+                                  <button class="filter-tag__pill" type="button">led</button>
+                                  <button class="filter-tag__pill" type="button">red</button>
+                                  <button class="filter-tag__pill" type="button">left</button>
+                                  <button class="filter-tag__pill" type="button">nature</button>
+                                  <button class="filter-tag__pill" type="button">free</button>
+                                  <button class="filter-tag__pill filter-tag__pill--wide" type="button">manufacture</button>
+                                </div>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>

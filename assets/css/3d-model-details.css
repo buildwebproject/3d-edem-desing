@@ -1,0 +1,280 @@
+/*
+  3D model details page
+*/
+
+.model-details {
+    max-width: 1648px;
+    margin: 31px auto 0;
+   
+    width: 100%;
+}
+
+.model-details__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr);
+  gap: 32px;
+  align-items: start;
+}
+
+.model-details__panel {
+  border-radius: 14px;
+  background: #ffffff;
+  box-shadow: 2px 2px 8px 0 rgba(250, 250, 250, 0.5);
+  overflow: hidden;
+}
+
+.model-details__media {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 14px;
+  
+}
+
+.model-details__viewer {
+  border-radius: 12px;
+  background: #f6f7fb;
+  min-height: 420px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.model-details__viewer img,
+.model-details__viewer video,
+.model-details__viewer canvas {
+  width: 840px;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.model-details__thumbs {
+  display: flex;
+  gap: 10px;
+  overflow: auto;
+  padding-bottom: 4px;
+}
+
+.model-details__thumb {
+  border: 1px solid rgba(78, 106, 58, 0.2);
+  background: #ffffff;
+  border-radius: 10px;
+  width: 74px;
+  height: 74px;
+  flex: 0 0 auto;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.model-details__thumb[aria-current="true"] {
+  border-color: #4e6a3a;
+  box-shadow: 0 0 0 3px rgba(78, 106, 58, 0.12);
+}
+
+.model-details__thumb img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  padding: 10px;
+}
+
+.model-details__info {
+  padding: 20px 20px 22px;
+}
+
+.model-details__title {
+  font-family: "Saira", sans-serif;
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 1.15;
+  color: #4e6a3a;
+  margin: 0 0 12px;
+}
+
+.model-details__subtitle {
+  margin: -6px 0 14px;
+  font-family: "Mulish", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  font-size: 13px;
+  color: rgba(31, 41, 55, 0.7);
+}
+
+.model-details__topline {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 18px;
+}
+
+.model-details__rating {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  min-width: 44px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: rgba(14, 159, 110, 0.12);
+  color: #0e9f6e;
+  font-family: "Saira", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.model-details__pill {
+  height: 30px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(78, 106, 58, 0.22);
+  background: rgba(78, 106, 58, 0.06);
+  color: #4e6a3a;
+  font-family: "Saira", sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.model-details__price {
+  font-family: "Saira", sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: #00b5d8;
+  margin: 0 0 18px;
+}
+
+.model-details__meta {
+  display: grid;
+  gap: 10px;
+  margin: 0 0 18px;
+}
+
+.model-details__meta-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-family: "Mulish", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  font-size: 14px;
+  color: #1f2937;
+}
+
+.model-details__meta-key {
+  color: rgba(31, 41, 55, 0.7);
+}
+
+.model-details__meta-val {
+  color: #1f2937;
+  font-weight: 600;
+}
+
+.model-details__meta-val--accent {
+  color: #f97316;
+}
+
+.model-details__meta-link {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.model-details__meta-link:hover {
+  text-decoration: underline;
+}
+
+.model-details__swatches {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.model-details__swatch {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--swatch, #cbd5e1);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.model-details__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-top: 6px;
+}
+
+.model-details__tag {
+  height: 26px;
+  padding: 0 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(59, 130, 246, 0.35);
+  background: rgba(59, 130, 246, 0.06);
+  color: #2563eb;
+  font-family: "Mulish", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+}
+
+.model-details__tag:active {
+  transform: translateY(1px);
+}
+
+.model-details__section-title {
+  margin: 26px 0 14px;
+  font-family: "Saira", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: rgba(31, 41, 55, 0.8);
+}
+
+.model-details__similar {
+  margin-top: 12px;
+}
+
+.model-details__actions {
+  display: grid;
+  gap: 12px;
+}
+
+.model-details__btn {
+  height: 46px;
+  border-radius: 12px;
+  border: 0;
+  cursor: pointer;
+  font-family: "Saira", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.model-details__btn--primary {
+  background: #4e6a3a;
+  color: #ffffff;
+}
+
+.model-details__btn--secondary {
+  background: rgba(78, 106, 58, 0.1);
+  color: #4e6a3a;
+}
+
+.model-details__btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+@media (max-width: 1024px) {
+  .model-details {
+    margin-top: 16px;
+    padding: 0 12px 28px;
+  }
+
+  .model-details__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .model-details__viewer {
+    min-height: 340px;
+  }
+}

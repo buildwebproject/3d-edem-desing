@@ -494,6 +494,8 @@ function initFilterDropdowns() {
     document.querySelectorAll("[data-filter-dropdown]")
   );
   if (dropdowns.length === 0) return;
+  const isMultiSelect = (root) =>
+    root.dataset.filterDropdownMulti === "true";
 
   const getParts = (root) => {
     const button = root.querySelector("[data-filter-dropdown-button]");
@@ -503,17 +505,46 @@ function initFilterDropdowns() {
     const buttonIcon = root.querySelector("[data-filter-dropdown-button-icon]");
     const buttonIconImg =
       buttonIcon instanceof HTMLElement ? buttonIcon.querySelector("img") : null;
+    const focusTarget = menu?.querySelector("[data-filter-dropdown-focus-target]");
+
     if (
       !(button instanceof HTMLButtonElement) ||
       !(menu instanceof HTMLElement) ||
-      !(buttonLabel instanceof HTMLElement) ||
-      !(buttonIcon instanceof HTMLElement) ||
-      !(buttonIconImg instanceof HTMLImageElement) ||
-      items.length === 0
+      !(buttonLabel instanceof HTMLElement)
     ) {
       return null;
     }
-    return { button, buttonLabel, buttonIcon, buttonIconImg, menu, items };
+
+    const defaultLabel =
+      (
+        button.dataset.filterDropdownDefaultLabel ||
+        buttonLabel.textContent ||
+        "FORMAT"
+      ).trim() || "FORMAT";
+    const keepLabel = button.dataset.filterDropdownKeepLabel === "true";
+    const dynamicIcon = button.dataset.filterDropdownDynamicIcon !== "false";
+
+    if (
+      dynamicIcon &&
+      (!(buttonIcon instanceof HTMLElement) ||
+        !(buttonIconImg instanceof HTMLImageElement))
+    ) {
+      return null;
+    }
+
+    return {
+      button,
+      buttonLabel,
+      buttonIcon,
+      buttonIconImg,
+      menu,
+      items,
+      focusTarget: focusTarget instanceof HTMLElement ? focusTarget : null,
+      defaultLabel,
+      keepLabel,
+      dynamicIcon,
+      multiSelect: isMultiSelect(root),
+    };
   };
 
   const getItemLabel = (item) => {
@@ -529,36 +560,107 @@ function initFilterDropdowns() {
     return src && src.trim() ? src : null;
   };
 
+  const getItemSwatchColor = (item) => {
+    const swatch = item.querySelector(".filter-color__swatch");
+    if (!(swatch instanceof HTMLElement)) return null;
+    const custom = swatch.style.getPropertyValue("--swatch").trim();
+    if (custom) return custom;
+    const computed = window.getComputedStyle(swatch).backgroundColor;
+    return computed && computed !== "rgba(0, 0, 0, 0)" ? computed : null;
+  };
+
+  const syncColorPreview = (root, selectedItems = []) => {
+    if (!root.classList.contains("filter-dropdown--color")) return;
+    const preview = root.querySelector(".filter-chip__color-preview");
+    const button = root.querySelector("[data-filter-dropdown-button]");
+    if (!(preview instanceof HTMLElement)) return;
+
+    const colors = selectedItems
+      .map((item) => getItemSwatchColor(item))
+      .filter((color) => typeof color === "string" && color.trim().length > 0);
+
+    preview.textContent = "";
+    for (const color of colors) {
+      const dot = document.createElement("span");
+      dot.className = "filter-chip__color-dot";
+      dot.style.backgroundColor = color;
+      preview.appendChild(dot);
+    }
+
+    if (button instanceof HTMLElement) {
+      if (colors.length > 0) {
+        button.dataset.colorCount = String(colors.length);
+      } else {
+        button.removeAttribute("data-color-count");
+      }
+    }
+  };
+
   const syncButtonFromSelected = (root) => {
     const parts = getParts(root);
     if (!parts) return;
-
-    const selected = parts.items.find(
+    const selectedItems = parts.items.filter(
       (item) => item.getAttribute("aria-checked") === "true"
     );
-    if (!selected) {
-      parts.buttonLabel.textContent = "FORMAT";
+    const selected = selectedItems[0] || null;
+
+    if (parts.items.length === 0) {
+      parts.buttonLabel.textContent = parts.defaultLabel;
       parts.button.classList.remove("is-selected");
-      parts.buttonIcon.hidden = true;
-      parts.buttonIconImg.removeAttribute("src");
-      parts.button.classList.remove("has-icon");
+      if (
+        parts.dynamicIcon &&
+        parts.buttonIcon instanceof HTMLElement &&
+        parts.buttonIconImg instanceof HTMLImageElement
+      ) {
+        parts.buttonIcon.hidden = true;
+        parts.buttonIconImg.removeAttribute("src");
+        parts.button.classList.remove("has-icon");
+      }
+      syncColorPreview(root);
       return;
     }
 
-    const label = getItemLabel(selected) || "FORMAT";
-    const iconSrc = getItemIconSrc(selected);
+    if (!selected) {
+      parts.buttonLabel.textContent = parts.defaultLabel;
+      parts.button.classList.remove("is-selected");
+      if (
+        parts.dynamicIcon &&
+        parts.buttonIcon instanceof HTMLElement &&
+        parts.buttonIconImg instanceof HTMLImageElement
+      ) {
+        parts.buttonIcon.hidden = true;
+        parts.buttonIconImg.removeAttribute("src");
+        parts.button.classList.remove("has-icon");
+      }
+      syncColorPreview(root);
+      return;
+    }
+
+    const label = parts.keepLabel
+      ? parts.defaultLabel
+      : parts.multiSelect
+        ? `${selectedItems.length} selected`
+        : getItemLabel(selected) || parts.defaultLabel;
 
     parts.buttonLabel.textContent = label;
-    parts.button.classList.toggle("is-selected", label !== "FORMAT");
+    parts.button.classList.add("is-selected");
+    syncColorPreview(root, selectedItems);
 
-    if (iconSrc) {
-      parts.buttonIcon.hidden = false;
-      parts.buttonIconImg.setAttribute("src", iconSrc);
-      parts.button.classList.add("has-icon");
-    } else {
-      parts.buttonIcon.hidden = true;
-      parts.buttonIconImg.removeAttribute("src");
-      parts.button.classList.remove("has-icon");
+    if (
+      parts.dynamicIcon &&
+      parts.buttonIcon instanceof HTMLElement &&
+      parts.buttonIconImg instanceof HTMLImageElement
+    ) {
+      const iconSrc = getItemIconSrc(selected);
+      if (iconSrc) {
+        parts.buttonIcon.hidden = false;
+        parts.buttonIconImg.setAttribute("src", iconSrc);
+        parts.button.classList.add("has-icon");
+      } else {
+        parts.buttonIcon.hidden = true;
+        parts.buttonIconImg.removeAttribute("src");
+        parts.button.classList.remove("has-icon");
+      }
     }
   };
 
@@ -585,6 +687,7 @@ function initFilterDropdowns() {
   };
 
   const syncRovingTabIndex = (items) => {
+    if (items.length === 0) return;
     const selected =
       items.find((item) => item.getAttribute("aria-checked") === "true") ||
       items[0];
@@ -601,10 +704,14 @@ function initFilterDropdowns() {
     positionMenu(root);
     syncRovingTabIndex(parts.items);
     if (focusSelected) {
-      const selected =
-        parts.items.find((item) => item.getAttribute("aria-checked") === "true") ||
-        parts.items[0];
-      selected.focus();
+      if (parts.items.length > 0) {
+        const selected =
+          parts.items.find((item) => item.getAttribute("aria-checked") === "true") ||
+          parts.items[0];
+        selected.focus();
+      } else if (parts.focusTarget) {
+        parts.focusTarget.focus();
+      }
     }
   };
 
@@ -614,6 +721,15 @@ function initFilterDropdowns() {
     for (const item of parts.items) {
       item.setAttribute("aria-checked", item === next ? "true" : "false");
     }
+    syncRovingTabIndex(parts.items);
+    syncButtonFromSelected(root);
+  };
+
+  const toggleSelected = (root, next) => {
+    const parts = getParts(root);
+    if (!parts) return;
+    const isChecked = next.getAttribute("aria-checked") === "true";
+    next.setAttribute("aria-checked", isChecked ? "false" : "true");
     syncRovingTabIndex(parts.items);
     syncButtonFromSelected(root);
   };
@@ -631,6 +747,13 @@ function initFilterDropdowns() {
   for (const root of dropdowns) {
     const parts = getParts(root);
     if (!parts) continue;
+    const multiSelect = parts.multiSelect;
+
+    if (multiSelect) {
+      for (const item of parts.items) {
+        item.setAttribute("role", "menuitemcheckbox");
+      }
+    }
 
     syncRovingTabIndex(parts.items);
     syncButtonFromSelected(root);
@@ -684,13 +807,26 @@ function initFilterDropdowns() {
       } else if (e.key === "Enter" || e.key === " ") {
         e.preventDefault();
         const current = items[currentIndex];
-        setSelected(root, current);
-        closeDropdown(root, { focusButton: true });
+        if (multiSelect) {
+          toggleSelected(root, current);
+          current.focus();
+          positionMenu(root);
+        } else {
+          setSelected(root, current);
+          closeDropdown(root, { focusButton: true });
+        }
       }
     });
 
     for (const item of parts.items) {
       item.addEventListener("click", () => {
+        if (multiSelect) {
+          toggleSelected(root, item);
+          item.focus();
+          positionMenu(root);
+          return;
+        }
+
         if (item.getAttribute("aria-checked") === "true") {
           clearSelected(root);
           item.focus();
@@ -710,7 +846,7 @@ function initFilterDropdowns() {
 
     const rect = parts.button.getBoundingClientRect();
     const viewportPadding = 12;
-    const gap = 16;
+    const gap = 8;
 
     const menuWidth = parts.menu.offsetWidth || 320;
     const desiredHeight = parts.menu.scrollHeight || 0;
@@ -724,7 +860,9 @@ function initFilterDropdowns() {
     // Always open below the chip (no "flip to top").
     let top = rect.bottom + gap;
     const availableBelow = window.innerHeight - top - viewportPadding;
-    const fitHeight = Math.max(140, Math.min(desiredHeight, availableBelow));
+    const minMenuHeight = Number.parseInt(parts.menu.dataset.minHeight || "56", 10);
+    const safeMinMenuHeight = Number.isFinite(minMenuHeight) ? minMenuHeight : 56;
+    const fitHeight = Math.max(safeMinMenuHeight, Math.min(desiredHeight, availableBelow));
     parts.menu.style.maxHeight = `${Math.round(fitHeight)}px`;
     if (availableBelow < 40) {
       top = Math.max(viewportPadding, window.innerHeight - viewportPadding - fitHeight);
