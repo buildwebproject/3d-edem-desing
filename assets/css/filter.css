@@ -638,14 +638,37 @@ box-shadow: -0.2px 0.5px 1px 0px #FF6608;
 
 .filter-chip--dropdown-price {
   min-width: 142px;
-  border-color: #f2b28f;
+ 
 }
 
 .filter-chip--dropdown-price-model {
   min-width: 72px;
   padding-left: 8px;
   padding-right: 8px;
-  border-color: #bfcfd2;
+  gap: 4px;
+ 
+  transition:
+    min-width 180ms ease,
+    padding 180ms ease,
+    gap 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.filter-chip--dropdown-price-model:hover,
+.filter-chip--dropdown-price-model:focus-visible,
+.filter-chip--dropdown-price-model[aria-expanded="true"] {
+  min-width: 128px;
+  padding-left: 12px;
+  padding-right: 10px;
+  gap: 10px;
+}
+
+.filter-chip--dropdown-price-model.is-selected {
+  min-width: 166px;
+  padding-left: 12px;
+  padding-right: 10px;
+  gap: 10px;
 }
 
 .filter-chip--dropdown-price-model .filter-chip__icon {
@@ -654,12 +677,54 @@ box-shadow: -0.2px 0.5px 1px 0px #FF6608;
   box-shadow: none;
 }
 
+.filter-chip--dropdown-price-model .filter-chip__label {
+  display: inline-block;
+  max-width: 0;
+  opacity: 0;
+  transform: translateX(-2px);
+  pointer-events: none;
+  font-family: Saira;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 15px;
+  color: #795344;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+
+.filter-chip--dropdown-price-model:hover .filter-chip__label,
+.filter-chip--dropdown-price-model:focus-visible .filter-chip__label,
+.filter-chip--dropdown-price-model[aria-expanded="true"] .filter-chip__label {
+  max-width: 70px;
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+.filter-chip--dropdown-price-model.is-selected .filter-chip__label {
+  max-width: 104px;
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+  color: #3f3f3f;
+  font-weight: 700;
+}
+
 .filter-chip--dropdown-price-model .filter-chip__caret {
   background-image: url("../images/filter/icons/white-down.svg");
 }
 
+.filter-chip--dropdown-price-model:hover .filter-chip__caret,
+.filter-chip--dropdown-price-model:focus-visible .filter-chip__caret {
+  background-image: url("../images/filter/icons/orange-up.svg");
+}
+
+.filter-chip--dropdown-price-model.is-selected .filter-chip__caret {
+  background-image: url("../images/filter/icons/orange-up.svg");
+}
+
 .filter-chip--dropdown-price-model[aria-expanded="true"] {
-  border-color: #8ecb67;
+ 
 }
 
 .filter-chip--dropdown-price-model[aria-expanded="true"] .filter-chip__caret {
@@ -682,7 +747,7 @@ box-shadow: -0.2px 0.5px 1px 0px #FF6608;
 }
 
 .filter-chip--dropdown-price[aria-expanded="true"] {
-  border-color: #ed9868;
+ 
 }
 
 .filter-chip--dropdown-style {
@@ -1371,12 +1436,20 @@ border: 4px solid #F2F2F2
 }
 
 .filter-dropdown--price .filter-dropdown__menu {
-  width: 302px;
-  padding: 18px 22px 14px;
-  background: #ececec;
-  border: 4px solid #dddddd;
-  border-radius: 22px;
-  box-shadow: none;
+
+  width: 293px;
+
+
+opacity: 1;
+border-radius: 15px;
+border-width: 4px;
+gap: 25px;
+padding-top: 20px;
+padding-right: 24px;
+padding-bottom: 20px;
+padding-left: 24px;
+background: #FFFFFF;
+border: 4px solid #F2F2F2;
 }
 
 .filter-price__fields {
@@ -1386,18 +1459,23 @@ border: 4px solid #F2F2F2
 }
 
 .filter-price__input {
-  width: 100%;
+  flex: 1 1 0;
   min-width: 0;
+  width: auto;
+  box-sizing: border-box;
   height: 50px;
-  border-radius: 16px;
-  border: 3px solid #9cde00;
+  opacity: 1;
+  border: 3px solid #ADF200;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 20px;
+  padding: 0 15px;
   background: #f3f3f1;
-  text-align: center;
   font-family: "Mulish", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   font-weight: 700;
   font-size: 15px;
   color: #4b4b4b;
-  letter-spacing: 0.01em;
 }
 
 .filter-price__input::placeholder {
@@ -1409,9 +1487,13 @@ border: 4px solid #F2F2F2
   outline: none;
 }
 
+.filter-price__input:hover {
+  border: 3px solid #FF8A5C;
+}
+
 .filter-price__input:focus-visible {
-  border-color: #88ce00;
-  box-shadow: 0 0 0 2px rgba(140, 208, 0, 0.2);
+  border: 3px solid #FF8A5C;
+  box-shadow: 0 0 0 2px rgba(255, 138, 92, 0.2);
 }
 
 .filter-price__slider {

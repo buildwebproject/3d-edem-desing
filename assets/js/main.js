@@ -635,11 +635,17 @@ function initFilterDropdowns() {
   };
 
   const normalizeBrandValue = (value) => value.trim().replace(/\s+/g, " ");
+  const normalizePriceValue = (value) => value.trim().replace(/\s+/g, "");
 
   const getBrandInput = (root) => {
     const input = root.querySelector(".filter-brand__input");
     return input instanceof HTMLInputElement ? input : null;
   };
+
+  const getPriceInputs = (root) =>
+    Array.from(root.querySelectorAll(".filter-price__input")).filter(
+      (input) => input instanceof HTMLInputElement
+    );
 
   const syncColorPreview = (root, selectedItems = []) => {
     if (!root.classList.contains("filter-dropdown--color")) return;
@@ -743,6 +749,21 @@ function initFilterDropdowns() {
         parts.button.classList.add("is-selected");
       } else {
         root.removeAttribute("data-brand-value");
+        parts.buttonLabel.textContent = parts.defaultLabel;
+        parts.button.classList.remove("is-selected");
+      }
+      return;
+    }
+
+    if (root.classList.contains("filter-dropdown--price")) {
+      const [minInput, maxInput] = getPriceInputs(root);
+      const minValue = normalizePriceValue(minInput?.value || "");
+      const maxValue = normalizePriceValue(maxInput?.value || "");
+
+      if (minValue && maxValue) {
+        parts.buttonLabel.textContent = `${minValue} - ${maxValue}`;
+        parts.button.classList.add("is-selected");
+      } else {
         parts.buttonLabel.textContent = parts.defaultLabel;
         parts.button.classList.remove("is-selected");
       }
@@ -930,6 +951,24 @@ function initFilterDropdowns() {
             root.removeAttribute("data-brand-value");
           }
 
+          syncButtonFromSelected(root);
+          closeDropdown(root, { focusButton: true });
+        });
+      }
+    }
+
+    if (root.classList.contains("filter-dropdown--price")) {
+      const priceInputs = getPriceInputs(root);
+      for (const input of priceInputs) {
+        input.addEventListener("input", () => {
+          syncButtonFromSelected(root);
+        });
+        input.addEventListener("change", () => {
+          syncButtonFromSelected(root);
+        });
+        input.addEventListener("keydown", (e) => {
+          if (e.key !== "Enter") return;
+          e.preventDefault();
           syncButtonFromSelected(root);
           closeDropdown(root, { focusButton: true });
         });
