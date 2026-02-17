@@ -636,6 +636,7 @@ function initFilterDropdowns() {
 
   const normalizeBrandValue = (value) => value.trim().replace(/\s+/g, " ");
   const normalizePriceValue = (value) => value.trim().replace(/\s+/g, "");
+  const normalizeSizeValue = (value) => value.trim().replace(/\s+/g, "");
 
   const getBrandInput = (root) => {
     const input = root.querySelector(".filter-brand__input");
@@ -646,6 +647,50 @@ function initFilterDropdowns() {
     Array.from(root.querySelectorAll(".filter-price__input")).filter(
       (input) => input instanceof HTMLInputElement
     );
+
+  const getSizeInputs = (root) => {
+    const heightInput = root.querySelector('input[name="size_height"]');
+    const lengthInput = root.querySelector('input[name="size_length"]');
+    const widthInput = root.querySelector('input[name="size_width"]');
+
+    return {
+      height: heightInput instanceof HTMLInputElement ? heightInput : null,
+      length: lengthInput instanceof HTMLInputElement ? lengthInput : null,
+      width: widthInput instanceof HTMLInputElement ? widthInput : null,
+    };
+  };
+
+  const setSizeSummaryLabel = (labelEl, sizeValues) => {
+    if (!(labelEl instanceof HTMLElement)) return false;
+
+    const entries = [
+      ["z", sizeValues.z],
+      ["y", sizeValues.y],
+      ["x", sizeValues.x],
+    ].filter(([, value]) => typeof value === "string" && value.length > 0);
+
+    labelEl.textContent = "";
+    if (entries.length === 0) return false;
+
+    for (const [axis, value] of entries) {
+      const token = document.createElement("span");
+      token.className = "filter-chip__size-token";
+
+      const axisEl = document.createElement("span");
+      axisEl.className = "filter-chip__size-axis";
+      axisEl.textContent = axis;
+
+      const valueEl = document.createElement("span");
+      valueEl.className = "filter-chip__size-value";
+      valueEl.textContent = value;
+
+      token.appendChild(axisEl);
+      token.appendChild(valueEl);
+      labelEl.appendChild(token);
+    }
+
+    return true;
+  };
 
   const syncColorPreview = (root, selectedItems = []) => {
     if (!root.classList.contains("filter-dropdown--color")) return;
@@ -762,6 +807,27 @@ function initFilterDropdowns() {
 
       if (minValue && maxValue) {
         parts.buttonLabel.textContent = `${minValue} - ${maxValue}`;
+        parts.button.classList.add("is-selected");
+      } else {
+        parts.buttonLabel.textContent = parts.defaultLabel;
+        parts.button.classList.remove("is-selected");
+      }
+      return;
+    }
+
+    if (root.classList.contains("filter-dropdown--size")) {
+      const sizeInputs = getSizeInputs(root);
+      const zValue = normalizeSizeValue(sizeInputs.height?.value || "");
+      const yValue = normalizeSizeValue(sizeInputs.length?.value || "");
+      const xValue = normalizeSizeValue(sizeInputs.width?.value || "");
+
+      if (
+        setSizeSummaryLabel(parts.buttonLabel, {
+          z: zValue,
+          y: yValue,
+          x: xValue,
+        })
+      ) {
         parts.button.classList.add("is-selected");
       } else {
         parts.buttonLabel.textContent = parts.defaultLabel;
@@ -960,6 +1026,27 @@ function initFilterDropdowns() {
     if (root.classList.contains("filter-dropdown--price")) {
       const priceInputs = getPriceInputs(root);
       for (const input of priceInputs) {
+        input.addEventListener("input", () => {
+          syncButtonFromSelected(root);
+        });
+        input.addEventListener("change", () => {
+          syncButtonFromSelected(root);
+        });
+        input.addEventListener("keydown", (e) => {
+          if (e.key !== "Enter") return;
+          e.preventDefault();
+          syncButtonFromSelected(root);
+          closeDropdown(root, { focusButton: true });
+        });
+      }
+    }
+
+    if (root.classList.contains("filter-dropdown--size")) {
+      const sizeInputs = getSizeInputs(root);
+      const sizeFields = [sizeInputs.height, sizeInputs.length, sizeInputs.width];
+
+      for (const input of sizeFields) {
+        if (!(input instanceof HTMLInputElement)) continue;
         input.addEventListener("input", () => {
           syncButtonFromSelected(root);
         });
