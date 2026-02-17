@@ -1084,7 +1084,9 @@ function initFilterDropdowns() {
     const maxViewportHeight = window.innerHeight - viewportPadding * 2;
     const minMenuHeight = Number.parseInt(parts.menu.dataset.minHeight || "56", 10);
     const safeMinMenuHeight = Number.isFinite(minMenuHeight) ? minMenuHeight : 56;
-    const keepAnchoredBelow = root.classList.contains("filter-dropdown--material");
+    const keepAnchoredBelow =
+      root.classList.contains("filter-dropdown--material") ||
+      root.classList.contains("filter-dropdown--style");
 
     let top = topBelow;
     let fitHeight = desiredHeight;
