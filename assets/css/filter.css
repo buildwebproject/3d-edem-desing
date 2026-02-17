@@ -976,28 +976,79 @@ box-shadow: -0.2px 0.5px 1px 0px #FF6608;
   background-image: url("../images/filter/icons/orange-up.svg");
 }
 
+.filter-chip--dropdown-size.is-selected[aria-expanded="true"] .filter-chip__caret {
+  background-image: url("../images/filter/icons/orange-down.svg");
+}
+
 .filter-chip--dropdown-tag {
-  min-width: 128px;
-  border-color: #f2b28f;
+  min-width: 72px;
+  padding-left: 8px;
+  padding-right: 9px;
+  gap: 4px;
+  
+  transition:
+    min-width 180ms ease,
+    padding 180ms ease,
+    gap 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.filter-chip--dropdown-tag:hover,
+.filter-chip--dropdown-tag:focus-visible,
+.filter-chip--dropdown-tag[aria-expanded="true"] {
+  min-width: 126px;
+  padding-left: 12px;
+  padding-right: 10px;
+  gap: 10px;
 }
 
 .filter-chip--dropdown-tag .filter-chip__icon {
   width: 28px;
   height: 28px;
   box-shadow: none;
+  background: center / contain no-repeat url("../images/tag/tag1.svg");
+}
+
+.filter-chip--dropdown-tag .filter-chip__svg {
+  display: none;
 }
 
 .filter-chip--dropdown-tag .filter-chip__label {
-  color: #bc4a16;
-  letter-spacing: 0.04em;
+  display: inline-block;
+  max-width: 0;
+  opacity: 0;
+  transform: translateX(-2px);
+  pointer-events: none;
+  font-family: "Saira", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 15px;
+  line-height: 100%;
+  letter-spacing: 0;
+  color: #795344;
+}
+
+.filter-chip--dropdown-tag:hover .filter-chip__label,
+.filter-chip--dropdown-tag:focus-visible .filter-chip__label,
+.filter-chip--dropdown-tag[aria-expanded="true"] .filter-chip__label {
+  max-width: 64px;
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
 }
 
 .filter-chip--dropdown-tag .filter-chip__caret {
   background-image: url("../images/filter/icons/white-down.svg");
 }
 
+.filter-chip--dropdown-tag:hover .filter-chip__caret,
+.filter-chip--dropdown-tag:focus-visible .filter-chip__caret {
+  background-image: url("../images/filter/icons/orange-up.svg");
+}
+
 .filter-chip--dropdown-tag[aria-expanded="true"] {
-  border-color: #ed9868;
+
 }
 
 .filter-chip--dropdown-tag[aria-expanded="true"] .filter-chip__caret {
@@ -1151,33 +1202,21 @@ border: 4px solid #F2F2F2;
 }
 
 .filter-dropdown__item {
-  width: 100%;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  background: transparent;
-  border: 0;
-  border-radius: 7px;
-  cursor: pointer;
-  text-align: left;
-  height: 66px;
-  opacity: 1;
-  padding-top: 19px;
-  padding-right: 15px;
-  padding-bottom: 19px;
-  padding-left: 15px;
-  gap: 28px;
-  border-bottom-width: 1px;
-  background: #FFFFFF;
-  border-bottom: 1px solid #F3F3F3;
-   font-family: "League Spartan", sans-serif;
-  
-font-weight: 600;
-font-style: SemiBold;
-font-size: 17px;
+width: 216px;
+height: 66px;
 
-line-height: 100%;
-letter-spacing: 0%;
+opacity: 1;
+gap: 28px;
+padding-top: 19px;
+padding-right: 15px;
+padding-bottom: 19px;
+padding-left: 15px;
+border-bottom-width: 1px;
+background: #FFFFFF;
+border-bottom: 1px solid #F3F3F3;
+display: flex;
+justify-content: center;
+text-align: center;
 
 }
 
@@ -1217,8 +1256,8 @@ letter-spacing: 0%;
 }
 
 .filter-dropdown__item-icon {
-  width: 22px;
-  height: 22px;
+  width: 28px;
+  height: 28px;
   border-radius: 4px;
   background: transparent;
   display: inline-flex;
@@ -1237,8 +1276,8 @@ letter-spacing: 0%;
 }
 
 .filter-dropdown__item-icon-img {
-  width: 100%;
-  height: 100%;
+  width: 28px;
+  height: 28px;
   object-fit: contain;
   display: block;
 }
@@ -1804,11 +1843,15 @@ border: 4px solid #F2F2F2;
 }
 
 .filter-dropdown--tag .filter-dropdown__menu {
-  width: 242px;
-  padding: 16px 16px 12px;
-  background: #ececec;
-  border: 4px solid #dddddd;
-  border-radius: 22px;
+  width: 233px;
+  height: 350px;
+  opacity: 1;
+  border-radius: 15px;
+  border-width: 4px;
+  gap: 10px;
+  padding: 18px;
+  background: #FFFFFF;
+  border: 4px solid #F2F2F2;
   box-shadow: none;
 }
 
@@ -1820,17 +1863,21 @@ border: 4px solid #F2F2F2;
 }
 
 .filter-tag__pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
   height: 38px;
   padding: 0 14px;
   border-radius: 20px;
   border: 2px solid #dedede;
   background: #efefef;
-  color: #0b97da;
-  font-family: "Mulish", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  font-weight: 700;
+  color: #795344;
+  font-family: "Saira", sans-serif;
+  font-weight: 600;
+  font-style: normal;
   font-size: 15px;
-  line-height: 1;
-  letter-spacing: 0.01em;
+  line-height: 100%;
+  letter-spacing: 0;
   cursor: pointer;
 }
 
@@ -1838,11 +1885,54 @@ border: 4px solid #F2F2F2;
 .filter-tag__pill:focus-visible {
   outline: none;
   background: #f6f6f6;
-  border-color: #d1e2ed;
+  border: 3px solid #FFA047;
 }
 
 .filter-tag__pill--wide {
   min-width: 138px;
+}
+
+#tag-filter-menu.filter-dropdown__menu--tag {
+  background: #FFFFFF;
+  border: 4px solid #F2F2F2;
+  border-radius: 15px;
+}
+
+#tag-filter-menu .filter-tag__pill {
+width: 100;
+height: 38;
+min-width: 12px;
+
+opacity: 1;
+border-radius: 31px;
+border-width: 2px;
+gap: 10px;
+padding-top: 5px;
+padding-right: 15px;
+padding-bottom: 5px;
+padding-left: 15px;
+background: #FFFFFF;
+border: 2px solid #F2F2F2;
+font-family: Saira;
+font-weight: 500;
+font-style: Medium;
+font-size: 18px;
+color: #00A2DE;
+
+line-height: 100%;
+letter-spacing: 0%;
+
+}
+
+#tag-filter-menu .filter-tag__pill:hover,
+#tag-filter-menu .filter-tag__pill:focus-visible {
+  outline: none;
+  border: 3px solid #FFA047;
+}
+
+#tag-filter-menu .filter-tag__pill[aria-checked="true"] {
+  color: #FA5F00;
+  font-weight: 600;
 }
 
 @media (max-width: 1024px) {
@@ -1935,6 +2025,7 @@ border: 4px solid #F2F2F2;
   }
 
   .filter-dropdown--tag .filter-dropdown__menu {
-    width: min(242px, calc(100vw - 24px));
+    width: min(233px, calc(100vw - 24px));
+    height: 350px;
   }
 }

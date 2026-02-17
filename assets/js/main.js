@@ -1158,7 +1158,7 @@ function initFilterDropdowns() {
     const gap = 9;
 
     const menuWidth = parts.menu.offsetWidth || 320;
-    const desiredHeight = parts.menu.scrollHeight || 0;
+    const desiredHeight = parts.menu.scrollHeight || parts.menu.offsetHeight || 0;
 
     let left = rect.left;
     left = Math.max(
@@ -1172,6 +1172,7 @@ function initFilterDropdowns() {
     const minMenuHeight = Number.parseInt(parts.menu.dataset.minHeight || "56", 10);
     const safeMinMenuHeight = Number.isFinite(minMenuHeight) ? minMenuHeight : 56;
     const keepAnchoredBelow =
+      root.classList.contains("filter-dropdown--tag") ||
       root.classList.contains("filter-dropdown--material") ||
       root.classList.contains("filter-dropdown--style");
 
