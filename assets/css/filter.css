@@ -246,6 +246,16 @@ box-shadow: -0.2px 0.5px 1px 0px #FF6608;
   white-space: nowrap;
 }
 
+.filter-chip--dropdown[aria-controls="format-filter-menu"] {
+  transition: min-width 180ms ease, padding 180ms ease, gap 180ms ease;
+}
+
+.filter-chip--dropdown[aria-controls="format-filter-menu"] .filter-chip__icon {
+  width: 30px;
+  height: 30px;
+  box-shadow: none;
+}
+
 .filter-chip--dropdown[aria-controls="format-filter-menu"] .filter-chip__label {
   font-family: "Saira", sans-serif;
   font-weight: 600;
@@ -256,24 +266,11 @@ box-shadow: -0.2px 0.5px 1px 0px #FF6608;
   color: #795344;
 }
 
-.filter-chip--dropdown[aria-controls="format-filter-menu"].is-selected .filter-chip__label {
-  
-  font-weight: 500;
-  font-style: normal;
-  font-size: 17px;
-  line-height: 1;
-  letter-spacing: 0;
-  color: #843300;
-}
-
-.filter-chip--dropdown[aria-controls="format-filter-menu"] {
-  transition: min-width 180ms ease, padding 180ms ease, gap 180ms ease;
-}
-
 .filter-chip--dropdown[aria-controls="format-filter-menu"] [data-filter-dropdown-button-label] {
   transition: max-width 180ms ease, opacity 120ms ease, transform 180ms ease;
 }
 
+/* Keep selected FORMAT chip compact by default (icon + caret only). */
 .filter-chip--dropdown[aria-controls="format-filter-menu"].is-selected {
   min-width: 0;
   padding-left: 9px;
@@ -310,20 +307,18 @@ box-shadow: -0.2px 0.5px 1px 0px #FF6608;
   pointer-events: auto;
 }
 
-/* Keep selected FORMAT chip icon + text visible in one row. */
-.filter-chip--dropdown[aria-controls="format-filter-menu"].is-selected {
-  min-width: 118px;
-  padding-left: 12px;
-  padding-right: 10px;
-  gap: 10px;
+.filter-chip--dropdown[aria-controls="format-filter-menu"] .filter-chip__caret {
+  background-image: url("../images/filter/icons/white-down.svg");
 }
 
-.filter-chip--dropdown[aria-controls="format-filter-menu"].is-selected
-  [data-filter-dropdown-button-label] {
-  max-width: 164px;
-  opacity: 1;
-  transform: translateX(0);
-  pointer-events: auto;
+.filter-chip--dropdown[aria-controls="format-filter-menu"]:hover .filter-chip__caret,
+.filter-chip--dropdown[aria-controls="format-filter-menu"]:focus-visible .filter-chip__caret,
+.filter-chip--dropdown[aria-controls="format-filter-menu"].is-selected .filter-chip__caret {
+  background-image: url("../images/filter/icons/orange-up.svg");
+}
+
+.filter-chip--dropdown[aria-controls="format-filter-menu"][aria-expanded="true"] .filter-chip__caret {
+  background-image: url("../images/filter/icons/orange-down.svg");
 }
 
 .filter-chip--dropdown-color {
@@ -394,40 +389,14 @@ box-shadow: -0.2px 0.5px 1px 0px #FF6608;
 }
 
 .filter-chip--dropdown-material {
-  min-width: 78px;
-  padding-left: 8px;
-  padding-right: 9px;
-  gap: 4px;
-  border-color: transparent;
-  transition:
-    min-width 180ms ease,
-    padding 180ms ease,
-    gap 180ms ease,
-    border-color 180ms ease,
-    box-shadow 180ms ease;
-}
-
-.filter-chip--dropdown-material:hover,
-.filter-chip--dropdown-material:focus-visible,
-.filter-chip--dropdown-material[aria-expanded="true"] {
-  min-width: 146px;
-  padding-left: 12px;
-  padding-right: 10px;
-  gap: 10px;
+  transition: min-width 180ms ease, padding 180ms ease, gap 180ms ease;
 }
 
 .filter-chip--dropdown-material.is-selected {
-  min-width: 0px;
-  padding-left: 10px;
-  padding-right: 12px;
-  gap: 8px;
-}
-
-.filter-chip--dropdown-material.is-selected[data-material-count="1"] {
-  min-width: 0px;
-  padding-left: 11px;
+  min-width: 0;
+  padding-left: 9px;
   padding-right: 11px;
-  gap: 7px;
+  gap: 6px;
 }
 
 .filter-chip--dropdown-material .filter-chip__icon {
@@ -437,27 +406,17 @@ box-shadow: -0.2px 0.5px 1px 0px #FF6608;
 }
 
 .filter-chip--dropdown-material .filter-chip__label {
-  display: inline-block;
-  max-width: 0;
-  opacity: 0;
-  transform: translateX(-2px);
-  pointer-events: none;
-  font-family: Saira;
+  font-family: "Saira", sans-serif;
   font-weight: 600;
   font-style: normal;
   font-size: 15px;
+  line-height: 1;
+  letter-spacing: 0;
   color: #795344;
-  line-height: 100%;
-  letter-spacing: 0%;
 }
 
-.filter-chip--dropdown-material:hover .filter-chip__label,
-.filter-chip--dropdown-material:focus-visible .filter-chip__label,
-.filter-chip--dropdown-material[aria-expanded="true"] .filter-chip__label {
-  max-width: 96px;
-  opacity: 1;
-  transform: translateX(0);
-  pointer-events: auto;
+.filter-chip--dropdown-material [data-filter-dropdown-button-label] {
+  transition: max-width 180ms ease, opacity 120ms ease, transform 180ms ease;
 }
 
 .filter-chip--dropdown-material.is-selected .filter-chip__label {
@@ -465,7 +424,24 @@ box-shadow: -0.2px 0.5px 1px 0px #FF6608;
   opacity: 0;
   transform: translateX(-2px);
   pointer-events: none;
-  display: none;
+}
+
+.filter-chip--dropdown-material.is-selected:hover,
+.filter-chip--dropdown-material.is-selected:focus-visible,
+.filter-chip--dropdown-material.is-selected[aria-expanded="true"] {
+  min-width: 118px;
+  padding-left: 12px;
+  padding-right: 10px;
+  gap: 10px;
+}
+
+.filter-chip--dropdown-material.is-selected:hover [data-filter-dropdown-button-label],
+.filter-chip--dropdown-material.is-selected:focus-visible [data-filter-dropdown-button-label],
+.filter-chip--dropdown-material.is-selected[aria-expanded="true"] [data-filter-dropdown-button-label] {
+  max-width: 164px;
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
 }
 
 .filter-chip--dropdown-material .filter-chip__caret {
@@ -473,32 +449,13 @@ box-shadow: -0.2px 0.5px 1px 0px #FF6608;
 }
 
 .filter-chip--dropdown-material:hover .filter-chip__caret,
-.filter-chip--dropdown-material:focus-visible .filter-chip__caret {
+.filter-chip--dropdown-material:focus-visible .filter-chip__caret,
+.filter-chip--dropdown-material.is-selected .filter-chip__caret {
   background-image: url("../images/filter/icons/orange-up.svg");
 }
 
 .filter-chip--dropdown-material[aria-expanded="true"] .filter-chip__caret {
   background-image: url("../images/filter/icons/orange-down.svg");
-}
-
-.filter-chip--dropdown-material.is-selected .filter-chip__caret {
-  background-image: url("../images/filter/icons/orange-up.svg");
-}
-
-.filter-chip--dropdown-material.is-selected .filter-chip__icon {
-  width: auto;
-  min-width: 26px;
-  height: 30px;
-  border-radius: 0;
-  background: transparent;
-  box-shadow: none;
-  justify-content: flex-start;
-}
-
-.filter-chip--dropdown-material.is-selected[data-material-count="1"] .filter-chip__icon {
-  width: 30px;
-  min-width: 30px;
-  justify-content: center;
 }
 
 .filter-chip__material-preview {
@@ -527,15 +484,11 @@ box-shadow: -0.2px 0.5px 1px 0px #FF6608;
 }
 
 .filter-chip--dropdown-material.is-selected .filter-chip__material-preview {
-  display: inline-flex;
-}
-
-.filter-chip--dropdown-material.is-selected[data-material-count="1"] .filter-chip__material-preview {
-  gap: 0;
+  display: none;
 }
 
 .filter-chip--dropdown-material.is-selected .filter-chip__icon > .filter-chip__icon-img {
-  display: none !important;
+  display: block !important;
 }
 
 .filter-chip--dropdown-shape {
@@ -1218,7 +1171,7 @@ border: 4px solid #F2F2F2;
 }
 
 .filter-dropdown__item {
-width: 216px;
+
 height: 66px;
 
 opacity: 1;
@@ -1240,29 +1193,68 @@ border-color: transparent;
   margin-top: 2px;
 }
 
-#format-filter-menu .filter-dropdown__item,
-#material-filter-menu .filter-dropdown__item {
+#format-filter-menu .filter-dropdown__item {
   align-items: center;
   justify-content: flex-start;
   gap: 12px;
-  text-align: center;
+  text-align: left;
 }
 
-#format-filter-menu .filter-dropdown__item-label,
-#material-filter-menu .filter-dropdown__item-label {
+#format-filter-menu .filter-dropdown__item-label {
   flex: 1 1 auto;
-  text-align: center;
+  text-align: left;
 }
 
-/* Material menu: keep icon + label centered as one group */
-#material-filter-menu .filter-dropdown__item {
+#material-filter-menu .filter-material__item {
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  gap: 12px;
+  text-align: left;
   width: 100%;
   box-sizing: border-box;
-  justify-content: center;
 }
 
-#material-filter-menu .filter-dropdown__item-label {
-  flex: 0 0 auto;
+#material-filter-menu .filter-material__item .filter-dropdown__item-label {
+  flex: 1 1 auto;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.filter-dropdown__menu--style {
+  width: 192px;
+  height: 408px;
+  opacity: 1;
+  border-radius: 15px;
+  border-width: 4px;
+  padding-right: 18px;
+  padding-left: 18px;
+  color: #FFFFFF;
+  border: 4px solid #F2F2F2;
+  background: #FFFFFF;
+}
+
+#style-filter-menu .filter-style__item {
+  width: 100%;
+  height: 66px;
+  box-sizing: border-box;
+  padding-left: 0;
+  padding-right: 0;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: "League Spartan", "Spartan", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 17px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #434343;
+}
+
+#style-filter-menu .filter-style__item .filter-dropdown__item-label {
+  display: block;
+  width: 100%;
   text-align: center;
 }
 
@@ -1273,52 +1265,78 @@ border-color: transparent;
 }
 
 #format-filter-menu .filter-dropdown__item:hover,
-#format-filter-menu .filter-dropdown__item:focus-visible,
-#material-filter-menu .filter-dropdown__item:hover,
-#material-filter-menu .filter-dropdown__item:focus-visible,
-#style-filter-menu .filter-dropdown__item:hover,
-#style-filter-menu .filter-dropdown__item:focus-visible {
+#format-filter-menu .filter-dropdown__item:focus-visible {
 
 }
 
 #format-filter-menu .filter-dropdown__item:hover,
-#format-filter-menu .filter-dropdown__item:focus-visible,
-#material-filter-menu .filter-dropdown__item:hover,
-#material-filter-menu .filter-dropdown__item:focus-visible {
+#format-filter-menu .filter-dropdown__item:focus-visible {
   width: 216px;
   height: 66px;
   opacity: 1;
-  gap: 28px;
+  gap: 12px;
   padding-top: 19px;
   padding-right: 15px;
   padding-bottom: 19px;
   padding-left: 15px;
   border-bottom-right-radius: 15px;
   border-bottom-left-radius: 15px;
-  border-bottom: 3px solid #ff6608;
+  border-bottom: 3px solid #FA5F00;
   color: #ffffff;
 }
 
-#material-filter-menu .filter-dropdown__item:hover,
-#material-filter-menu .filter-dropdown__item:focus-visible {
+#material-filter-menu .filter-material__item:hover,
+#material-filter-menu .filter-material__item:focus-visible {
   width: 100%;
+  height: 66px;
+  opacity: 1;
+  padding-top: 19px;
+  padding-right: 15px;
+  padding-bottom: 19px;
+  padding-left: 15px;
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+  border-bottom: 3px solid #FA5F00;
+  color: #ffffff;
   box-sizing: border-box;
-  justify-content: center;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  gap: 12px;
 }
 
 #format-filter-menu .filter-dropdown__item:hover .filter-dropdown__item-label,
-#format-filter-menu .filter-dropdown__item:focus-visible .filter-dropdown__item-label,
-#material-filter-menu .filter-dropdown__item:hover .filter-dropdown__item-label,
-#material-filter-menu .filter-dropdown__item:focus-visible .filter-dropdown__item-label {
+#format-filter-menu .filter-dropdown__item:focus-visible .filter-dropdown__item-label {
+  color: #FA5F00;
+}
+
+#material-filter-menu .filter-material__item:hover .filter-dropdown__item-label,
+#material-filter-menu .filter-material__item:focus-visible .filter-dropdown__item-label {
+  color: #FA5F00;
+}
+
+#style-filter-menu .filter-style__item:hover,
+#style-filter-menu .filter-style__item:focus-visible {
+  
+  opacity: 1;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 19px;
+  padding-right: 10px;
+  padding-bottom: 19px;
+  padding-left: 10px;
+  box-sizing: border-box;
+  border-bottom: 3px solid #FA5F00;
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+
+#style-filter-menu .filter-style__item:hover .filter-dropdown__item-label,
+#style-filter-menu .filter-style__item:focus-visible .filter-dropdown__item-label {
   color: #FA5F00;
 }
 
 #format-filter-menu .filter-dropdown__item[aria-checked="true"]:hover,
-#format-filter-menu .filter-dropdown__item[aria-checked="true"]:focus-visible,
-#material-filter-menu .filter-dropdown__item[aria-checked="true"]:hover,
-#material-filter-menu .filter-dropdown__item[aria-checked="true"]:focus-visible,
-#style-filter-menu .filter-dropdown__item[aria-checked="true"]:hover,
-#style-filter-menu .filter-dropdown__item[aria-checked="true"]:focus-visible {
+#format-filter-menu .filter-dropdown__item[aria-checked="true"]:focus-visible {
  
 }
 

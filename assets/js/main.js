@@ -1161,6 +1161,9 @@ function initFilterDropdowns() {
     const desiredHeight = parts.menu.scrollHeight || parts.menu.offsetHeight || 0;
 
     let left = rect.left;
+    if (root.classList.contains("filter-dropdown--style")) {
+      left = rect.left + (rect.width - menuWidth) / 2;
+    }
     left = Math.max(
       viewportPadding,
       Math.min(left, window.innerWidth - menuWidth - viewportPadding)
