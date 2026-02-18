@@ -4,9 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3D-Edem</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/header.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600;700;800&family=Saira:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Reem+Kufi:wght@400..700&family=Voces&display=swap" rel="stylesheet">
+    <script src="assets/js/main.js" defer></script>
     <style>
         :root {
             --bg: #f3f5f7;
@@ -680,48 +685,169 @@
     </style>
 </head>
 <body>
+    <header id="site-header" data-component-url="components/header.html">
+        <div class="site-header">
+            <div class="site-header__inner">
+                <a class="site-header__logo" href="#" aria-label="3D-Edem home">
+                    <img class="site-header__logo-img" src="assets/images/logo/logo.png" alt="3D-Edem" />
+                </a>
+
+                <button class="site-header__search-toggle" type="button" aria-label="Search" aria-controls="site-search-modal" aria-expanded="false">
+                    <span class="site-header__search-toggle-icon" aria-hidden="true"></span>
+                </button>
+
+                <div class="site-header__lang site-header__lang--mobile" aria-label="Language">
+                    <select class="site-header__lang-select site-header__lang-select--flags" name="lang" autocomplete="off" aria-label="Language">
+                        <option value="en">🇺🇸</option>
+                        <option value="uk">🇺🇦</option>
+                        <option value="ru">🇷🇺</option>
+                    </select>
+                </div>
+
+                <button class="site-header__menu-toggle" type="button" aria-label="Menu" aria-controls="site-header-menu" aria-expanded="false">
+                    <span class="site-header__menu-toggle-lines" aria-hidden="true"><span></span></span>
+                </button>
+
+                <div class="site-header__backdrop" aria-hidden="true"></div>
+
+                <div class="site-header__search-modal-backdrop" aria-hidden="true"></div>
+                <div id="site-search-modal" class="site-header__search-modal" role="dialog" aria-modal="true" aria-label="Search">
+                    <div class="site-header__search-modal-header">
+                        <span class="site-header__search-modal-title">Search</span>
+                        <button class="site-header__search-modal-close" type="button" aria-label="Close search">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <form class="site-header__search-modal-form" role="search">
+                        <label class="site-header__search-label" for="site-search-modal-input">Search</label>
+                        <input id="site-search-modal-input" class="site-header__search-input site-header__search-input--modal" type="search" placeholder="Search products" />
+                    </form>
+                </div>
+
+                <div id="site-header-menu" class="site-header__menu">
+                    <div class="site-header__drawer-header">
+                        <a class="site-header__drawer-logo" href="#" aria-label="3D-Edem home">
+                            <img class="site-header__logo-img" src="assets/images/logo/logo.png" alt="3D-Edem" />
+                        </a>
+
+                        <button class="site-header__drawer-close" type="button" aria-label="Close menu">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+
+                    <nav class="site-header__nav" aria-label="Primary">
+                        <a class="site-header__link" href="#">Catalog</a>
+                        <a class="site-header__link" href="#">Gallery</a>
+                    </nav>
+
+                    <form class="site-header__search" role="search">
+                        <label class="site-header__search-label" for="site-search">Search</label>
+                        <input id="site-search" class="site-header__search-input" type="search" placeholder="Search" />
+                    </form>
+
+                    <div class="site-header__icon-row" aria-label="Quick actions">
+                        <button class="site-header__upload-btn" type="button" aria-label="Upload">
+                            <img class="site-header__icon-img" src="assets/images/icons/upload.svg" alt="" aria-hidden="true" />
+                        </button>
+
+                        <div class="site-header__actions">
+                            <button class="site-header__icon-btn site-header__icon-btn--cart" type="button" aria-label="Cart (1)">
+                                <img class="site-header__icon-img" src="assets/images/icons/cart.svg" alt="" aria-hidden="true" />
+                                <span class="site-header__count" aria-hidden="true">1</span>
+                            </button>
+                            <button class="site-header__icon-btn site-header__icon-btn--favorites" type="button" aria-label="Favorites (1)">
+                                <img class="site-header__icon-img" src="assets/images/icons/liked.svg" alt="" aria-hidden="true" />
+                                <span class="site-header__count" aria-hidden="true">1</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="site-header__lang site-header__lang--desktop" aria-label="Language">
+                        <select class="site-header__lang-select" name="lang" autocomplete="off">
+                            <option value="en">🇺🇸 EN</option>
+                            <option value="uk">🇺🇦 UA</option>
+                            <option value="ru">🇷🇺 RU</option>
+                        </select>
+                    </div>
+
+                    <div class="site-header__auth">
+                        <details class="site-header__account">
+                            <summary class="site-header__account-summary" aria-label="Account menu">
+                                <span class="site-header__account-avatar" aria-hidden="true">A</span>
+                                <span class="site-header__account-name">admin</span>
+                                <span class="site-header__account-caret" aria-hidden="true"></span>
+                            </summary>
+                            <div class="site-header__account-menu" role="menu" aria-label="Account">
+                                <div class="site-header__account-header">
+                                    <span class="site-header__account-header-avatar" aria-hidden="true">A</span>
+                                    <div class="site-header__account-header-text">
+                                        <div class="site-header__account-header-name">admin</div>
+                                        <div class="site-header__account-header-email">admin@gmail.com</div>
+                                    </div>
+                                </div>
+
+                                <a class="site-header__account-item" href="#" role="menuitem">
+                                    <span class="site-header__account-item-icon" aria-hidden="true">
+                                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M20 21a8 8 0 0 0-16 0"></path>
+                                            <circle cx="12" cy="7" r="4"></circle>
+                                        </svg>
+                                    </span>
+                                    Profile
+                                </a>
+
+                                <a class="site-header__account-item" href="#" role="menuitem">
+                                    <span class="site-header__account-item-icon" aria-hidden="true">
+                                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M4 19V5"></path>
+                                            <path d="M4 19h16"></path>
+                                            <path d="M7 14l3-3 4 4 6-7"></path>
+                                        </svg>
+                                    </span>
+                                    Profit
+                                </a>
+
+                                <a class="site-header__account-item" href="#" role="menuitem">
+                                    <span class="site-header__account-item-icon" aria-hidden="true">
+                                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M12 17.3l-6.2 3.4 1.2-7.1L1 8.7l7.2-1L12 1l3.8 6.7 7.2 1-6 4.9 1.2 7.1z"></path>
+                                        </svg>
+                                    </span>
+                                    Favorites
+                                </a>
+
+                                <a class="site-header__account-item" href="#" role="menuitem">
+                                    <span class="site-header__account-item-icon" aria-hidden="true">
+                                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M12 3v10"></path>
+                                            <path d="M7 10l5 6 5-6"></path>
+                                            <path d="M5 21h14"></path>
+                                        </svg>
+                                    </span>
+                                    Download &amp; Purchase
+                                </a>
+
+                                <div class="site-header__account-divider" role="separator" aria-hidden="true"></div>
+
+                                <a class="site-header__account-item site-header__account-item--danger" href="#" role="menuitem">
+                                    <span class="site-header__account-item-icon" aria-hidden="true">
+                                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M10 17l5-5-5-5"></path>
+                                            <path d="M15 12H3"></path>
+                                            <path d="M21 19V5a2 2 0 0 0-2-2h-6"></path>
+                                        </svg>
+                                    </span>
+                                    Log out
+                                </a>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
     <div class="page-shell">
-        <header class="topbar">
-            <div class="topbar-left">
-                <a class="brand" href="#">3D-Edem</a>
-                <nav class="topbar-nav" aria-label="Primary">
-                    <a href="#">Catalog</a>
-                    <a href="#">Gallery</a>
-                </nav>
-            </div>
-
-            <form class="topbar-search" role="search">
-                <input type="search" aria-label="Search" placeholder="">
-            </form>
-
-            <div class="topbar-right">
-                <button class="icon-btn" type="button" aria-label="Cart">
-                    <svg viewBox="0 0 24 24">
-                        <circle cx="9" cy="20" r="1.3"></circle>
-                        <circle cx="17" cy="20" r="1.3"></circle>
-                        <path d="M2.8 4.2h2.4l1.8 9.5h10.6l2-7.2H6.1"></path>
-                    </svg>
-                </button>
-                <button class="icon-btn" type="button" aria-label="Account">
-                    <span class="badge">1</span>
-                    <svg viewBox="0 0 24 24">
-                        <circle cx="12" cy="8" r="3.1"></circle>
-                        <path d="M5.5 19c1.8-3.3 4.3-4.8 6.5-4.8s4.8 1.5 6.5 4.8"></path>
-                    </svg>
-                </button>
-                <button class="icon-btn" type="button" aria-label="Notifications">
-                    <span class="badge badge--dot"></span>
-                    <svg viewBox="0 0 24 24">
-                        <path d="M5 17h14"></path>
-                        <path d="M8 17v-5a4 4 0 1 1 8 0v5"></path>
-                        <path d="M10.5 19a1.5 1.5 0 0 0 3 0"></path>
-                    </svg>
-                </button>
-                <button class="auth-btn auth-btn--login" type="button">Login</button>
-                <button class="auth-btn auth-btn--signup" type="button">Sign Up</button>
-            </div>
-        </header>
-
         <main>
             <section class="details-layout" aria-label="3D model details">
                 <div class="gallery-card">
@@ -889,29 +1015,88 @@
                 </div>
             </section>
         </main>
-
-        <footer class="footer-box">
-            <div class="chip-row">
-                <span class="chip"><span class="chip-dot chip-dot--violet">✦</span> For Brands &amp; Manufacturers</span>
-                <span class="chip"><span class="chip-dot chip-dot--red">✧</span> Commission a Project</span>
-                <span class="chip"><span class="chip-dot chip-dot--green">✓</span> Contact &amp; support</span>
-                <span class="chip"><span class="chip-dot chip-dot--pink">?</span> How it works</span>
-                <span class="chip"><span class="chip-dot chip-dot--yellow">▶</span> Tutorials</span>
-            </div>
-            <div class="chip-row policy-row">
-                <span class="chip policy-chip">Content policy</span>
-                <span class="chip policy-chip">Terms of use</span>
-                <span class="chip policy-chip">Privacy policy</span>
-                <span class="chip policy-chip">Rules</span>
-            </div>
-            <div class="social-row">
-                <a class="social-link social-link--telegram" href="#" aria-label="Telegram">✈</a>
-                <a class="social-link social-link--facebook" href="#" aria-label="Facebook">f</a>
-                <a class="social-link social-link--instagram" href="#" aria-label="Instagram">◎</a>
-                <a class="social-link social-link--youtube" href="#" aria-label="YouTube">▶</a>
-            </div>
-        </footer>
     </div>
+
+    <footer class="site-footer-links" aria-label="Footer quick links">
+        <div class="site-footer-links__inner">
+            <ul class="site-footer-links__chips" role="list">
+                <li class="site-footer-links__item">
+                    <a class="site-footer-chip" href="#">
+                        <span class="site-footer-chip__icon" aria-hidden="true">
+                            <img src="assets/images/footer/icon.png" alt="">
+                        </span>
+                        <span class="site-footer-chip__text">For Brands &amp; Manufacturers</span>
+                    </a>
+                </li>
+
+                <li class="site-footer-links__item">
+                    <a class="site-footer-chip" href="#">
+                        <span class="site-footer-chip__icon" aria-hidden="true">
+                            <img src="assets/images/footer/icon%20(1).png" alt="">
+                        </span>
+                        <span class="site-footer-chip__text">Commission a Project</span>
+                    </a>
+                </li>
+
+                <li class="site-footer-links__item">
+                    <a class="site-footer-chip" href="#">
+                        <span class="site-footer-chip__icon" aria-hidden="true">
+                            <img src="assets/images/footer/icon%20(2).png" alt="">
+                        </span>
+                        <span class="site-footer-chip__text">Contact &amp; support</span>
+                    </a>
+                </li>
+
+                <li class="site-footer-links__item">
+                    <a class="site-footer-chip" href="#">
+                        <span class="site-footer-chip__icon" aria-hidden="true">
+                            <img src="assets/images/footer/icon%20(3).png" alt="">
+                        </span>
+                        <span class="site-footer-chip__text">How it works</span>
+                    </a>
+                </li>
+
+                <li class="site-footer-links__item">
+                    <a class="site-footer-chip" href="#">
+                        <span class="site-footer-chip__icon" aria-hidden="true">
+                            <img src="assets/images/footer/icon%20(4).png" alt="">
+                        </span>
+                        <span class="site-footer-chip__text">Tutorials</span>
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="site-footer-links__policy" role="list">
+                <li><a class="site-footer-policy-link" href="#">Content policy</a></li>
+                <li><a class="site-footer-policy-link" href="#">Terms of use</a></li>
+                <li><a class="site-footer-policy-link" href="#">Privacy policy</a></li>
+                <li><a class="site-footer-policy-link" href="#">Rules</a></li>
+            </ul>
+
+            <ul class="site-footer-links__social" role="list">
+                <li>
+                    <a class="site-footer-social-link site-footer-social-link--telegram" href="#" aria-label="Telegram">
+                        <img src="assets/images/footer/social/telegram.png" alt="">
+                    </a>
+                </li>
+                <li>
+                    <a class="site-footer-social-link site-footer-social-link--facebook" href="#" aria-label="Facebook">
+                        <img src="assets/images/footer/social/facebook.png" alt="">
+                    </a>
+                </li>
+                <li>
+                    <a class="site-footer-social-link site-footer-social-link--instagram" href="#" aria-label="Instagram">
+                        <img src="assets/images/footer/social/instagram.png" alt="">
+                    </a>
+                </li>
+                <li>
+                    <a class="site-footer-social-link site-footer-social-link--youtube" href="#" aria-label="YouTube">
+                        <img src="assets/images/footer/social/youtube.png" alt="">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </footer>
 
     <script>
         (function () {
