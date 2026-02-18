@@ -9,6 +9,14 @@
   max-width: 1499px;
   height: auto;
   border-radius: 13px;
+  --sub-cat-visible-columns: 4;
+  --sub-cat-column-gap: 36px;
+  --sub-cat-card-width: 256px;
+  --sub-cat-edge-gutter: 6px;
+  --sub-cat-scroller-width: calc(
+    (var(--sub-cat-visible-columns) * var(--sub-cat-card-width)) +
+      ((var(--sub-cat-visible-columns) - 1) * var(--sub-cat-column-gap))
+  );
 }
 
 .sub-cat__inner {
@@ -83,12 +91,15 @@
     -webkit-overflow-scrolling: touch;
     
     scrollbar-width: none;
-    width: 100%;
-    /* 4 columns: (4 * 264) + (3 * 36) = 1164px */
-    max-width: 1164px;
+    box-sizing: border-box;
+    /* Keep 4 visible columns and add tiny side gutter to avoid clipped edges. */
+    width: min(
+      100%,
+      calc(var(--sub-cat-scroller-width) + (var(--sub-cat-edge-gutter) * 2))
+    );
     -ms-overflow-style: none;
     margin: 0 auto;
-    padding: 40px 0;
+    padding: 40px var(--sub-cat-edge-gutter);
 }
 
 .sub-cat__scroller::-webkit-scrollbar {
@@ -98,9 +109,9 @@
 .sub-cat__grid {
     display: grid;
     grid-auto-flow: column;
-    grid-auto-columns: max-content;
+    grid-auto-columns: var(--sub-cat-card-width);
     grid-template-rows: repeat(3, 1fr);
-    column-gap: 36px;
+    column-gap: var(--sub-cat-column-gap);
     row-gap: 7px;
     list-style: none;
     margin: 0;
@@ -118,6 +129,7 @@
     box-sizing: border-box;
     display: flex;
     align-items: center;
+    width: 100%;
     /* gap: 20px; */
     height: 55px;
     padding: 4px 30px 4px 4px;
