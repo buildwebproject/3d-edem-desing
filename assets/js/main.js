@@ -483,7 +483,7 @@ function initModelsGrids() {
 
     const link = document.createElement("a");
     link.className = "model-card__link";
-    link.href = "#";
+    link.href = "3d-model-details.html";
     link.setAttribute("aria-label", `${name} model ${index} - ${price}`);
 
     const swatches = document.createElement("span");

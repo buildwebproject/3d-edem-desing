@@ -1,0 +1,227 @@
+.site-footer-links {
+  margin-top: 50px;
+  background: #ebebeb;
+}
+
+.site-footer-links__inner {
+ 
+  margin: 0 auto;
+ 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 34px;
+  padding: 71px 0;
+}
+
+.site-footer-links__chips,
+.site-footer-links__policy,
+.site-footer-links__social {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.site-footer-links__chips {
+  gap: 12px;
+}
+
+.site-footer-links__policy {
+  gap: 12px;
+}
+
+.site-footer-links__social {
+  gap: 16px;
+}
+
+.site-footer-chip,
+.site-footer-policy-link {
+  opacity: 1;
+  padding-top: 10px;
+  padding-right: 18px;
+  padding-bottom: 10px;
+  padding-left: 2px;
+  gap: 10px;
+  border-radius: 41px;
+  border-width: 3px;
+background: #F3F3F3;
+border: 3px solid #FFFFFF;
+box-shadow: 0.5px 0.8px 2px 0px #000000BF;
+text-decoration: none;
+}
+
+.site-footer-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  white-space: nowrap;
+  gap: 10px;
+  min-height: 44px;
+  padding: 0 18px 0 0;
+  font-family: "Reem Kufi", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 20px;
+
+  line-height: 100%;
+  letter-spacing: 0;
+  color: #000000;
+  text-decoration: none;
+}
+
+.site-footer-chip__icon {
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.site-footer-chip__icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.site-footer-policy-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  min-height: 40px;
+  padding: 0 18px;
+  font-family: "Reem Kufi", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 20px;
+  leading-trim: none;
+  line-height: 100%;
+  letter-spacing: 0;
+  color: #000000;
+}
+
+.site-footer-social-link {
+  width: 40px;
+  height: 40px;
+  opacity: 1;
+  border-radius: 10px;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.site-footer-social-link img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  display: block;
+}
+
+.site-footer-social-link--telegram {
+  background: #8EF1E2;
+}
+
+.site-footer-social-link--facebook {
+  background: #66C9FF;
+}
+
+.site-footer-social-link--instagram {
+  background: #FF99E9;
+}
+
+.site-footer-social-link--youtube {
+  background: #FF7B7B;
+}
+
+.site-footer-chip:hover,
+.site-footer-policy-link:hover {
+  background: linear-gradient(180deg, #ffffff 0%, #ececec 100%);
+  transform: translateY(-1px);
+}
+
+.site-footer-policy-link:hover {
+  border: 3px solid #E3AEFF;
+}
+
+.site-footer-links__chips .site-footer-links__item:nth-child(1) .site-footer-chip:hover {
+  border: 3px solid #E3AEFF;
+}
+
+.site-footer-links__chips .site-footer-links__item:nth-child(2) .site-footer-chip:hover {
+  border: 3px solid #EFA9AC;
+}
+
+.site-footer-links__chips .site-footer-links__item:nth-child(3) .site-footer-chip:hover {
+  border: 3px solid #8EF1E2;
+}
+
+.site-footer-links__chips .site-footer-links__item:nth-child(4) .site-footer-chip:hover {
+  border: 3px solid #FF7B7B;
+}
+
+.site-footer-links__chips .site-footer-links__item:nth-child(5) .site-footer-chip:hover {
+  border: 3px solid #FFC580;
+}
+
+.site-footer-social-link:hover {
+  transform: translateY(-1px);
+}
+
+.site-footer-chip:focus-visible,
+.site-footer-policy-link:focus-visible,
+.site-footer-social-link:focus-visible {
+  outline: 2px solid #212121;
+  outline-offset: 2px;
+}
+
+@media (max-width: 1140px) {
+  .site-footer-links__inner {
+    gap: 28px;
+    padding: 36px 16px 34px;
+  }
+}
+
+@media (max-width: 800px) {
+  .site-footer-links {
+    margin-top: 56px;
+  }
+
+  .site-footer-links__inner {
+    gap: 24px;
+  }
+
+  .site-footer-chip {
+    min-height: 40px;
+    padding: 0 14px;
+  }
+
+  .site-footer-chip__icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .site-footer-policy-link {
+    min-height: 36px;
+    padding: 0 14px;
+  }
+}
+
+@media (max-width: 540px) {
+  .site-footer-links__chips,
+  .site-footer-links__policy {
+    gap: 10px;
+  }
+
+  .site-footer-chip {
+    justify-content: flex-start;
+  }
+}
