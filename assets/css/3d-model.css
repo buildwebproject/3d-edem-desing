@@ -15,9 +15,11 @@
 }
 
 .models__inner {
-  width: 100%;
-  margin: 0 auto;
-  padding: 0 4px 20px;
+  width: 1648px;
+  height: 3065px;
+  opacity: 1;
+  gap: 39px;
+
 }
 
 .models__grid {
@@ -35,19 +37,18 @@
 }
 
 .model-card__link {
-  position: relative;
-  display: grid;
-  grid-template-rows: 1fr auto;
-  text-decoration: none;
-  color: inherit;
+width: 300px;
+height: 349px;
+opacity: 1;
+border-radius: 7px;
+gap: 10px;
+background: #FFFFFF;
+position: relative;
 
-  border-radius: 7px;
-  background: #ffffff;
-  /* Drop shadow from Figma */
+text-decoration: none;
+color: inherit;
+box-shadow: 2px 2px 8px 0px #FAFAFA;
 
-box-shadow: 2px 2px 8px 0 rgba(250, 250, 250, 0.5);
-  overflow: hidden;
-  height: 349px;
 }
 
 .model-card__link:hover {
@@ -74,6 +75,47 @@ box-shadow: 2px 2px 8px 0 rgba(250, 250, 250, 0.5);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
 }
 
+.model-card__heart {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  pointer-events: auto;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 160ms ease;
+}
+
+.model-card__heart-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  transition: filter 160ms ease;
+}
+
+.model-card__link:hover .model-card__heart,
+.model-card__link:focus-visible .model-card__heart {
+  opacity: 1;
+  visibility: visible;
+}
+
+.model-card__link:hover .model-card__heart-icon,
+.model-card__link:focus-visible .model-card__heart-icon {
+  filter: none;
+}
+
+.model-card__heart:hover .model-card__heart-icon,
+.model-card__heart:focus-visible .model-card__heart-icon {
+  filter: brightness(0) saturate(100%) invert(20%);
+}
+
 .model-card__media {
   display: flex;
   align-items: center;
@@ -83,11 +125,15 @@ box-shadow: 2px 2px 8px 0 rgba(250, 250, 250, 0.5);
 }
 
 .model-card__media img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  max-height: 260px;
-  object-fit: contain;
+width: 300px;
+height: 300px;
+
+opacity: 1;
+gap: 10px;
+border-top-left-radius: 7px;
+border-top-right-radius: 7px;
+
+
 }
 
 .model-card__meta {
@@ -97,15 +143,31 @@ box-shadow: 2px 2px 8px 0 rgba(250, 250, 250, 0.5);
   gap: 14px;
 
   padding: 16px 18px;
-  background: #fbfdff;
+ 
+  opacity: 1;
+  border-bottom-right-radius: 7px;
+  border-bottom-left-radius: 7px;
+  border-top-width: 3px;
+  padding-right: 15px;
+  padding-left: 15px;
+  background: #FFFFFF;
+  border-top: 3px solid #FAFAFA;
+}
+
+.model-card__link:hover .model-card__meta,
+.model-card__link:focus-visible .model-card__meta {
+  border-top-color: #FA5F00;
 }
 
 .model-card__name {
-  font-family: "Saira", sans-serif;
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 1.1;
-  color: #4e6a3a;
+font-family: "Voces", sans-serif;
+font-weight: 400;
+font-style: Regular;
+font-size: 15px;
+
+line-height: 100%;
+letter-spacing: 0%;
+
 }
 
 .model-card__price {

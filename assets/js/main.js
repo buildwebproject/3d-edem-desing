@@ -498,6 +498,17 @@ function initModelsGrids() {
       swatches.appendChild(swatch);
     }
 
+    const heart = document.createElement("span");
+    heart.className = "model-card__heart";
+    heart.setAttribute("aria-hidden", "true");
+
+    const heartImg = document.createElement("img");
+    heartImg.className = "model-card__heart-icon";
+    heartImg.src = "assets/images/3d-model/icons/heart.svg";
+    heartImg.alt = "";
+    heartImg.decoding = "async";
+    heart.appendChild(heartImg);
+
     const media = document.createElement("span");
     media.className = "model-card__media";
 
@@ -524,6 +535,7 @@ function initModelsGrids() {
     meta.appendChild(priceEl);
 
     link.appendChild(swatches);
+    link.appendChild(heart);
     link.appendChild(media);
     link.appendChild(meta);
     li.appendChild(link);
@@ -992,6 +1004,8 @@ function initFilterDropdowns() {
     if (!parts) continue;
     const multiSelect = parts.multiSelect;
     const strictSingle = parts.strictSingle;
+    const isFormatDropdown =
+      parts.button.getAttribute("aria-controls") === "format-filter-menu";
 
     if (multiSelect) {
       for (const item of parts.items) {
@@ -1063,8 +1077,17 @@ function initFilterDropdowns() {
     }
 
     parts.button.addEventListener("click", () => {
-      if (isOpen(root)) closeDropdown(root);
-      else openDropdown(root, { focusSelected: true });
+      if (isOpen(root)) {
+        closeDropdown(root);
+        return;
+      }
+
+      if (isFormatDropdown && parts.button.classList.contains("is-selected")) {
+        clearSelected(root);
+        return;
+      }
+
+      openDropdown(root, { focusSelected: true });
     });
 
     parts.button.addEventListener("keydown", (e) => {
@@ -1074,8 +1097,16 @@ function initFilterDropdowns() {
       }
       if (e.key === "Enter" || e.key === " ") {
         e.preventDefault();
-        if (isOpen(root)) closeDropdown(root, { focusButton: true });
-        else openDropdown(root, { focusSelected: false });
+        if (isOpen(root)) {
+          closeDropdown(root, { focusButton: true });
+        } else if (
+          isFormatDropdown &&
+          parts.button.classList.contains("is-selected")
+        ) {
+          clearSelected(root);
+        } else {
+          openDropdown(root, { focusSelected: false });
+        }
       }
     });
 
