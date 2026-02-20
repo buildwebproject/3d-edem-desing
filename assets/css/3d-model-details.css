@@ -919,6 +919,39 @@ color: #4398E9;
     cursor: pointer;
 }
 
+.info-card--tags {
+    margin-top: 12px;
+    padding: 4px 0px 0;
+    box-shadow: none;
+    background: transparent;
+    overflow: visible;
+}
+
+.info-card--tags .tags-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    column-gap: 12px;
+    row-gap: 12px;
+}
+
+.info-card--tags .tag {
+    width: auto;
+    height: 35px;
+    padding: 0 16px;
+    border: 0;
+    border-radius: 45px;
+    background: #4aa7d2;
+    box-shadow: 0.5px 0.5px 1px 0 #002337b2;
+    font-family: Saira;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 1;
+    letter-spacing: 0;
+    color: #ffffff;
+}
+
 .similar-section {
     margin-top: 30px;
 }
