@@ -258,8 +258,7 @@ border: 2px solid #FAFAFA;
 }
 
 .info-card {
-   width: 520px;
-    height: 75px;
+   
     opacity: 1;
     padding-right: 10px;
     padding-bottom: 5px;
@@ -268,6 +267,10 @@ border: 2px solid #FAFAFA;
     color: #FFFFFF;
     box-shadow: 1px 1px 10px 0px #85ADAD59;
 
+}
+
+.info-card--brand-padding {
+   padding: 20px 30px;
 }
 
 .summary-card h1 {
@@ -382,12 +385,18 @@ color: #004A6D;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    gap: 10px;
+   
     line-height: 1.28;
+    width: 312px;
+height: 34px;
+angle: 0 deg;
+opacity: 1;
+gap: 80px;
+
 }
 
 .meta-key {
-    color: var(--muted);
+    color: var(--muted, #5f6a74);
 }
 
 .meta-value {
@@ -401,6 +410,143 @@ color: #004A6D;
     text-decoration: underline;
     font-weight: 600;
     word-break: break-all;
+}
+
+.info-card--brand .meta-list {
+    width: 100%;
+    height: auto;
+    display: grid;
+    gap: 10px;
+}
+
+.info-card--brand .meta-row {
+    align-items: center;
+}
+
+.info-card--brand .meta-row--brand {
+width: 166px;
+height: 34px;
+flex: 0 0 166px;
+
+opacity: 1;
+gap: 80px;
+
+}
+
+.info-card--brand .meta-row--info {
+width: 166px;
+height: 34px;
+flex: 0 0 166px;
+
+opacity: 1;
+gap: 80px;
+
+}
+
+.info-card--brand .meta-key {
+font-family: Saira;
+font-weight: 600;
+font-style: SemiBold;
+font-size: 19px;
+
+line-height: 100%;
+letter-spacing: 0%;
+color: #706965;
+
+}
+
+.info-card--brand .meta-key--brand,
+.info-card--brand .meta-key--info {
+    min-width: 84px;
+}
+
+.info-card--brand .meta-value {
+font-family: Saira;
+font-weight: 600;
+font-style: SemiBold;
+font-size: 19px;
+
+line-height: 100%;
+letter-spacing: 0%;
+color: #4398E9;
+text-align: left;
+}
+
+.info-card--brand .meta-value--brand {
+    min-width: 130px;
+}
+
+.info-card--brand .meta-value--link {
+font-family: Saira;
+font-weight: 400;
+font-style: Regular;
+font-size: 19px;
+color: #5F5FEE;
+
+line-height: 100%;
+letter-spacing: 0%;
+
+}
+
+.info-card--brand .meta-value--info {
+    display: inline-block;
+    width: 260px;
+    min-height: 28px;
+    text-align: right;
+    white-space: nowrap;
+   
+    text-overflow: ellipsis;
+}
+
+.info-card--format {
+   padding: 20px 30px;
+}
+
+.info-card--format .meta-list {
+    width: 100%;
+    height: auto;
+    display: grid;
+    gap: 8px;
+}
+
+.info-card--format .meta-row {
+    width: 100%;
+    min-height: 34px;
+    display: grid;
+    grid-template-columns: 166px minmax(0, 1fr);
+    align-items: center;
+    column-gap: 0;
+}
+
+.info-card--format .meta-key {
+    font-family: Saira;
+    font-weight: 600;
+    font-size: 19px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: #706965;
+    width: 166px;
+    white-space: nowrap;
+}
+
+.info-card--format .meta-value {
+    text-align: left;
+    white-space: nowrap;
+}
+
+.info-card--format .format-badge {
+    justify-content: flex-start;
+    gap: 8px;
+    white-space: nowrap;
+    color: #8c4f49;
+}
+
+.info-card--format .meta-value--accent {
+    color: #ff8a00;
+}
+
+.info-card--format .meta-value--good {
+    color: #3a8ee6;
 }
 
 .meta-value--accent {
@@ -426,6 +572,13 @@ color: #004A6D;
     border-radius: 2px;
     background: linear-gradient(180deg, #f86852 0%, #ef553e 100%);
     box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+.format-icon {
+    width: 28px;
+    height: 28px;
+    display: block;
+    flex: 0 0 28px;
 }
 
 .color-list {
