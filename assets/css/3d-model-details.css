@@ -364,7 +364,7 @@ font-family: Saira;
 font-weight: 600;
 font-style: SemiBold;
 font-size: 18px;
-leading-trim: NONE;
+
 line-height: 100%;
 letter-spacing: 0%;
 color: #004A6D;
@@ -499,6 +499,7 @@ letter-spacing: 0%;
 }
 
 .info-card--format {
+   margin-top: 12px;
    padding: 20px 30px;
 }
 
@@ -536,17 +537,280 @@ letter-spacing: 0%;
 
 .info-card--format .format-badge {
     justify-content: flex-start;
-    gap: 8px;
-    white-space: nowrap;
-    color: #8c4f49;
+    gap: 15px;
+font-family: Saira;
+font-weight: 600;
+font-style: SemiBold;
+font-size: 19px;
+color: #814141;
+
+line-height: 100%;
+letter-spacing: 0%;
 }
 
 .info-card--format .meta-value--accent {
-    color: #ff8a00;
+font-family: Saira;
+font-weight: 700;
+font-style: Bold;
+font-size: 19px;
+color: #FF7F00;
+
+line-height: 100%;
+letter-spacing: 0%;
+
 }
 
 .info-card--format .meta-value--good {
-    color: #3a8ee6;
+font-family: Saira;
+font-weight: 700;
+font-style: Bold;
+font-size: 19px;
+
+line-height: 100%;
+letter-spacing: 0%;
+color: #4398E9;
+
+}
+
+.info-card--specs {
+    margin-top: 12px;
+      padding: 20px 30px;
+}
+
+.info-card--specs .meta-list {
+    width: 100%;
+    height: auto;
+    display: grid;
+    gap: 8px;
+}
+
+.info-card--specs .meta-row {
+    --spec-key-width: 220px;
+    --spec-row-height: 34px;
+    width: 100%;
+    min-height: var(--spec-row-height);
+    display: grid;
+    grid-template-columns: var(--spec-key-width) minmax(0, 1fr);
+    align-items: center;
+    column-gap: 2px;
+}
+
+.info-card--specs .meta-row--file-size {
+    --spec-key-width: 177px;
+    --spec-row-height: 50px;
+}
+
+.info-card--specs .meta-row--colors {
+    --spec-key-width: 177px;
+    --spec-row-height: 34px;
+}
+
+.info-card--specs .meta-row--materials {
+    --spec-key-width: 177px;
+    --spec-row-height: 34px;
+}
+
+.info-card--specs .meta-row--size {
+    --spec-key-width: 177px;
+    --spec-row-height: 34px;
+}
+
+.info-card--specs .meta-row--real-price {
+    --spec-key-width: 177px;
+    --spec-row-height: 34px;
+}
+
+.info-card--specs .meta-row--style {
+    --spec-key-width: 177px;
+    --spec-row-height: 34px;
+}
+
+.info-card--specs .meta-row--author {
+    --spec-key-width: 177px;
+    --spec-row-height: 34px;
+}
+
+.info-card--specs .meta-key {
+    font-family: Saira;
+    font-weight: 600;
+    font-size: 19px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: #6a6663;
+    width: var(--spec-key-width);
+    min-height: var(--spec-row-height);
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.meta-key-note {
+    font-size: 0.82em;
+    font-weight: 500;
+    color: #7d7773;
+}
+
+.info-card--specs .meta-value {
+    font-family: Saira;
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: #425155;
+    text-align: left;
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--spec-row-height);
+    white-space: nowrap;
+}
+
+.info-card--specs .meta-value--file-size {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+font-family: Saira;
+font-weight: 700;
+font-style: Bold;
+font-size: 19px;
+
+line-height: 100%;
+letter-spacing: 0%;
+color: #3D4D4F;
+}
+
+.file-size-icon {
+    width: 32px;
+    height: 32px;
+    display: block;
+    flex: 0 0 32px;
+}
+
+.file-size-number {
+    font-weight: 700;
+}
+
+.file-size-unit {
+    font-weight: 500;
+    letter-spacing: 0.01em;
+}
+
+.info-card--specs .color-list--specs {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.spec-dot {
+    width: 24px;
+    height: 24px;
+    border-radius: 999px;
+    display: inline-block;
+    border: 2px solid rgba(0, 0, 0, 0.08);
+}
+
+.spec-dot--wood {
+    background: #8e4f00;
+}
+
+.spec-dot--velvet {
+    background: #decdb4;
+}
+
+.info-card--specs .meta-value--materials {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 14px;
+font-family: Saira;
+font-weight: 600;
+font-style: normal;
+font-size: 19px;
+
+line-height: 100%;
+letter-spacing: 0%;
+color: #B27400;
+}
+
+.info-card--specs .meta-value--size {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.info-card--specs .size-part--number {
+    font-family: Saira;
+font-weight: 600;
+font-style: SemiBold;
+font-size: 19px;
+
+line-height: 100%;
+letter-spacing: 0%;
+vertical-align: middle;
+
+    color: #814141;
+}
+
+.info-card--specs .size-part--separator {
+    color: #814141;
+  font-family: Saira;
+font-weight: 400;
+font-style: Regular;
+font-size: 12px;
+
+line-height: 100%;
+letter-spacing: 0%;
+vertical-align: middle;
+
+}
+
+.info-card--specs .meta-value--real-price {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.info-card--specs .real-price-amount {
+    font-family: Saira;
+font-weight: 700;
+font-style: Bold;
+font-size: 19px;
+
+line-height: 100%;
+letter-spacing: 0%;
+color: #328A79;
+}
+
+.info-card--specs .real-price-currency {
+   font-family: Saira;
+font-weight: 400;
+font-style: Regular;
+font-size: 19px;
+
+line-height: 100%;
+letter-spacing: 0%;
+color: #328A79;
+}
+
+.info-card--specs .meta-value--style {
+   font-family: Saira;
+font-weight: 600;
+font-style: SemiBold;
+font-size: 19px;
+leading-trim: NONE;
+line-height: 100%;
+letter-spacing: 0%;
+color: #3D4D4F;
+}
+
+.info-card--specs .meta-value--author {
+   font-family: Saira;
+font-weight: 700;
+font-style: Bold;
+font-size: 19px;
+leading-trim: NONE;
+line-height: 100%;
+letter-spacing: 0%;
+color: #4398E9;
 }
 
 .meta-value--accent {
@@ -575,8 +839,8 @@ letter-spacing: 0%;
 }
 
 .format-icon {
-    width: 28px;
-    height: 28px;
+    width: 30px;
+    height: 30px;
     display: block;
     flex: 0 0 28px;
 }
