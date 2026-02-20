@@ -306,6 +306,39 @@ document.addEventListener("DOMContentLoaded", () => {
   initFilterCarousel();
 });
 
+// Use data-position values from backend (e.g., Sonata) to control catalog order.
+function sortItemsByPosition(listElement) {
+  if (!(listElement instanceof HTMLElement)) return;
+
+  const items = Array.from(listElement.children).filter(
+    (item) => item instanceof HTMLElement
+  );
+  if (items.length < 2) return;
+
+  const normalized = items.map((item, index) => {
+    const value = Number.parseInt(item.dataset.position || "", 10);
+    return {
+      item,
+      index,
+      position: Number.isFinite(value) ? value : Number.POSITIVE_INFINITY,
+    };
+  });
+
+  const hasCustomPosition = normalized.some((entry) =>
+    Number.isFinite(entry.position)
+  );
+  if (!hasCustomPosition) return;
+
+  normalized.sort((a, b) => a.position - b.position || a.index - b.index);
+
+  const hasChanges = normalized.some((entry, index) => entry.item !== items[index]);
+  if (!hasChanges) return;
+
+  const fragment = document.createDocumentFragment();
+  for (const entry of normalized) fragment.appendChild(entry.item);
+  listElement.appendChild(fragment);
+}
+
 function initMainCatCarousels() {
   const carousels = Array.from(
     document.querySelectorAll("[data-main-cat-carousel]")
@@ -314,6 +347,7 @@ function initMainCatCarousels() {
 
   for (const carousel of carousels) {
     const scroller = carousel.querySelector(".main-cat__scroller");
+    const list = scroller?.querySelector(".main-cat__list");
     const prev = carousel.querySelector('[data-main-cat-nav="prev"]');
     const next = carousel.querySelector('[data-main-cat-nav="next"]');
     if (
@@ -323,6 +357,8 @@ function initMainCatCarousels() {
     ) {
       continue;
     }
+
+    sortItemsByPosition(list);
 
     const getStep = () => Math.max(220, Math.round(scroller.clientWidth * 0.75));
 
@@ -369,6 +405,7 @@ function initCatStrips() {
 
   for (const carousel of carousels) {
     const scroller = carousel.querySelector(".cat-strip__scroller");
+    const list = scroller?.querySelector(".cat-strip__list");
     const prev = carousel.querySelector('[data-cat-nav="prev"]');
     const next = carousel.querySelector('[data-cat-nav="next"]');
     if (
@@ -378,6 +415,8 @@ function initCatStrips() {
     ) {
       continue;
     }
+
+    sortItemsByPosition(list);
 
     const getStep = () => Math.max(200, Math.round(scroller.clientWidth * 0.75));
 
@@ -425,6 +464,7 @@ function initSubCatStrips() {
 
   for (const carousel of carousels) {
     const scroller = carousel.querySelector(".sub-cat__scroller");
+    const list = scroller?.querySelector(".sub-cat__grid");
     const prev = carousel.querySelector('[data-sub-cat-nav="prev"]');
     const next = carousel.querySelector('[data-sub-cat-nav="next"]');
     if (
@@ -434,6 +474,8 @@ function initSubCatStrips() {
     ) {
       continue;
     }
+
+    sortItemsByPosition(list);
 
     const getStep = () => Math.max(260, Math.round(scroller.clientWidth * 0.75));
 

@@ -12,677 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600;700;800&family=Saira:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Reem+Kufi:wght@400..700&family=Voces&display=swap" rel="stylesheet">
     <script src="assets/js/main.js" defer></script>
-    <style>
-        :root {
-            --bg: #f3f5f7;
-            --panel: #ffffff;
-            --line: #d4dfe8;
-            --line-strong: #c9d5df;
-            --text: #515a64;
-            --muted: #8f9aa5;
-            --blue: #21aee4;
-            --soft-blue: #edf6fb;
-            --orange: #f6b31f;
-            --green: #76c85b;
-            --danger: #ef5455;
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            background: var(--bg);
-            color: var(--text);
-            font-family: "Mulish", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        .page-shell {
-            max-width: 1110px;
-            margin: 14px auto 28px;
-            padding: 0 10px;
-        }
-
-        .topbar {
-            height: 50px;
-            border: 1px solid var(--line);
-            border-radius: 8px;
-            background: var(--panel);
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            padding: 0 14px;
-        }
-
-        .topbar-left {
-            display: flex;
-            align-items: center;
-            gap: 18px;
-        }
-
-        .brand {
-            font-family: "Saira", sans-serif;
-            font-size: 23px;
-            font-weight: 600;
-            color: #c6d2dc;
-            letter-spacing: 0.01em;
-            line-height: 1;
-        }
-
-        .topbar-nav {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-
-        .topbar-nav a {
-            font-size: 11px;
-            font-weight: 500;
-            color: #69757f;
-        }
-
-        .topbar-search {
-            flex: 1;
-            max-width: 312px;
-            margin-left: 12px;
-        }
-
-        .topbar-search input {
-            width: 100%;
-            height: 26px;
-            border: 1px solid #b5c3cf;
-            border-radius: 4px 15px 15px 4px;
-            background-color: #ffffff;
-            background-image: url("assets/images/icons/search.png");
-            background-size: 12px 12px;
-            background-repeat: no-repeat;
-            background-position: right 9px center;
-            padding: 0 28px 0 10px;
-            font-size: 11px;
-            color: #6f7a84;
-            outline: none;
-        }
-
-        .topbar-search input:focus {
-            border-color: #8aa6bd;
-        }
-
-        .topbar-right {
-            margin-left: auto;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .icon-btn {
-            position: relative;
-            width: 20px;
-            height: 20px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border: 0;
-            background: transparent;
-            color: #6e7880;
-            padding: 0;
-            cursor: pointer;
-        }
-
-        .icon-btn svg {
-            width: 16px;
-            height: 16px;
-            stroke: currentColor;
-            fill: none;
-            stroke-width: 1.9;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
-
-        .icon-btn .badge {
-            position: absolute;
-            right: -5px;
-            top: -4px;
-            min-width: 10px;
-            height: 10px;
-            border-radius: 999px;
-            padding: 0 2px;
-            background: var(--danger);
-            color: #ffffff;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 8px;
-            font-weight: 700;
-            line-height: 1;
-        }
-
-        .icon-btn .badge--dot {
-            min-width: 8px;
-            width: 8px;
-            height: 8px;
-            padding: 0;
-        }
-
-        .auth-btn {
-            height: 21px;
-            border: 0;
-            border-radius: 6px;
-            padding: 0 8px;
-            font-size: 9px;
-            font-weight: 700;
-            color: #ffffff;
-            cursor: pointer;
-        }
-
-        .auth-btn--login {
-            background: var(--orange);
-        }
-
-        .auth-btn--signup {
-            background: var(--blue);
-        }
-
-        .details-layout {
-            margin-top: 12px;
-            display: grid;
-            grid-template-columns: minmax(0, 1.68fr) minmax(0, 1fr);
-            gap: 14px;
-            align-items: start;
-        }
-
-        .gallery-card {
-            background: var(--panel);
-            border: 1px solid var(--line-strong);
-            border-radius: 8px;
-            padding: 7px;
-        }
-
-        .gallery-main {
-            min-height: 468px;
-            border: 1px solid #d8e3ec;
-            border-radius: 6px;
-            background: #ffffff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .gallery-main img {
-            width: 94%;
-            max-height: 440px;
-            object-fit: contain;
-            display: block;
-        }
-
-        .watermark {
-            position: absolute;
-            right: 14px;
-            bottom: 6px;
-            font-family: "Saira", sans-serif;
-            font-size: 44px;
-            font-weight: 800;
-            color: rgba(166, 177, 186, 0.2);
-            user-select: none;
-            pointer-events: none;
-        }
-
-        .thumb-row {
-            margin-top: 8px;
-            display: grid;
-            grid-template-columns: repeat(6, minmax(0, 1fr));
-            gap: 6px;
-        }
-
-        .thumb-btn {
-            border: 1px solid #ccd7e0;
-            border-radius: 4px;
-            background: #ffffff;
-            padding: 2px;
-            height: 52px;
-            cursor: pointer;
-        }
-
-        .thumb-btn img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 2px;
-            display: block;
-        }
-
-        .thumb-btn.is-active {
-            border-color: #8ea7bb;
-            box-shadow: inset 0 0 0 1px #8ea7bb;
-        }
-
-        .info-column {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .info-card {
-            background: var(--panel);
-            border: 1px solid var(--line-strong);
-            border-radius: 9px;
-            padding: 11px 12px;
-        }
-
-        .summary-card h1 {
-            margin: 0;
-            color: #6d757c;
-            font-size: 14px;
-            font-weight: 600;
-            line-height: 1.35;
-        }
-
-        .buy-row {
-            margin-top: 11px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .price-chip {
-            height: 27px;
-            min-width: 39px;
-            border-radius: 7px;
-            border: 1px solid #a7d6a0;
-            background: #f1faed;
-            color: #69ba4f;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0 10px;
-            font-family: "Saira", sans-serif;
-            font-weight: 700;
-            font-size: 12px;
-        }
-
-        .favorite-btn {
-            width: 28px;
-            height: 28px;
-            border-radius: 999px;
-            border: 1px solid #d8e3eb;
-            background: #ffffff;
-            color: #8f9aa5;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-        }
-
-        .favorite-btn svg {
-            width: 15px;
-            height: 15px;
-            stroke: currentColor;
-            stroke-width: 1.8;
-            fill: none;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
-
-        .buy-btn {
-            flex: 1;
-            height: 33px;
-            border-radius: 9px;
-            border: 1px solid #bdd2df;
-            background: var(--soft-blue);
-            color: #6b8ea8;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            font-size: 11px;
-            font-weight: 800;
-            text-transform: lowercase;
-            cursor: pointer;
-        }
-
-        .buy-btn svg {
-            width: 14px;
-            height: 14px;
-            stroke: currentColor;
-            stroke-width: 2;
-            fill: none;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
-
-        .meta-list {
-            display: grid;
-            gap: 7px;
-            font-size: 11px;
-        }
-
-        .meta-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 10px;
-            line-height: 1.28;
-        }
-
-        .meta-key {
-            color: var(--muted);
-        }
-
-        .meta-value {
-            color: #55616c;
-            font-weight: 700;
-            text-align: right;
-        }
-
-        .meta-value--link {
-            color: #4f9ed6;
-            text-decoration: underline;
-            font-weight: 600;
-            word-break: break-all;
-        }
-
-        .meta-value--accent {
-            color: #f08532;
-        }
-
-        .meta-value--good {
-            color: #67b95f;
-        }
-
-        .format-badge {
-            display: inline-flex;
-            align-items: center;
-            justify-content: flex-end;
-            gap: 5px;
-            color: #444c55;
-            font-weight: 700;
-        }
-
-        .format-mark {
-            width: 13px;
-            height: 13px;
-            border-radius: 2px;
-            background: linear-gradient(180deg, #f86852 0%, #ef553e 100%);
-            box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
-        }
-
-        .color-list {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .flag {
-            width: 12px;
-            height: 12px;
-            border-radius: 2px;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-        }
-
-        .flag--first {
-            background: linear-gradient(to bottom, #df2020 0 33%, #f0f5f7 33% 66%, #1b8f41 66% 100%);
-        }
-
-        .flag--second {
-            background: linear-gradient(to bottom, #1d5db4 0 50%, #f8c72a 50% 100%);
-        }
-
-        .swatch {
-            width: 10px;
-            height: 10px;
-            border-radius: 999px;
-            border: 1px solid rgba(0, 0, 0, 0.13);
-        }
-
-        .swatch--wood {
-            background: #7a5f43;
-        }
-
-        .swatch--velvet {
-            background: #e5d7bb;
-        }
-
-        .materials {
-            color: #8b643d;
-            font-style: italic;
-        }
-
-        .size-value {
-            color: #9f6f44;
-        }
-
-        .price-value {
-            color: #2ca8e8;
-        }
-
-        .author-value {
-            color: #3ca3e7;
-        }
-
-        .tags-grid {
-            display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 6px;
-        }
-
-        .tag {
-            height: 24px;
-            border-radius: 6px;
-            border: 1px solid #c8d9e8;
-            background: #f6fbff;
-            color: #5e9bc7;
-            font-size: 10px;
-            font-weight: 700;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            white-space: nowrap;
-            cursor: pointer;
-        }
-
-        .similar-section {
-            margin-top: 30px;
-        }
-
-        .similar-section h2 {
-            margin: 0 0 10px;
-            color: #6f777f;
-            font-family: "Saira", sans-serif;
-            font-size: 15px;
-            font-weight: 500;
-        }
-
-        .similar-grid {
-            display: grid;
-            grid-template-columns: repeat(5, minmax(0, 1fr));
-            gap: 17px;
-        }
-
-        .similar-card img {
-            width: 100%;
-            height: 109px;
-            object-fit: cover;
-            border-radius: 2px;
-            border: 1px solid #e0e7ec;
-            display: block;
-            background: #ffffff;
-        }
-
-        .similar-card p {
-            margin: 6px 0 0;
-            color: #7f8891;
-            font-size: 10px;
-            line-height: 1.2;
-        }
-
-        .footer-box {
-            margin-top: 32px;
-            background: #ffffff;
-            border: 1px solid var(--line);
-            border-radius: 8px;
-            padding: 17px 14px 20px;
-        }
-
-        .chip-row {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 9px;
-        }
-
-        .chip {
-            height: 28px;
-            border-radius: 999px;
-            border: 1px solid #d4dde4;
-            background: #ffffff;
-            color: #5f6a74;
-            padding: 0 13px;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 10px;
-            font-weight: 700;
-        }
-
-        .chip-dot {
-            width: 14px;
-            height: 14px;
-            border-radius: 999px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 9px;
-            font-weight: 800;
-        }
-
-        .chip-dot--violet {
-            background: #f3ebff;
-            color: #8b5cf6;
-        }
-
-        .chip-dot--red {
-            background: #ffedf0;
-            color: #e85770;
-        }
-
-        .chip-dot--green {
-            background: #e7faf0;
-            color: #3ea169;
-        }
-
-        .chip-dot--pink {
-            background: #ffeef7;
-            color: #da65ac;
-        }
-
-        .chip-dot--yellow {
-            background: #fff8df;
-            color: #bb8f18;
-        }
-
-        .policy-row {
-            margin-top: 16px;
-        }
-
-        .policy-chip {
-            background: #f6f7f9;
-            font-weight: 600;
-        }
-
-        .social-row {
-            margin-top: 20px;
-            display: flex;
-            justify-content: center;
-            gap: 14px;
-        }
-
-        .social-link {
-            width: 18px;
-            height: 18px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            font-weight: 700;
-        }
-
-        .social-link--telegram {
-            color: #36aee3;
-        }
-
-        .social-link--facebook {
-            color: #3b5998;
-        }
-
-        .social-link--instagram {
-            color: #ec4899;
-        }
-
-        .social-link--youtube {
-            color: #ef4444;
-        }
-
-        @media (max-width: 1040px) {
-            .details-layout {
-                grid-template-columns: 1fr;
-            }
-
-            .topbar {
-                flex-wrap: wrap;
-                height: auto;
-                padding: 10px;
-            }
-
-            .topbar-search {
-                order: 3;
-                flex: 1 1 100%;
-                max-width: 100%;
-                margin: 0;
-            }
-        }
-
-        @media (max-width: 720px) {
-            .topbar-nav {
-                display: none;
-            }
-
-            .topbar-right {
-                gap: 6px;
-            }
-
-            .auth-btn {
-                padding: 0 6px;
-            }
-
-            .gallery-main {
-                min-height: 320px;
-            }
-
-            .thumb-row {
-                grid-template-columns: repeat(3, minmax(0, 1fr));
-            }
-
-            .tags-grid {
-                grid-template-columns: repeat(3, minmax(0, 1fr));
-            }
-
-            .similar-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-                gap: 12px;
-            }
-
-            .similar-card img {
-                height: 120px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="assets/css/3d-model-details.css">
 </head>
 <body>
     <header id="site-header" data-component-url="components/header.html">
@@ -852,28 +182,28 @@
             <section class="details-layout" aria-label="3D model details">
                 <div class="gallery-card">
                     <div class="gallery-main">
-                        <img src="assets/images/models/Image%20(23).png" alt="Bed Lagom Wood by Dantone Home" data-main-preview>
-                        <span class="watermark">3DSKY</span>
+                        <img src="assets/images/3d-model/main-image/%2B%20im.png" alt="3D model main preview" data-main-preview>
+                      
                     </div>
 
                     <div class="thumb-row" aria-label="Preview thumbnails">
-                        <button class="thumb-btn is-active" type="button" data-thumb-src="assets/images/models/Image%20(23).png" aria-label="Preview 1">
-                            <img src="assets/images/models/Image%20(23).png" alt="Thumbnail bed 1">
+                        <button class="thumb-btn is-active" type="button" data-thumb-src="assets/images/3d-model/priview-image/1.png" aria-label="Preview 1">
+                            <img src="assets/images/3d-model/priview-image/1.png" alt="Thumbnail preview 1">
                         </button>
-                        <button class="thumb-btn" type="button" data-thumb-src="assets/images/models/Image%20(27).png" aria-label="Preview 2">
-                            <img src="assets/images/models/Image%20(27).png" alt="Thumbnail bed 2">
+                        <button class="thumb-btn" type="button" data-thumb-src="assets/images/3d-model/priview-image/2.png" aria-label="Preview 2">
+                            <img src="assets/images/3d-model/priview-image/2.png" alt="Thumbnail preview 2">
                         </button>
-                        <button class="thumb-btn" type="button" data-thumb-src="assets/images/models/Image%20(22).png" aria-label="Preview 3">
-                            <img src="assets/images/models/Image%20(22).png" alt="Thumbnail bed 3">
+                        <button class="thumb-btn" type="button" data-thumb-src="assets/images/3d-model/priview-image/3.png" aria-label="Preview 3">
+                            <img src="assets/images/3d-model/priview-image/3.png" alt="Thumbnail preview 3">
                         </button>
-                        <button class="thumb-btn" type="button" data-thumb-src="assets/images/models/Image%20(31).png" aria-label="Preview 4">
-                            <img src="assets/images/models/Image%20(31).png" alt="Thumbnail bed 4">
+                        <button class="thumb-btn" type="button" data-thumb-src="assets/images/3d-model/priview-image/4.png" aria-label="Preview 4">
+                            <img src="assets/images/3d-model/priview-image/4.png" alt="Thumbnail preview 4">
                         </button>
-                        <button class="thumb-btn" type="button" data-thumb-src="assets/images/models/Image%20(42).png" aria-label="Preview 5">
-                            <img src="assets/images/models/Image%20(42).png" alt="Thumbnail bed 5">
+                        <button class="thumb-btn" type="button" data-thumb-src="assets/images/3d-model/priview-image/5.png" aria-label="Preview 5">
+                            <img src="assets/images/3d-model/priview-image/5.png" alt="Thumbnail preview 5">
                         </button>
-                        <button class="thumb-btn" type="button" data-thumb-src="assets/images/models/Image%20(30).png" aria-label="Preview 6">
-                            <img src="assets/images/models/Image%20(30).png" alt="Thumbnail bed 6">
+                        <button class="thumb-btn" type="button" data-thumb-src="assets/images/3d-model/priview-image/6.png" aria-label="Preview 6">
+                            <img src="assets/images/3d-model/priview-image/6.png" alt="Thumbnail preview 6">
                         </button>
                     </div>
                 </div>
@@ -881,23 +211,19 @@
                 <aside class="info-column">
                     <article class="info-card summary-card">
                         <h1>Bed Lagom Wood by Dantone Home v 6 it's example.</h1>
-                        <div class="buy-row">
+                        
+                    </article>
+
+                    <div class="buy-row">
                             <span class="price-chip">7 $</span>
                             <button class="favorite-btn" type="button" aria-label="Favorite">
-                                <svg viewBox="0 0 24 24">
-                                    <path d="M12 20s-6.5-4.2-8.4-7.4c-1.2-2.1-.7-4.8 1.5-6 1.8-.9 3.9-.4 5.2 1.2 1.3-1.6 3.4-2.1 5.2-1.2 2.2 1.2 2.8 3.9 1.5 6C18.5 15.8 12 20 12 20z"></path>
-                                </svg>
+                                <img src="assets/images/3d-model-details/2%20-%20Heart.svg" alt="" aria-hidden="true">
                             </button>
                             <button class="buy-btn" type="button">
-                                <svg viewBox="0 0 24 24">
-                                    <circle cx="9" cy="19" r="1.5"></circle>
-                                    <circle cx="17" cy="19" r="1.5"></circle>
-                                    <path d="M3 5h2l2 10h10l2-7H7"></path>
-                                </svg>
-                                buy 3d model
+                               
+                                By 3D model
                             </button>
                         </div>
-                    </article>
 
                     <article class="info-card">
                         <div class="meta-list">
@@ -989,31 +315,7 @@
                 </aside>
             </section>
 
-            <section class="similar-section" aria-label="Similar models">
-                <h2>Similar 3D models</h2>
-                <div class="similar-grid">
-                    <article class="similar-card">
-                        <img src="assets/images/models/Image%20(30).png" alt="Similar bed model 1">
-                        <p>Similar 3D models</p>
-                    </article>
-                    <article class="similar-card">
-                        <img src="assets/images/models/Image%20(23).png" alt="Similar bed model 2">
-                        <p>Similar 3D models</p>
-                    </article>
-                    <article class="similar-card">
-                        <img src="assets/images/models/Image%20(22).png" alt="Similar bed model 3">
-                        <p>Similar 3D models</p>
-                    </article>
-                    <article class="similar-card">
-                        <img src="assets/images/models/Image%20(31).png" alt="Similar bed model 4">
-                        <p>Similar 3D models</p>
-                    </article>
-                    <article class="similar-card">
-                        <img src="assets/images/models/Image%20(42).png" alt="Similar bed model 5">
-                        <p>Similar 3D models</p>
-                    </article>
-                </div>
-            </section>
+           
         </main>
     </div>
 
@@ -1102,18 +404,65 @@
         (function () {
             var mainPreview = document.querySelector("[data-main-preview]");
             var thumbButtons = Array.prototype.slice.call(document.querySelectorAll(".thumb-btn[data-thumb-src]"));
+            var highResCache = {};
 
             if (!mainPreview || thumbButtons.length === 0) {
                 return;
             }
 
+            function deriveHighResSource(thumbSource) {
+                if (!thumbSource) {
+                    return "";
+                }
+                return thumbSource.replace("/priview-image/", "/main-image/");
+            }
+
+            function applyMainSource(thumbSource, highResSource) {
+                if (thumbSource) {
+                    mainPreview.setAttribute("src", thumbSource);
+                }
+
+                if (!highResSource || highResSource === thumbSource) {
+                    return;
+                }
+
+                if (highResCache[highResSource] === true) {
+                    mainPreview.setAttribute("src", highResSource);
+                    return;
+                }
+
+                if (highResCache[highResSource] === false) {
+                    return;
+                }
+
+                var testImage = new Image();
+                testImage.onload = function () {
+                    highResCache[highResSource] = true;
+                    mainPreview.setAttribute("src", highResSource);
+                };
+                testImage.onerror = function () {
+                    highResCache[highResSource] = false;
+                };
+                testImage.src = highResSource;
+            }
+
             thumbButtons.forEach(function (button) {
                 button.addEventListener("click", function () {
-                    var source = button.getAttribute("data-thumb-src");
-                    if (!source) {
+                    var thumbSource = button.getAttribute("data-thumb-src");
+                    var declaredHighRes = button.getAttribute("data-main-src");
+                    var highResSource = declaredHighRes || deriveHighResSource(thumbSource);
+
+                    if (!thumbSource && !highResSource) {
                         return;
                     }
-                    mainPreview.setAttribute("src", source);
+
+                    applyMainSource(thumbSource, highResSource);
+
+                    var thumbImage = button.querySelector("img");
+                    if (thumbImage && thumbImage.getAttribute("alt")) {
+                        mainPreview.setAttribute("alt", thumbImage.getAttribute("alt"));
+                    }
+
                     thumbButtons.forEach(function (item) {
                         item.classList.remove("is-active");
                     });
